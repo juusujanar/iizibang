@@ -7,4 +7,4 @@ Licensed under GNU GPL License version 3.
 ### Credits:  
 Janar Juusu  
 Madis Janno  
-[3rd member TBA]
+Cardo Kambla
