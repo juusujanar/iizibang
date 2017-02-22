@@ -1,6 +1,6 @@
-# Legendary-parakeet
+# iiZiBang
 
-Top secret code name for upcoming web application.
+Code name for upcoming web application.
 
 Licensed under GNU GPL License version 3.
 
