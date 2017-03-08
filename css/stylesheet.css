@@ -14,7 +14,6 @@ body,html{
 .firstBackground{
     background-color: whitesmoke;
     height: 100%;
-    position: relative;
 
 }
 .whatIsIiziBang{
@@ -126,6 +125,31 @@ body,html{
     text-align:center;
     color: white;
     padding-bottom: 20px;
+}
+.flexContainerToLeft {
+    display:flex;
+    padding-top: 8px;
+    padding-right: 8px;
+    justify-content: flex-end;
+}
+.ghost-buttonSignUp{
+    display: inline-block;
+    width: 200px;
+    padding: 8px;
+    margin:0 8px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    right: 10px;
+    top: 5px;
+}
+.ghost-buttonSignUp:hover,
+.ghost-buttonSignUp:active {
+    background-color: black;
+    color: white;
 }
 h3{
     letter-spacing: 5px;
