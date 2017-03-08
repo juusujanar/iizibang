@@ -1,0 +1,155 @@
+body,html{
+    height: 100%;
+    margin: 0;
+    font: 400 15px/1.8 "Lato", sans-serif;
+    color: #777;
+}
+.firstBackground, .secondBackground, .thirdBackground{
+    position: relative;
+    opacity: 0.65;
+    background-position: center;
+    background-size: cover;
+}
+
+.firstBackground{
+    background-color: whitesmoke;
+    height: 100%;
+    position: relative;
+
+}
+.whatIsIiziBang{
+    text-align:center;
+    color: white
+}
+
+.whatIsIiziBangLine2{
+    text-align: center
+}
+
+.whatIsIiziBangLine1{
+    text-align: center
+}
+.whatIsIiziBangLine3{
+    text-align: center
+}
+.reasons{
+    text-align:center;
+    color: white;
+    text: 25px;
+}
+.reasonsText1{
+    text-align: center;
+    color: white;
+    text: 15px;
+}
+.reasonsText2{
+    text-align: center;
+    color: white;
+    text: 15px;
+}
+.reasonsText3{
+    text-align: center;
+    color: white;
+    text: 15px;
+}
+.firstSpace{
+    color: #777;
+    background-color:black;
+    text-align: center;
+    padding:50px 80px;
+    text-align:justify;"
+
+}
+.secondSpace{
+    color: #777;
+    background-color:black;
+    text-align:center;
+    padding:50px 80px;
+    text-align:justify;
+}
+
+.firstBackground > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.secondBackground{
+    background-image: url("../pictures/bigimage2.jpg");
+    min-height: 100%;
+}
+.thirdBackground{
+    background-image: url("../pictures/bigimage3.jpg");
+    min-height: 100%;
+}
+.caption{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+
+.caption span.border{
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+}
+
+.caption span.borderFirst{
+    background-color:transparent;
+    font-size:25px;
+    color:#f7f7f7;
+    letter-spacing: 10px;
+    padding: 18px;
+}
+.caption span.borderSecond{
+    background-color:black;
+    font-size:35px;
+    color:#f7f7f7;
+    letter-spacing: 10px;
+    padding: 18px;
+}
+.endOfPageSpace{
+    color: #777;
+    background-color:black;
+    text-align:center;
+    padding:50px 80px;
+}
+.signUpText{
+    text-align:center;
+    color: white;
+    padding-bottom: 20px;
+}
+h3{
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font: 20px "Lato", sans-serif;
+    color: #111;
+}
+.registrationButton{
+
+    padding:15px 128px;
+    background-color: greenyellow;
+    left:50%;
+    margin: 0 auto
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    font: 400 15px/1.8 "Lato", sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
