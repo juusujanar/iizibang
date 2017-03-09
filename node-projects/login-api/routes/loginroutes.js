@@ -22,14 +22,14 @@ exports.register = function(req, res) {
         "email": req.body.email,
         "idcode": req.body.idcode,
         "password_hash": bcrypt.hashSync(req.body.password, 10),
-    }
+    };
     connection.query('INSERT INTO users SET ?', users, function(error, results, fields) {
         if (error) {
             console.log("Error when adding user to database: ", error);
             res.send({
                 "code": 400,
                 "failed": "Error when adding user to database!"
-            })
+            });
         } else {
             res.send({
                 "code": 200,
@@ -37,7 +37,7 @@ exports.register = function(req, res) {
             });
         }
     });
-}
+};
 
 exports.login = function(req, res) {
     var email = req.body.email;
@@ -48,7 +48,7 @@ exports.login = function(req, res) {
             res.send({
                 "code": 400,
                 "failed": "Login failed."
-            })
+            });
         } else {
             if (results.length > 0) {
                 var dbHash = results[0].password_hash;
@@ -71,4 +71,4 @@ exports.login = function(req, res) {
             }
         }
     });
-}
+};

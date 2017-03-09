@@ -20,6 +20,6 @@ router.get('/', function(req, res) {
 
 //route to handle user registration
 router.post('/register',login.register);
-router.post('/login',login.login)
+router.post('/login',login.login);
 app.use('/api', router);
 app.listen(5000);
