@@ -1,0 +1,12 @@
+{
+  "name": "iizibang-login-api",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "~1.9.2",
+    "express": "~4.9.8",
+    "mysql": "~2.13.0",
+    "passport": "^0.3.0",
+    "passport-jwt": "^1.2.1"
+  }
+}
