@@ -1,6 +1,6 @@
 {
   "name": "iizibang-login-api",
-  "main": "server.js",
+  "main": "main.js",
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "~1.9.2",
