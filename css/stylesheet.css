@@ -134,6 +134,7 @@ body,html{
 }
 .registration {
     /*http://www.sketchingwithcss.com/samplechapter/cheatsheet.html*/
+    background: whitesmoke;
     display: -webkit-flex;
     display: inline-flex;
     -webkit-flex-direction: column; /* works with row or column */
@@ -148,10 +149,28 @@ body,html{
 }
 .registration > img{
     top: auto;
+    opacity: 0.65;
+}
+.registration-input{
+    padding: 8px;
+}
+.registration-input-container{
+    padding: 8px;
 }
 .registration-container{
     display: flex;
 
+
+}
+.gender-orienatation{
+    size: inherit;
+}
+.birthDay{
+    display: flex;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
 }
 .ghost-buttonSignUp{
     display: inline-block;

@@ -22,22 +22,59 @@
 
         <div class="registration">
             <img src="../pictures/iiZiBangLogo.png">
-            <h3>E-mail</h3>
-            <input type="email" placeholder="example@mail.com"/>
-            <h3>Confirm e-mail</h3>
-            <input type="email" placeholder="example@mail.com"/>
-            <h3>Password</h3>
-            <input type="password" placeholder="Password"/>
-            <h3>Confirm password</h3>
-            <input type="password" placeholder="Password Confirm"/>
-            <h3>First name</h3>
-            <input type="text" placeholder="First name"/>
-            <h3>Surname</h3>
-            <input type="text" placeholder="Surname"/>
-            <h3>Date of birth</h3>
-            <input type="date" inputmode="dd/mm/yyyy"/>
+            <h3>Your Account</h3>
+            <div class="registration-input-container">
+                <input class="registration-input" type="text" placeholder="Your Desired Username"/>
+            </div>
+            <div class="registration-input-container">
+                <input class="registration-input"type="password" placeholder="Your Password"/>
+            </div>
+            <div class="registration-input-container">
+                <input class="registration-input"type="password" placeholder="Your Password"/>
+            </div>
+            <div class="registration-input-container">
+                <input class="registration-input"type="password" placeholder="Confirm Password"/>
+            </div>
+            <h3>Your Personal Information</h3>
+            <div class="registration-input-container">
+                <input class="registration-input"type="email" placeholder="Your E-mail Address"/>
+            </div>
+            <div class="registration-input-container">
+                <input class="registration-input"type="email" placeholder="Confirm E-mail"/>
+            </div>
+            <div class="registration-input-container">
+                <input class="registration-input"type="text" placeholder="First name"/>
+            </div>
+            <div class="registration-input-container">
+                <input class="registration-input"type="text" placeholder="Surname"/>
+            </div>
+            <div class="registration-input-container">
+                <input class="registration-input"type="date" placeholder="Date of Birth"/>
+            </div>
+            <div class="gender-orienatation">
+                <select>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other-gender">Other</option>
+                </select>
+            </div>
+
+
+
+
+
+
+            <h3>What are you intrested in?</h3>
+            <select>
+                <option value="women">Women</option>
+                <option value="men">Men</option>
+                <option value="other">Other</option>
+            </select>
+            <h3>Picture of yourself</h3>
+            <input class="registration-input"type="file" />
+
             <!--Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/-->
-            <a class="ghost-buttonSignUp">This is reg index</a>
+            <a class="ghost-buttonSignUp" href="../index.html">Register</a>
         </div>
 
     </div>
