@@ -1,146 +1,257 @@
-/*body {
-    background: url('img/4uojmedcwi8-tim-bogdanov.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+body,html{
+    height: 100%;
+    margin: 0;
+    font: 400 15px/1.8 "Lato", sans-serif;
+    color: #777;
+}
+.firstBackground, .secondBackground, .thirdBackground{
+    position: relative;
+    opacity: 0.65;
+    background-position: center;
     background-size: cover;
-    font-family: 'Roboto', sans-serif;
-}*/
-
-/* Above is old CSS code, below is new with help from bootstrap */
-
-/* GLOBAL STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
-
-body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
 }
 
+.firstBackground{
+    background-color: whitesmoke;
+    height: 100%;
 
-/* CUSTOMIZE THE NAVBAR
--------------------------------------------------- */
-
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
-.navbar-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 20;
+}
+.whatIsIiziBang{
+    text-align:center;
+    color: white
 }
 
-/* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper > .container {
-  padding-right: 0;
-  padding-left: 0;
-}
-.navbar-wrapper .navbar {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.navbar-wrapper .navbar .container {
-  width: auto;
+.whatIsIiziBangLine2{
+    text-align: center
 }
 
-
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
-.carousel {
-  height: 500px;
-  margin-bottom: 60px;
-  background-color: #f94dff;
+.whatIsIiziBangLine1{
+    text-align: center
 }
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
+.whatIsIiziBangLine3{
+    text-align: center
 }
+.reasons{
+    text-align:center;
+    color: white;
+    text: 25px;
+}
+.reasonsText1{
+    text-align: center;
+    color: white;
+    text: 15px;
+}
+.reasonsText2{
+    text-align: center;
+    color: white;
+    text: 15px;
+}
+.reasonsText3{
+    text-align: center;
+    color: white;
+    text: 15px;
+}
+.firstSpace{
+    color: #777;
+    background-color:black;
+    text-align: center;
+    padding:50px 80px;
+    text-align:justify;"
 
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 500px;
-  background-color: #f94dff;
 }
-.carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 500px;
-}
-
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: normal;
-}
-.marketing .col-lg-4 p {
-  margin-right: 10px;
-  margin-left: 10px;
+.secondSpace{
+    color: #777;
+    background-color:black;
+    text-align:center;
+    padding:50px 80px;
+    text-align:justify;
 }
 
-
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+.firstBackground > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
 
-/* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -1px;
+.secondBackground{
+    background-image: url("../pictures/bigimage2.jpg");
+    min-height: 100%;
+}
+.thirdBackground{
+    background-image: url("../pictures/bigimage3.jpg");
+    min-height: 100%;
+}
+.caption{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
 }
 
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
-@media (min-width: 768px) {
-  /* Navbar positioning foo */
-  .navbar-wrapper {
-    margin-top: 20px;
-  }
-  .navbar-wrapper .container {
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-  .navbar-wrapper .navbar {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  /* The navbar becomes detached from the top, so we round the corners */
-  .navbar-wrapper .navbar {
-    border-radius: 4px;
-  }
-
-  /* Bump up size of carousel content */
-  .carousel-caption p {
-    margin-bottom: 20px;
-    font-size: 21px;
-    line-height: 1.4;
-  }
-
-  .featurette-heading {
-    font-size: 50px;
-  }
+.caption span.border{
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
 }
 
-@media (min-width: 992px) {
-  .featurette-heading {
-    margin-top: 120px;
-  }
+.caption span.borderFirst{
+    background-color:transparent;
+    font-size:25px;
+    color:#f7f7f7;
+    letter-spacing: 10px;
+    padding: 18px;
+}
+.caption span.borderSecond{
+    background-color:black;
+    font-size:35px;
+    color:#f7f7f7;
+    letter-spacing: 10px;
+    padding: 18px;
+}
+.endOfPageSpace{
+    color: #777;
+    background-color:black;
+    text-align:center;
+    padding:50px 80px;
+}
+.signUpText{
+    text-align:center;
+    color: white;
+    padding-bottom: 20px;
+}
+.flexContainerToLeft {
+    display:flex;
+    padding-top: 8px;
+    padding-right: 8px;
+    justify-content: flex-end;
+}
+.registration {
+    /*http://www.sketchingwithcss.com/samplechapter/cheatsheet.html*/
+    background: whitesmoke;
+    display: -webkit-flex;
+    display: inline-flex;
+    -webkit-flex-direction: column; /* works with row or column */
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: auto;
+    border: 3px rgba(0,0,0,1) solid;
+    padding: 30px;
+}
+
+.registration > div {
+    width: 100%;
+    max-width: 250px;
+}
+
+.registration > div > input {
+    width: 100%;
+}
+
+.registration > img{
+    top: auto;
+    opacity: 0.65;
+}
+.registration-input{
+    padding: 8px;
+}
+.registration-input-container{
+    padding: 8px;
+}
+.registration-container{
+    display: flex;
+
+
+}
+.gender-orienatation{
+    display:flex;
+
+}
+.birthDay{
+    display: flex;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.ghost-buttonSignUp{
+    display: inline-block;
+    width: 200px;
+    padding: 8px;
+    margin:0 8px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    right: 10px;
+    top: 5px;
+}
+.ghost-buttonSignUp:hover,
+.ghost-buttonSignUp:active {
+    background-color: black;
+    color: white;
+}
+h3{
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font: 20px "Lato", sans-serif;
+    color: #111;
+}
+.registrationButton{
+
+    padding:15px 128px;
+    background-color: greenyellow;
+    left:50%;
+    margin: 0 auto
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    font: 400 15px/1.8 "Lato", sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.login-input{
+    padding: 5px;
+}
+.login-input-container{
+    padding: 8px;
+}
+.forgot-password{
+    background: whitesmoke;
+    display: -webkit-flex;
+    display: inline-flex;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: auto;
+}
+.forgot-password-text{
+    letter-spacing: 0px;
+    font: 12px "Lato", sans-serif;
+}
+.sexual-interest, .gender{
+    display:flex;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
 }
