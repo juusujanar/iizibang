@@ -132,6 +132,27 @@ body,html{
     padding-right: 8px;
     justify-content: flex-end;
 }
+.registration {
+    /*http://www.sketchingwithcss.com/samplechapter/cheatsheet.html*/
+    display: -webkit-flex;
+    display: inline-flex;
+    -webkit-flex-direction: column; /* works with row or column */
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: auto;
+    border: 3px rgba(0,0,0,1) solid;
+    padding: 30px;
+}
+.registration > img{
+    top: auto;
+}
+.registration-container{
+    display: flex;
+
+}
 .ghost-buttonSignUp{
     display: inline-block;
     width: 200px;
