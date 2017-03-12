@@ -7,6 +7,14 @@ var connection = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
+/**
+  * Return codes
+  * 200 - Login/register successful
+  * 300 - Login/register failed - non-existant account, already existing account
+            or mismatching password
+  * 400 - Some other error
+*/
+
 connection.connect(function(err) {
     if (!err) {
         console.log("Successfully connected to database.");
@@ -47,21 +55,21 @@ exports.register = function(req, res) {
 exports.login = function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    connection.query('call checkForUser (?,?,@results)', [email, password], function(error, results, fields) {
+
+    connection.query('call getUserPassword (?,@results)', [email], function(error, results, fields) {
         if (error) {
-            console.log("Error while getting login data from DB: ", error);
+            console.log("Error while getting login info from DB: ", error);
             res.send({
                 "code": 400,
                 "failed": "Login failed."
             });
         } else {
-            if (results[0][0]["@result"] == 200) {
+            if(bcrypt.compareSync(password, results[0][0]["@p_password"])) {
                 res.send({
                     "code": 200,
-                    "success": "User successfully logged in."
+                    "success": "Login successful."
                 });
-            }
-            else {
+            } else {
                 res.send({
                     "code": 300,
                     "failed": "User login failed."
