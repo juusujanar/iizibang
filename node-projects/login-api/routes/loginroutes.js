@@ -28,7 +28,7 @@ exports.register = function(req, res) {
             });
             return;
         } else {
-            if (results[0][0] == 200) {
+            if (results[0][0]["@result"] == 200) {
                 res.send({
                     "code": 200,
                     "success": "User successfully registered."
@@ -47,7 +47,7 @@ exports.register = function(req, res) {
 exports.login = function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    connection.query('call checkForUser (?,?,@results)', [email, email], function(error, results, fields) {
+    connection.query('call checkForUser (?,?,@results)', [email, password], function(error, results, fields) {
         if (error) {
             console.log("Error while getting login data from DB: ", error);
             res.send({
@@ -55,7 +55,7 @@ exports.login = function(req, res) {
                 "failed": "Login failed."
             });
         } else {
-            if (results[0][0] == 200) {
+            if (results[0][0]["@result"] == 200) {
                 res.send({
                     "code": 200,
                     "success": "User successfully logged in."
