@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 var bcrypt = require('bcrypt');
 var connection = mysql.createConnection({
-    host: '[removed]',
-    user: '[removed]',
-    password: '[removed]',
-    database: '[removed]'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 connection.connect(function(err) {
