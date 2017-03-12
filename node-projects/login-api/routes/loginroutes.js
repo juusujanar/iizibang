@@ -23,6 +23,25 @@ exports.register = function(req, res) {
         "idcode": req.body.idcode,
         "password_hash": bcrypt.hashSync(req.body.password, 10),
     };
+    connection.query('SELECT * FROM users WHERE email = ? OR username = ?', [req.body.email, req.body.email], function(error, results, fields) {
+        if (error) {
+            console.log("Error when checking user in database: ", error);
+            res.send({
+                "code": 400,
+                "failed": "Error when checking user in database!"
+            });
+            return;
+        } else {
+            if (results.length > 0) {
+                res.send({
+                    "code": 300,
+                    "success": "User/email already exists in database."
+                });
+                return;
+            }
+        }
+    });
+
     connection.query('INSERT INTO users SET ?', users, function(error, results, fields) {
         if (error) {
             console.log("Error when adding user to database: ", error);
@@ -42,7 +61,7 @@ exports.register = function(req, res) {
 exports.login = function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    connection.query('SELECT * FROM users WHERE email = ?', [email], function(error, results, fields) {
+    connection.query('SELECT * FROM users WHERE email = ? OR username = ?', [email, email], function(error, results, fields) {
         if (error) {
             console.log("Error while getting login data from DB: ", error);
             res.send({
