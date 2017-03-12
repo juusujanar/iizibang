@@ -217,3 +217,25 @@ h3{
     margin: 4px 2px;
     cursor: pointer;
 }
+.login-input{
+    padding: 5px;
+}
+.login-input-container{
+    padding: 8px;
+}
+.forgot-password{
+    background: whitesmoke;
+    display: -webkit-flex;
+    display: inline-flex;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: auto;
+}
+.forgot-password-text{
+    letter-spacing: 0px;
+    font: 12px "Lato", sans-serif;
+}
