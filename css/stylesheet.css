@@ -147,6 +147,16 @@ body,html{
     border: 3px rgba(0,0,0,1) solid;
     padding: 30px;
 }
+
+.registration > div {
+    width: 100%;
+    max-width: 250px;
+}
+
+.registration > div > input {
+    width: 100%;
+}
+
 .registration > img{
     top: auto;
     opacity: 0.65;
@@ -163,7 +173,8 @@ body,html{
 
 }
 .gender-orienatation{
-    size: inherit;
+    display:flex;
+
 }
 .birthDay{
     display: flex;
@@ -238,4 +249,9 @@ h3{
 .forgot-password-text{
     letter-spacing: 0px;
     font: 12px "Lato", sans-serif;
+}
+.sexual-interest, .gender{
+    display:flex;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
 }
