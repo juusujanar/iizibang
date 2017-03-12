@@ -16,41 +16,28 @@ connection.connect(function(err) {
 });
 
 exports.register = function(req, res) {
-    var users = {
-        "firstname": req.body.firstname,
-        "lastname": req.body.lastname,
-        "email": req.body.email,
-        "idcode": req.body.idcode,
-        "password_hash": bcrypt.hashSync(req.body.password, 10),
-    };
-    connection.query('SELECT * FROM users WHERE email = ? OR username = ?', [req.body.email, req.body.email], function(error, results, fields) {
+    connection.query('call addUser (?,?,?,?,?,?,?,@results)', [req.body.username, req.body.firstname,
+        req.body.lastname, req.body.gender, req.body.email, req.body.birthdate,
+        bcrypt.hashSync(req.body.password, 10)], function(error, results, fields) {
+
         if (error) {
-            console.log("Error when checking user in database: ", error);
+            console.log("Error when registering user in database: ", error);
             res.send({
                 "code": 400,
-                "failed": "Error when checking user in database!"
+                "failed": "Error when registering user in database!"
             });
             return;
         } else {
-            if (results.length > 0) {
+            if (results[0][0] == 200) {
+                res.send({
+                    "code": 200,
+                    "success": "User successfully registered."
+                });
+            }
+            else {
                 res.send({
                     "code": 300,
-                    "success": "User/email already exists in database."
-                });
-            } else {
-                connection.query('INSERT INTO users SET ?', users, function(error, results, fields) {
-                    if (error) {
-                        console.log("Error when adding user to database: ", error);
-                        res.send({
-                            "code": 400,
-                            "failed": "Error when adding user to database!"
-                        });
-                    } else {
-                        res.send({
-                            "code": 200,
-                            "success": "User registered successfully"
-                        });
-                    }
+                    "failed": "User registering failed."
                 });
             }
         }
@@ -60,7 +47,7 @@ exports.register = function(req, res) {
 exports.login = function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    connection.query('SELECT * FROM users WHERE email = ? OR username = ?', [email, email], function(error, results, fields) {
+    connection.query('call checkForUser (?,?,@results)', [email, email], function(error, results, fields) {
         if (error) {
             console.log("Error while getting login data from DB: ", error);
             res.send({
@@ -68,23 +55,16 @@ exports.login = function(req, res) {
                 "failed": "Login failed."
             });
         } else {
-            if (results.length > 0) {
-                var dbHash = results[0].password_hash;
-                if (bcrypt.compareSync(password, dbHash)) {
-                    res.send({
-                        "code": 200,
-                        "success": "Login successful"
-                    });
-                } else {
-                    res.send({
-                        "code": 204,
-                        "success": "Email and password does not match"
-                    });
-                }
-            } else {
+            if (results[0][0] == 200) {
                 res.send({
-                    "code": 204,
-                    "success": "Email does not exist"
+                    "code": 200,
+                    "success": "User successfully logged in."
+                });
+            }
+            else {
+                res.send({
+                    "code": 300,
+                    "failed": "User login failed."
                 });
             }
         }
