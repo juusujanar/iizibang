@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 var bcrypt = require('bcrypt');
 var connection = mysql.createConnection({
-    host: 'iizibang.cvcsgqwwt01i.eu-central-1.rds.amazonaws.com',
-    user: 'testuser',
-    password: 'kek1password',
-    database: 'testbase'
+    host: '[removed]',
+    user: '[removed]',
+    password: '[removed]',
+    database: '[removed]'
 });
 
 connection.connect(function(err) {
@@ -37,23 +37,22 @@ exports.register = function(req, res) {
                     "code": 300,
                     "success": "User/email already exists in database."
                 });
-                return;
+            } else {
+                connection.query('INSERT INTO users SET ?', users, function(error, results, fields) {
+                    if (error) {
+                        console.log("Error when adding user to database: ", error);
+                        res.send({
+                            "code": 400,
+                            "failed": "Error when adding user to database!"
+                        });
+                    } else {
+                        res.send({
+                            "code": 200,
+                            "success": "User registered successfully"
+                        });
+                    }
+                });
             }
-        }
-    });
-
-    connection.query('INSERT INTO users SET ?', users, function(error, results, fields) {
-        if (error) {
-            console.log("Error when adding user to database: ", error);
-            res.send({
-                "code": 400,
-                "failed": "Error when adding user to database!"
-            });
-        } else {
-            res.send({
-                "code": 200,
-                "success": "User registered successfully"
-            });
         }
     });
 };
