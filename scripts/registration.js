@@ -1,4 +1,3 @@
-/*
 
 
 function submitValues(){
@@ -23,18 +22,22 @@ function submitValues(){
     console.log(bday);
     console.log(gender);
     console.log(sexualInterest);
-}*/
+}
+/*
 $(document).ready(function(){
-    $("reg-form").submit( function () {
+    $("#reg-form").submit( function () {
+        console.log('aaaaa')
         $.post(
-            "#action",
+            $(this).attr('action'),
             $(this).serialize(),
             function(data){
+                console.log(data)
                 $("#results").html(data)
             }
         );
         return false;
     });
 });
+*/
 
 
