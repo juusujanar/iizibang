@@ -10,7 +10,6 @@
     <meta name="keywords" content="matchmaker">
     <meta name="description" content="Match-making">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans%7CRoboto" rel="stylesheet" />
     <link rel="stylesheet" href="../css/stylesheet.css">
 </head>
 
@@ -26,41 +25,36 @@
             <h3>Your Account</h3>
 
 
-
             <div class="registration-input-container">
-                <input class="registration-input" type="text" placeholder="Your Desired Username" id="username"/>
+                <input class="registration-input" type="text" placeholder="Your Desired Username" id="username" required/>
             </div>
             <div class="registration-input-container">
-                <input class="registration-input" type="password" placeholder="Your Password" id="password"/>
+                <input class="registration-input" type="password" placeholder="Your Password" id="password" required/>
             </div>
             <div class="registration-input-container">
-                <input class="registration-input" type="password" placeholder="Confirm Password" id="passwordConfirm"/><span id="passwordMessage"></span>
+                <input class="registration-input" type="password" placeholder="Confirm Password" id="passwordConfirm" required/><span id="passwordMessage"></span>
             </div>
             <h3>Your Personal Information</h3>
             <div class="registration-input-container">
-                <input class="registration-input" type="email" placeholder="Your E-mail Address" id="email"/>
+                <input class="registration-input" type="email" placeholder="Your E-mail Address" id="email" required/>
             </div>
             <div class="registration-input-container">
-                <input class="registration-input" type="email" placeholder="Confirm E-mail" id="emailConfirm"/><span id="emailMessage"></span>
+                <input class="registration-input" type="email" placeholder="Confirm E-mail" id="emailConfirm" required/><span id="emailMessage"></span>
             </div>
             <div class="registration-input-container">
-                <input class="registration-input" type="text" placeholder="First name" id="firstname"/>
+                <input class="registration-input" type="text" placeholder="First name" id="firstname" required/>
             </div>
             <div class="registration-input-container">
-                <input class="registration-input" type="text" placeholder="Surname" id="lastname"/>
+                <input class="registration-input" type="text" placeholder="Surname" id="lastname" required/>
             </div>
             <div class="registration-input-container">
-                <input class="registration-input" type="date" id="birthdate"/>
+                <input class="registration-input" type="date" id="birthdate" required/>
             </div>
             <div class="gender">
                 <input type="radio" name="gender" value="Male" > Male
                 <input type="radio" name="gender" value="Female" > Female
                 <input type="radio" name="gender" value="Other" > Other
             </div>
-
-
-
-
 
 
 
@@ -75,17 +69,15 @@
             <input class="registration-input" type="file" />
 
             <!--Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/-->
-            <input type="submit" class="ghost-buttonSignUp" value="Register" onclick="submitValues()" />
+            <input type="submit" class="ghost-buttonSignUp" value="Register" />
             </form>
 
     </div>
 
 
-
-
     <!-- Javascript file references. Keep this section at bottom -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-2.0.0.min.js">\x3C/script>')</script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/failover.js"></script>
     <script type="text/javascript" src="../scripts/registration.js"></script>
 </body>
 </html>
