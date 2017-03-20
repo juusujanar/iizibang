@@ -16,6 +16,17 @@ $('#email, #emailConfirm').on('keyup', function () {
     }
 });
 
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
+
 
 $('.ghost-buttonSignUp').on('click', function (){
 
@@ -29,7 +40,7 @@ $('.ghost-buttonSignUp').on('click', function (){
         return;
     }
 
-    var formData = new FormData();
+    /*var formData = new FormData();
 
     formData.append('username', document.getElementById('username').value);
     formData.append('password', document.getElementById('password').value);
@@ -42,12 +53,17 @@ $('.ghost-buttonSignUp').on('click', function (){
 
     for (var pair of formData.entries()) {
         console.log(pair[0]+ ', ' + pair[1]);
-    }
+    }*/
+
+    var $form = $("#reg-form");
+    var data = getFormData($form);
+    console.log(data);
 
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/register',
         type: 'POST',
-        data: formData,
+        contentType: "application/json; charset=utf-8",
+        data: data,
         processData: false,
         contentType: false,
         success: function(data) {
