@@ -1,3 +1,18 @@
+// Check if password and email values are equal.
+
+$('#password, #passwordConfirm').on('keyup', function () {
+    if ($('#password').val() == $('#passwordConfirm').val()) {
+        $('#passwordMessage').html('&#10004;').css('color', 'green');
+    } else
+        $('#passwordMessage').html('&#10008;').css('color', 'red');
+});
+
+$('#email, #emailConfirm').on('keyup', function () {
+    if ($('#email').val() == $('#emailConfirm').val()) {
+        $('#emailMessage').html('&#10004;').css('color', 'green');
+    } else
+        $('#emailMessage').html('&#10008;').css('color', 'red');
+});
 
 
 function submitValues(){
@@ -25,19 +40,17 @@ function submitValues(){
 }
 /*
 $(document).ready(function(){
-    $("#reg-form").submit( function () {
-        console.log('aaaaa')
-        $.post(
-            $(this).attr('action'),
-            $(this).serialize(),
-            function(data){
-                console.log(data)
-                $("#results").html(data)
-            }
-        );
-        return false;
-    });
+$("#reg-form").submit( function () {
+console.log('aaaaa')
+$.post(
+$(this).attr('action'),
+$(this).serialize(),
+function(data){
+console.log(data)
+$("#results").html(data)
+}
+);
+return false;
+});
 });
 */
-
-
