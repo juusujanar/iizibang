@@ -3,41 +3,60 @@
 $('#password, #passwordConfirm').on('keyup', function () {
     if ($('#password').val() == $('#passwordConfirm').val()) {
         $('#passwordMessage').html('&#10004;').css('color', 'green');
-    } else
+    } else {
         $('#passwordMessage').html('&#10008;').css('color', 'red');
+    }
 });
 
 $('#email, #emailConfirm').on('keyup', function () {
     if ($('#email').val() == $('#emailConfirm').val()) {
         $('#emailMessage').html('&#10004;').css('color', 'green');
-    } else
+    } else {
         $('#emailMessage').html('&#10008;').css('color', 'red');
+    }
 });
 
 
-function submitValues(){
-    var username = document.getElementById('username');
-    var password = document.getElementById('password');
-    var passwordConfirmation = document.getElementById('passwordConfirm');
-    var email = document.getElementById('email');
-    var emailConfirm = document.getElementById('emailConfirm');
-    var firstName = document.getElementById('firstName');
-    var lastName = document.getElementById('lastName');
-    var bday = document.getElementById('bday');
-    var gender = document.getElementsByClassName('gender');
-    var sexualInterest = document.getElementsByClassName('interest');
+$('.ghost-buttonSignUp').on('click', function (){
 
-    console.log(username);
-    console.log(password);
-    console.log(passwordConfirmation);
-    console.log(email);
-    console.log(emailConfirm);
-    console.log(firstName);
-    console.log(lastName);
-    console.log(bday);
-    console.log(gender);
-    console.log(sexualInterest);
-}
+    if (!$('#email').val() === $('#emailConfirm').val()) {
+        alert('Email addresses do not match!');
+        return;
+    }
+
+    if (!$('#password').val() == $('#passwordConfirm').val()) {
+        alert('Passwords do not match!');
+        return;
+    }
+
+    var formData = new FormData();
+    formData.append('username', document.getElementById('username'));
+    formData.append('password', document.getElementById('password'));
+    formData.append('email', document.getElementById('email'));
+    formData.append('firstname', document.getElementById('firstName'));
+    formData.append('lastname', document.getElementById('lastName'));
+    formData.append('birthdate', document.getElementById('bday'));
+    formData.append('gender', document.getElementById('gender'));
+    formData.append('interest', document.getElementById('interest'));
+
+    console.log(formData);
+
+    $.ajax({
+        url: 'http://localhost:5000/api/register',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(data) {
+            console.log(data);
+        },
+    });
+});
+
+
 /*
 $(document).ready(function(){
 $("#reg-form").submit( function () {
