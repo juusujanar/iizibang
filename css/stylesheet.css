@@ -149,6 +149,10 @@ body,html{
     width: 100%;
     max-width: 250px;
 }
+.clickHereButton{
+    display: flex;
+    align-items: center;
+}
 
 .registration > div > input {
     width: 100%;
@@ -210,7 +214,9 @@ h3{
     padding:15px 128px;
     background-color: greenyellow;
     left:50%;
-    margin: 0 auto
+    margin: 0 auto;
+    font: 20px "Lato", sans-serif;
+    color: #111;
 }
 .button {
     background-color: #4CAF50;
