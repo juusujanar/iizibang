@@ -30,27 +30,32 @@ $('.ghost-buttonSignUp').on('click', function (){
     }
 
     var formData = new FormData();
-    formData.append('username', document.getElementById('username'));
-    formData.append('password', document.getElementById('password'));
-    formData.append('email', document.getElementById('email'));
-    formData.append('firstname', document.getElementById('firstName'));
-    formData.append('lastname', document.getElementById('lastName'));
-    formData.append('birthdate', document.getElementById('bday'));
-    formData.append('gender', document.getElementById('gender'));
-    formData.append('interest', document.getElementById('interest'));
 
-    console.log(formData);
+    formData.append('username', document.getElementById('username').value);
+    formData.append('password', document.getElementById('password').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('firstname', document.getElementById('firstname').value);
+    formData.append('lastname', document.getElementById('lastname').value);
+    formData.append('birthdate', document.getElementById('birthdate').value);
+    formData.append('gender', $('input[name="gender"]:checked').val());
+    formData.append('interest', $('input[name="interest"]:checked').val());
+
+    for (var pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]);
+    }
 
     $.ajax({
-        url: 'http://localhost:5000/api/register',
+        url: 'https://iizibang.jjdev.eu/api/register',
         type: 'POST',
         data: formData,
         processData: false,
         contentType: false,
         success: function(data) {
+            alert('Success');
             console.log(data);
         },
         error: function(data) {
+            alert('Error');
             console.log(data);
         },
     });
