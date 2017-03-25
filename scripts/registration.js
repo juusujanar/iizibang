@@ -1,3 +1,8 @@
+webshims.setOptions('waitReady', false);
+webshims.setOptions('forms-ext', {types: 'date'});
+webshims.polyfill('forms forms-ext');
+
+
 // Check if password and email values are equal.
 
 $('#password, #passwordConfirm').on('change keyup', function () {
