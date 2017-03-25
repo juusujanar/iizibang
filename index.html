@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>iiZiBang</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="author" content="person">
-    <meta name="description" content="Match-making">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -16,6 +10,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Own styling -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet" />
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>iiZiBang - The home of future matchmaker</title>
+
+    <meta name="keywords" content="matchmaker">
+    <meta name="description" content="Match-making">
+
     <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 
@@ -30,7 +34,7 @@
             <a class="ghost-buttonSignUp" href="login/index.html">Log In</a>
         </div>
 
-        <img src="pictures/iiZiBangLogo.png">
+        <img src="pictures/iiZiBangLogo.png" alt="logo">
 
     </div>
     <div class ="firstSpace">
@@ -57,14 +61,14 @@
     </div>
     <div class="endOfPageSpace">
         <h3 class="signUpText" >I can give you a hint where to sign up...</h3>
-        <a href="registration/index.html" class="registrationButton" >Click here!</a>
+        <div class="clickHereButton">
+            <a href="registration/index.html" class="registrationButton" >Click here!</a>
+        </div>
     </div>
 
     <!-- Javascript file references. Keep this section at bottom -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-3.1.1.min.js">\x3C/script>')</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/failover.js"></script>
 </body>
 </html>

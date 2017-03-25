@@ -34,29 +34,26 @@ body,html{
 .reasons{
     text-align:center;
     color: white;
-    text: 25px;
+    font-size: 25px;
 }
 .reasonsText1{
     text-align: center;
-    color: white;
-    text: 15px;
+    font-size: 15px;
 }
 .reasonsText2{
     text-align: center;
-    color: white;
-    text: 15px;
+    font-size: 15px;
 }
 .reasonsText3{
     text-align: center;
-    color: white;
-    text: 15px;
+    font-size: 15px;
 }
 .firstSpace{
     color: #777;
     background-color:black;
     text-align: center;
     padding:50px 80px;
-    text-align:justify;"
+    text-align:justify;
 
 }
 .secondSpace{
@@ -152,6 +149,10 @@ body,html{
     width: 100%;
     max-width: 250px;
 }
+.clickHereButton{
+    display: flex;
+    align-items: center;
+}
 
 .registration > div > input {
     width: 100%;
@@ -209,11 +210,10 @@ h3{
     color: #111;
 }
 .registrationButton{
-
-    padding:15px 128px;
-    background-color: greenyellow;
     left:50%;
-    margin: 0 auto
+    margin: 0 auto;
+    font: 20px "Lato", sans-serif;
+    color: white;
 }
 .button {
     background-color: #4CAF50;
