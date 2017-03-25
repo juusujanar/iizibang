@@ -210,13 +210,10 @@ h3{
     color: #111;
 }
 .registrationButton{
-
-    padding:15px 128px;
-    background-color: greenyellow;
     left:50%;
     margin: 0 auto;
     font: 20px "Lato", sans-serif;
-    color: #111;
+    color: white;
 }
 .button {
     background-color: #4CAF50;

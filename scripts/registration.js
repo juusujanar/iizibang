@@ -1,15 +1,17 @@
 // Check if password and email values are equal.
 
-$('#password, #passwordConfirm').on('keyup', function () {
-    if ($('#password').val() == $('#passwordConfirm').val()) {
+$('#password, #passwordConfirm').on('change keyup', function () {
+    var pw = $('#password').val();
+    if (pw === $('#passwordConfirm').val() && pw !== "") {
         $('#passwordMessage').html('&#10004;').css('color', 'green');
     } else {
         $('#passwordMessage').html('&#10008;').css('color', 'red');
     }
 });
 
-$('#email, #emailConfirm').on('keyup', function () {
-    if ($('#email').val() == $('#emailConfirm').val()) {
+$('#email, #emailConfirm').on('change keyup', function () {
+    var email = $('#email').val();
+    if (email === $('#emailConfirm').val() && email !== "") {
         $('#emailMessage').html('&#10004;').css('color', 'green');
     } else {
         $('#emailMessage').html('&#10008;').css('color', 'red');
@@ -28,7 +30,8 @@ function getFormData($form){
 }
 
 
-$('.ghost-buttonSignUp').on('click', function (){
+$('#registerButton').on('click', function (e){
+    e.preventDefault();
 
     if (!$('#email').val() === $('#emailConfirm').val()) {
         alert('Email addresses do not match!');
