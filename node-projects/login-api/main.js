@@ -1,4 +1,4 @@
-var express    = require("express");
+var express = require("express");
 var login = require('./routes/loginroutes');
 var bodyParser = require('body-parser');
 
@@ -15,7 +15,7 @@ var router = express.Router();
 
 // test route
 router.get('/', function(req, res) {
-    res.json({ message: 'welcome to our upload module apis' });
+    res.json({ message: 'This is the main iiZiBang API. Nothing to see here.' });
 });
 
 //route to handle user registration
