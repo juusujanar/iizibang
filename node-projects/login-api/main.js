@@ -13,13 +13,11 @@ app.use(function(req, res, next) {
 });
 var router = express.Router();
 
-// test route
 router.get('/', function(req, res) {
     res.json({ message: 'This is the main iiZiBang API. Nothing to see here.' });
 });
 
-//route to handle user registration
-router.post('/register',login.register);
-router.post('/login',login.login);
+router.post('/register', login.register);
+router.post('/login', login.login);
 app.use('/api', router);
 app.listen(5000);
