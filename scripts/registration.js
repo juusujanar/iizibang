@@ -48,17 +48,15 @@ $('#registerButton').on('click', function (e){
         return;
     }
 
-    var $form = $("#reg-form");
-    var data = getFormData($form);
-    console.log(data);
+    var form = $("#reg-form");
+    var formData = getFormData(form);
+    console.log(formData);
 
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/register',
         type: 'POST',
         contentType: "application/json; charset=utf-8",
-        data: data,
-        processData: false,
-        contentType: false,
+        data: formData,
         success: function(data) {
             alert('Success');
             console.log(data);

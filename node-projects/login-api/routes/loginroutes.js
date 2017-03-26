@@ -31,8 +31,8 @@ exports.register = function(req, res) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
 
             connection.query('call addUser (?,?,?,?,?,?,?,?,@results)', [req.body.username, req.body.firstname,
-                req.body.lastname, req.body.email, req.body.birthdate, hash,
-                req.body.gender, req.body.interest], function(error, results, fields) {
+                req.body.lastname, req.body.email, req.body.birthdate, hash, req.body.gender, req.body.interest],
+                function(error, results, fields) {
 
                     if (error) {
                         console.log("Error when registering user in database: ", error);
