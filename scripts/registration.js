@@ -35,7 +35,7 @@ function getFormData(form){
 }
 
 
-$('#registerButton').on('click', function (e){
+$('#registerButton').on('click', function (e) {
     e.preventDefault();
 
     if (!$('#email').val() === $('#emailConfirm').val()) {

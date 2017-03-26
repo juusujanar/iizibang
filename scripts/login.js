@@ -9,11 +9,10 @@ function getFormData(form){
     return indexed_array;
 }
 
-//$('#loginButton').on('click', function (e) {
 $('#login-form').submit(function (e) {
     e.preventDefault();
 
-    var form = $("#reg-form");
+    var form = $("#login-form");
     var formData = getFormData(form);
 
     $.ajax({
