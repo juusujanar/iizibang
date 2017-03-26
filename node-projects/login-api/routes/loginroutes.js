@@ -7,6 +7,8 @@ var connection = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
+const saltRounds = 10;
+
 /**
   * Return codes
   * 200 - Login/register successful
@@ -24,39 +26,43 @@ connection.connect(function(err) {
 });
 
 exports.register = function(req, res) {
-    connection.query('call addUser (?,?,?,?,?,?,?,@results)', [req.body.username, req.body.firstname,
-        req.body.lastname, req.body.gender, req.body.email, req.body.birthdate,
-        bcrypt.hashSync(req.body.password, 10)], function(error, results, fields) {
 
-        if (error) {
-            console.log("Error when registering user in database: ", error);
-            res.send({
-                "code": 400,
-                "failed": "Error when registering user in database!"
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(req.body.password, salt, function(err, hash) {
+
+            connection.query('call addUser (?,?,?,?,?,?,?,?,@results)', [req.body.username, req.body.firstname,
+                req.body.lastname, req.body.email, req.body.birthdate, hash,
+                req.body.gender, req.body.interest], function(error, results, fields) {
+
+                    if (error) {
+                        console.log("Error when registering user in database: ", error);
+                        res.send({
+                            "code": 400,
+                            "failed": "Error when registering user in database!"
+                        });
+                        return;
+                    } else {
+                        if (results[0][0]["@result"] == 200) {
+                            res.send({
+                                "code": 200,
+                                "success": "User successfully registered."
+                            });
+                        }
+                        else {
+                            res.send({
+                                "code": 300,
+                                "failed": "User registering failed."
+                            });
+                        }
+                    }
+                });
             });
-            return;
-        } else {
-            if (results[0][0]["@result"] == 200) {
-                res.send({
-                    "code": 200,
-                    "success": "User successfully registered."
-                });
-            }
-            else {
-                res.send({
-                    "code": 300,
-                    "failed": "User registering failed."
-                });
-            }
-        }
-    });
-};
+        });
+    };
 
 exports.login = function(req, res) {
-    var email = req.body.email;
-    var password = req.body.password;
 
-    connection.query('call getUserPassword (?,@results)', [email], function(error, results, fields) {
+    connection.query('call getUserPassword (?,@results)', [req.body.email], function(error, results, fields) {
         if (error) {
             console.log("Error while getting login info from DB: ", error);
             res.send({
@@ -64,17 +70,19 @@ exports.login = function(req, res) {
                 "failed": "Login failed."
             });
         } else {
-            if(bcrypt.compareSync(password, results[0][0]["@p_password"])) {
-                res.send({
-                    "code": 200,
-                    "success": "Login successful."
-                });
-            } else {
-                res.send({
-                    "code": 300,
-                    "failed": "User login failed."
-                });
-            }
+            bcrypt.compare(req.body.password, results[0][0]["@p_password"], function(err, result) {
+                if (result) {
+                    res.send({
+                        "code": 200,
+                        "success": "Login successful."
+                    });
+                } else {
+                    res.send({
+                        "code": 300,
+                        "failed": "User login failed."
+                    });
+                }
+            });
         }
     });
 };

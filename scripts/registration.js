@@ -48,21 +48,6 @@ $('#registerButton').on('click', function (e){
         return;
     }
 
-    /*var formData = new FormData();
-
-    formData.append('username', document.getElementById('username').value);
-    formData.append('password', document.getElementById('password').value);
-    formData.append('email', document.getElementById('email').value);
-    formData.append('firstname', document.getElementById('firstname').value);
-    formData.append('lastname', document.getElementById('lastname').value);
-    formData.append('birthdate', document.getElementById('birthdate').value);
-    formData.append('gender', $('input[name="gender"]:checked').val());
-    formData.append('interest', $('input[name="interest"]:checked').val());
-
-    for (var pair of formData.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]);
-    }*/
-
     var $form = $("#reg-form");
     var data = getFormData($form);
     console.log(data);
