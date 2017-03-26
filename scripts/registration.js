@@ -1,6 +1,6 @@
-webshims.setOptions('waitReady', false);
-webshims.setOptions('forms-ext', {types: 'date'});
-webshims.polyfill('forms forms-ext');
+webshim.setOptions('waitReady', false);
+webshim.setOptions('forms-ext', {types: 'date'});
+webshim.polyfill('forms forms-ext');
 
 
 // Check if password and email values are equal.
@@ -84,21 +84,3 @@ $('#registerButton').on('click', function (e){
         },
     });
 });
-
-
-/*
-$(document).ready(function(){
-$("#reg-form").submit( function () {
-console.log('aaaaa')
-$.post(
-$(this).attr('action'),
-$(this).serialize(),
-function(data){
-console.log(data)
-$("#results").html(data)
-}
-);
-return false;
-});
-});
-*/
