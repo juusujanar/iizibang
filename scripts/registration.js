@@ -23,8 +23,8 @@ $('#email, #emailConfirm').on('change keyup', function () {
     }
 });
 
-function getFormData($form){
-    var unindexed_array = $form.serializeArray();
+function getFormData(form){
+    var unindexed_array = form.serializeArray();
     var indexed_array = {};
 
     $.map(unindexed_array, function(n, i){
@@ -50,7 +50,6 @@ $('#registerButton').on('click', function (e){
 
     var form = $("#reg-form");
     var formData = getFormData(form);
-    console.log(formData);
 
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/register',

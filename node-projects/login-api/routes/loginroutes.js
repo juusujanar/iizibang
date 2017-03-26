@@ -54,6 +54,7 @@ exports.register = function(req, res) {
                                 "failed": "User registering failed."
                             });
                         }*/
+                        console.log(results);
                         res.send({
                             "code": 200,
                             "success": "User successfully registered."
