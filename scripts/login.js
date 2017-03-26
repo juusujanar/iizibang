@@ -9,7 +9,8 @@ function getFormData(form){
     return indexed_array;
 }
 
-$('#loginButton').on('click', function (e) {
+//$('#loginButton').on('click', function (e) {
+$('#login-form').submit(function (e) {
     e.preventDefault();
 
     var form = $("#reg-form");
@@ -30,5 +31,4 @@ $('#loginButton').on('click', function (e) {
             console.log(data);
         }
     });
-
 });
