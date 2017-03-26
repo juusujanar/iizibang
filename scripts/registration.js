@@ -56,7 +56,7 @@ $('#registerButton').on('click', function (e){
         url: 'https://iizibang.jjdev.eu/api/register',
         type: 'POST',
         contentType: "application/json; charset=utf-8",
-        data: formData,
+        data: JSON.stringify(formData),
         success: function(data) {
             alert('Success');
             console.log(data);

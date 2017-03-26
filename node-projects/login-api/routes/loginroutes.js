@@ -42,7 +42,7 @@ exports.register = function(req, res) {
                         });
                         return;
                     } else {
-                        if (results[0][0]["@result"] == 200) {
+                        /*if (results[0][0]["@result"] == 200) {
                             res.send({
                                 "code": 200,
                                 "success": "User successfully registered."
@@ -53,7 +53,11 @@ exports.register = function(req, res) {
                                 "code": 300,
                                 "failed": "User registering failed."
                             });
-                        }
+                        }*/
+                        res.send({
+                            "code": 200,
+                            "success": "User successfully registered."
+                        });
                     }
                 });
             });
