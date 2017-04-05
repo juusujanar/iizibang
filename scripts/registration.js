@@ -143,9 +143,9 @@ $('#registerButton').on('click', function (e) {
     }*/
 
 
-    var $form = $("#reg-form");
-    var data = getFormData($form);
-    console.log(data)
+    var form = $("#reg-form");
+    var formData = getFormData(form);
+    console.log(formData);
     if (
         validateUserName() === true && validatePassword() === true && validateEmail() === true &&  validateFirstName() === true && validateLastName() === true &&
         //validateBirthDate() === true
@@ -168,7 +168,7 @@ $('#registerButton').on('click', function (e) {
         error: function (data) {
             alert('Error');
             console.log(data);
-        },
+        }
     });
 }
 });
