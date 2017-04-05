@@ -21,7 +21,7 @@ $('#login-form').submit(function (e) {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(formData),
         success: function(data) {
-            $('#loginButton').href ="../application/index.html";
+            window.location.replace("https://iizibang.jjdev.eu/application/picker");
             console.log(data);
         },
         error: function(data) {

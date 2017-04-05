@@ -159,9 +159,7 @@ $('#registerButton').on('click', function (e) {
 
         data: JSON.stringify(formData),
         success: function(data) {
-            alert('Success');
-            $('#registerButton').href ="../login/index.html";
-
+            window.location.replace("https://iizibang.jjdev.eu/login");
             console.log(data);
 
         },
