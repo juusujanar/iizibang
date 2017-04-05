@@ -24,7 +24,6 @@ $('#loginButton').on('click', function (e) {
         contentType: false,
         success: function(data) {
             $('#loginButton').href ="../application/index.html";
-            alert('Success');
             console.log(data);
         },
         error: function(data) {
