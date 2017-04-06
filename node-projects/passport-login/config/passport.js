@@ -88,7 +88,7 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('loginMessage', 'Wrong password.'));
                     }
                     else {
-                        return done(null, rows[0]);
+                        return done(null, rows[0].id);
                     }
                 });
             });
