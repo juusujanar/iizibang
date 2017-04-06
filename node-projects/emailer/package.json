@@ -1,0 +1,13 @@
+{
+  "name": "iizibang-email",
+  "main": "main.js",
+  "scripts": {
+    "start": "node ./main"
+  },
+  "dependencies": {
+    "express": "~4.15.2",
+    "express-session": "^1.15.1",
+    "nodemailer": "^3.1.8",
+    "mysql": "~2.13.0"
+  }
+}

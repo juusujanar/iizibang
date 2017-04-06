@@ -1,0 +1,39 @@
+{
+  "name": "ipizza",
+  "version": "0.3.0",
+  "description": "Node.js implementation for Estonian(and some other) banklink payments.",
+  "main": "ipizza.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonistiigi/ipizza.git"
+  },
+  "keywords": [
+    "ipizza",
+    "payments",
+    "swedbank",
+    "seb",
+    "nordea",
+    "sampo",
+    "krediidipank",
+    "estcard"
+  ],
+  "author": "Tõnis Tiigi <tonistiigi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "formidable": "^1.0.14",
+    "iconv-lite": "^0.2.11",
+    "lodash": "^2.4.1",
+    "moment": "^2.5.1",
+    "npmlog": "0.0.6",
+    "routes": "^0.2.0",
+    "string": "^1.8.0"
+  },
+  "devDependencies": {
+    "express": "^3.4.8",
+    "mocha": "^1.17.1",
+    "pangalink.net-client": "^1.1.0"
+  }
+}
