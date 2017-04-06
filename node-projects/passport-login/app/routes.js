@@ -1,27 +1,34 @@
 module.exports = function(app, passport) {
 
 	app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/',
+            /*successRedirect : '/',
             failureRedirect : '/login',
-            failureFlash : true // allow flash messages
+            failureFlash : true // allow flash messages*/
 		}),
         function(req, res) {
-            console.log("hello");
+            console.log("Login happened");
 
             if (req.body.remember) {
               req.session.cookie.maxAge = 1000 * 60 * 3;
             } else {
               req.session.cookie.expires = false;
             }
-        res.redirect('/');
+            res.send(req.session);
+        //res.redirect('/');
     });
 
 	// process the signup form
 	app.post('/register', passport.authenticate('local-signup', {
-        successRedirect : '/',
+        /*successRedirect : '/',
         failureRedirect : '/register',
-        failureFlash : true // allow flash messages
-	}));
+        failureFlash : true // allow flash messages*/
+	}),
+    function(req, res) {
+        console.log("Register happened");
+
+        res.send(req.session);
+        //res.redirect('/');
+    });
 
 	// =====================================
 	// LOGOUT ==============================
