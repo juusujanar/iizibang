@@ -1,13 +1,10 @@
 module.exports = function(app, passport) {
 
-	app.post('/login', passport.authenticate('local-login', function (err, account) {
-            /*successRedirect : '/',
+	app.post('/login', passport.authenticate('local-login', {
+            successRedirect : '/',
             failureRedirect : '/login',
-            failureFlash : true // allow flash messages*/
-            req.logIn(account, function() {
-                res.status(err ? 500 : 200).send(err ? err : account);
-            });
-		})(this.req, this.res, this.next),
+            failureFlash : true // allow flash messages
+		}),
         function(req, res) {
             console.log("hello");
 
@@ -20,14 +17,11 @@ module.exports = function(app, passport) {
     });
 
 	// process the signup form
-	app.post('/register', passport.authenticate('local-signup', function (err, account) {
-        /*successRedirect : '/',
+	app.post('/register', passport.authenticate('local-signup', {
+        successRedirect : '/',
         failureRedirect : '/register',
-        failureFlash : true // allow flash messages*/
-        req.logIn(account, function() {
-            res.status(err ? 500 : 200).send(err ? err : account);
-        });
-	})(this.req, this.res, this.next));
+        failureFlash : true // allow flash messages
+	}));
 
 	// =====================================
 	// LOGOUT ==============================
