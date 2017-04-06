@@ -1,11 +1,11 @@
 var LocalStrategy   = require('passport-local').Strategy;
 var mysql           = require('mysql');
 var bcrypt          = require('bcrypt');
-var connection = mysql.createConnection({
-    host: 'iizibang.cvcsgqwwt01i.eu-central-1.rds.amazonaws.com',
-    user: 'janar',
-    password: '@@Eesti987',
-    database: 'iizibang'
+var connection      = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 const saltRounds = 10;

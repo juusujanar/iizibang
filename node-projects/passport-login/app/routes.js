@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
             } else {
               req.session.cookie.expires = false;
             }
-            res.send(req.session);
+            //res.send(req.session);
             res.sendStatus(reply ? 200 : 500);
         //res.redirect('/');
     });
@@ -27,7 +27,7 @@ module.exports = function(app, passport) {
     function(req, res) {
         console.log("Register happened");
         res.sendStatus(reply ? 200 : 500);
-        res.send(req.session);
+        //res.send(req.session);
         //res.redirect('/');
     });
 
