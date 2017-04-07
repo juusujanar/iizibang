@@ -1,8 +1,10 @@
 var express      = require("express");
+var session      = require('express-session');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var morgan       = require('morgan');
 var redis        = require("redis").createClient();
+var redisStore   = require('connect-redis')(session);
 var login        = require('./routes/loginroutes');
 
 var app = express();
@@ -12,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_KEY,
-    store: new RedisStore({ host: process.env.REDIS_HOST, port: 6379, client: redis })
+    store: new redisStore({ host: process.env.REDIS_HOST, port: 6379, client: redis })
 }));
 
 app.use(function(req, res, next) {
