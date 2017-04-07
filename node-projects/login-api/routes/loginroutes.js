@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 var bcrypt = require('bcrypt');
+var crypto = require('crypto');
 var connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -10,12 +11,13 @@ var connection = mysql.createConnection({
 const saltRounds = 10;
 
 /**
-  * Return codes
-  * 200 - Login/register successful
-  * 300 - Login/register failed - non-existant account, already existing account
-            or mismatching password
-  * 400 - Some other error
+* Return codes
+* 200 - Login/register successful
+* 300 - Login/register failed - non-existant account, already existing account
+or mismatching password
+* 400 - Some other error
 */
+
 
 connection.connect(function(err) {
     if (!err) {
@@ -30,6 +32,16 @@ exports.register = function(req, res) {
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
 
+            connection.query('SELECT * FROM users WHERE username = ? OR email = ?', [req.body.username, req.body.email], function(error, results, fields) {
+                if (results.length) {
+                    res.send({
+                        "code": 300,
+                        "failed": "User/email already exists in database!"
+                    });
+                    return;
+                }
+            });
+
             connection.query('call addUser (?,?,?,?,?,?,?,?,@results)', [req.body.username, req.body.firstname,
                 req.body.lastname, req.body.email, req.body.birthdate, hash, req.body.gender, req.body.interest],
                 function(error, results, fields) {
@@ -42,28 +54,16 @@ exports.register = function(req, res) {
                         });
                         return;
                     } else {
-                        /*if (results[0][0]["@result"] == 200) {
-                            res.send({
-                                "code": 200,
-                                "success": "User successfully registered."
-                            });
-                        }
-                        else {
-                            res.send({
-                                "code": 300,
-                                "failed": "User registering failed."
-                            });
-                        }*/
-                        console.log(results);
                         res.send({
                             "code": 200,
-                            "success": "User successfully registered."
+                            "success": "User successfully registered.",
+                            "sessionid": genUuid()
                         });
-                    }
-                });
+                }
             });
         });
-    };
+    });
+};
 
 exports.login = function(req, res) {
 
@@ -79,7 +79,8 @@ exports.login = function(req, res) {
                 if (result) {
                     res.send({
                         "code": 200,
-                        "success": "Login successful."
+                        "success": "Login successful.",
+                        "sessionid": genUuid()
                     });
                 } else {
                     res.send({
@@ -91,3 +92,23 @@ exports.login = function(req, res) {
         }
     });
 };
+
+
+// Functions for generating random session IDs
+function genUuid(callback) {
+    if (typeof(callback) !== 'function') {
+        return uuidFromBytes(crypto.randomBytes(16));
+    }
+    crypto.randomBytes(16, function(err, rnd) {
+        if (err) return callback(err);
+        callback(null, uuidFromBytes(rnd));
+    });
+}
+
+function uuidFromBytes(rnd) {
+    rnd[6] = (rnd[6] & 0x0f) | 0x40;
+    rnd[8] = (rnd[8] & 0x3f) | 0x80;
+    rnd = rnd.toString('hex').match(/(.{8})(.{4})(.{4})(.{4})(.{12})/);
+    rnd.shift();
+    return rnd.join('-');
+}

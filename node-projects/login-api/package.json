@@ -1,0 +1,18 @@
+{
+    "name": "iiZiBang-login-api",
+    "main": "main.js",
+    "scripts": {
+        "start": "node ./main"
+    },
+    "dependencies": {
+        "bcrypt": "^1.0.2",
+        "body-parser": "^1.17.1",
+        "connect-redis": "^3.2.0",
+        "cookie-parser": "^1.4.3",
+        "express": "^4.15.2",
+        "express-session": "^1.15.1",
+        "morgan": "^1.8.1",
+        "mysql": "^2.13.0",
+        "redis": "^2.7.1"
+    }
+}

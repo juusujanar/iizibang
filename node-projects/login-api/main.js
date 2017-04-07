@@ -1,0 +1,32 @@
+var express      = require("express");
+var bodyParser   = require('body-parser');
+var cookieParser = require('cookie-parser');
+var morgan       = require('morgan');
+var redis        = require("redis").createClient();
+var login        = require('./routes/loginroutes');
+
+var app = express();
+app.use(morgan('dev')); // log requests to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(session({
+    secret: process.env.SESSION_KEY,
+    store: new RedisStore({ host: process.env.REDIS_HOST, port: 6379, client: redis })
+}));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+var router = express.Router();
+
+router.get('/', function(req, res) {
+    res.json({ message: 'This is the main iiZiBang API. Nothing to see here.' });
+});
+
+router.post('/register', login.register);
+router.post('/login', login.login);
+app.use('/api', router);
+app.listen(5000);
