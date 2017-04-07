@@ -10,12 +10,14 @@ var login        = require('./routes/loginroutes');
 var app = express();
 app.use(morgan('dev')); // log requests to the console
 app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_KEY,
-    store: new redisStore({ host: process.env.REDIS_HOST, port: 6379, client: redis })
+    store: new redisStore({ host: process.env.REDIS_HOST, port: 6379, client: client, ttl :  260 }),
+    saveUninitialized: false,
+    resave: false
 }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

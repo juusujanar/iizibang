@@ -46,6 +46,7 @@ exports.register = function(req, res) {
                 req.body.lastname, req.body.email, req.body.birthdate, hash, req.body.gender, req.body.interest],
                 function(error, results, fields) {
 
+                    var sessionID = genUuid();
                     if (error) {
                         console.log("Error when registering user in database: ", error);
                         res.send({
@@ -57,10 +58,22 @@ exports.register = function(req, res) {
                         res.send({
                             "code": 200,
                             "success": "User successfully registered.",
-                            "sessionid": genUuid()
+                            "sessionid": sessionID
                         });
+                    }
+            });
+
+            connection.query('INSERT INTO sessions (user, sessionID) VALUES (?,?)', [req.body.username, sessionID], function(error, results, fields) {
+                if (error) {
+                    console.log("Error when saving session in database: ", error);
+                    res.send({
+                        "code": 400,
+                        "failed": "Error when saving session in database!"
+                    });
+                    return;
                 }
             });
+
         });
     });
 };
@@ -74,6 +87,7 @@ exports.login = function(req, res) {
                 "code": 400,
                 "failed": "Login failed."
             });
+            return;
         } else {
             bcrypt.compare(req.body.password, results[0][0]["@p_password"], function(err, result) {
                 if (result) {
@@ -87,8 +101,20 @@ exports.login = function(req, res) {
                         "code": 300,
                         "failed": "User login failed."
                     });
+                    return;
                 }
             });
+        }
+    });
+
+    connection.query('INSERT INTO sessions (user, sessionID) VALUES (?,?)', [req.body.email, sessionID], function(error, results, fields) {
+        if (error) {
+            console.log("Error when saving session in database: ", error);
+            res.send({
+                "code": 400,
+                "failed": "Error when saving session in database!"
+            });
+            return;
         }
     });
 };
