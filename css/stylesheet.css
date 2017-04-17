@@ -329,14 +329,23 @@ h3{
 
 }
 .disLikeButton{
-    width: 60%;
+    width: 75%;
     margin-right: auto;
     display:flex;
     justify-content: center;
 }
 .likeButton{
-    width: 60%;
+    width: 75%;
     margin-left: auto;
     display:flex;
     justify-content: center;
+}
+.pic{
+    border: 3px rgba(0,0,0,1) solid;
+    padding: 6px;
+    margin: auto;
+}
+.disLikeButtonReSize{
+    height: 100%;
+    width: 20%;
 }
