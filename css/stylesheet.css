@@ -326,6 +326,7 @@ h3{
 .buttonsOfApproval{
     display: flex;
     flex-direction: row;
+    margin:auto;
 
 }
 .disLikeButton{
@@ -333,12 +334,14 @@ h3{
     margin-right: auto;
     display:flex;
     justify-content: center;
+    padding: 20px;
 }
 .likeButton{
     width: 75%;
     margin-left: auto;
     display:flex;
     justify-content: center;
+    padding: 20px;
 }
 .pic{
     border: 3px rgba(0,0,0,1) solid;
@@ -348,4 +351,95 @@ h3{
 .disLikeButtonReSize{
     height: 100%;
     width: 20%;
+}
+
+.profile{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.viewProfile{
+    display:flex;
+    justify-content: center;
+    padding: 10px;
+}
+.padded {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.passwordHelp {
+    position: relative;
+    height: 100%;
+    width: 20%;
+}
+.popup {
+    display: none;
+    position: absolute;
+    background: #000;
+    opacity: 0.85;
+    border-radius: 5px;
+    width: 400px;
+    height:50px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin-top: -105px;
+    margin-left: 40px;
+    color: #1E90FF;
+    z-index: 1;
+    padding:12px;
+}
+.popup:before{
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: -25px;
+    z-index: 2;
+    border: solid 15px transparent;
+    border-right-color: black;
+    color: #1E90FF;
+    pointer-events: none;
+}
+.pic {
+    z-index: 0;
+    width: 20%;
+    height: 20%;
+}
+.pic:hover + .popup {
+    display: block;
+}
+.account{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center
+}
+.chatBoxes{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    padding: 20px;
+    margin:auto;
+}
+
+.pictureOfInterest{
+    width: 64px;
+    height: 64px;
+}
+.interestInfo{
+    display: flex;
+    flex-direction:column;
+    margin:auto;
+}
+.interestName, .interestLastMessage{
+    display:flex;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.interestLastMessage{
+    opacity: 0.5;
+}
+.chatText{
+    margin-top:auto;
+
 }
