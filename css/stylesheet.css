@@ -282,3 +282,61 @@ h3{
     -webkit-flex-direction: row; /* works with row or column */
     flex-direction: row;
 }
+
+.upperBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 32px;
+    border: 3px rgba(0,0,0,1) solid;
+}
+.chatOption, .matchMakerOption,.settingsOption{
+    padding: 12px;
+}
+.noUnderline{
+    text-decoration: none;
+}
+.columnizeEverything{
+    display:flex;
+    flex-direction: column;
+    justify-items: center;
+}
+.userName{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+.additionalInfo{
+    display:flex;
+}
+.userPic{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    border: 3px rgba(0,0,0,1) solid;
+    padding: 64px;
+    margin: auto;
+}
+.firstAndLastName,.age{
+    padding: 12px;
+}
+.buttonsOfApproval{
+    display: flex;
+    flex-direction: row;
+
+}
+.disLikeButton{
+    width: 60%;
+    margin-right: auto;
+    display:flex;
+    justify-content: center;
+}
+.likeButton{
+    width: 60%;
+    margin-left: auto;
+    display:flex;
+    justify-content: center;
+}
