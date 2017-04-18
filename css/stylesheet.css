@@ -225,6 +225,8 @@ body,html{
     right: 10px;
     top: 5px;
 }
+
+
 .ghost-buttonSignUp:hover,
 .ghost-buttonSignUp:active {
     background-color: black;
@@ -260,6 +262,9 @@ h3{
 }
 .login-input-container{
     padding: 8px;
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
 }
 .forgot-password{
     background: whitesmoke;
@@ -442,4 +447,9 @@ h3{
 .chatText{
     margin-top:auto;
 
+}
+
+.g-signin2{
+    padding:5px;
+    width: 100%;
 }

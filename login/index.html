@@ -12,6 +12,9 @@
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans%7CRoboto" rel="stylesheet" />
     <link rel="stylesheet" href="../css/stylesheet.css">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="906202686004-5jv644cc6cbba1gdequg667m974o5iiq.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -33,6 +36,7 @@
             <!--Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/-->
             <div class="login-input-container">
                 <a class="ghost-buttonSignUp" href="#" id="loginButton">Log In</a>
+                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
             </div>
 
 
