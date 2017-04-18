@@ -406,7 +406,6 @@ h3{
 }
 .pic {
     z-index: 0;
-    width: 20%;
     height: 20%;
 }
 .pic:hover + .popup {
