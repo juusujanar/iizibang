@@ -225,6 +225,8 @@ body,html{
     right: 10px;
     top: 5px;
 }
+
+
 .ghost-buttonSignUp:hover,
 .ghost-buttonSignUp:active {
     background-color: black;
@@ -260,6 +262,9 @@ h3{
 }
 .login-input-container{
     padding: 8px;
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
 }
 .forgot-password{
     background: whitesmoke;
@@ -281,4 +286,170 @@ h3{
     display:flex;
     -webkit-flex-direction: row; /* works with row or column */
     flex-direction: row;
+}
+
+.upperBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 32px;
+    border: 3px rgba(0,0,0,1) solid;
+}
+.chatOption, .matchMakerOption,.settingsOption{
+    padding: 12px;
+}
+.noUnderline{
+    text-decoration: none;
+}
+.columnizeEverything{
+    display:flex;
+    flex-direction: column;
+    justify-items: center;
+}
+.userName{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+.additionalInfo{
+    display:flex;
+}
+.userPic{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    border: 3px rgba(0,0,0,1) solid;
+    padding: 64px;
+    margin: auto;
+}
+.firstAndLastName,.age{
+    padding: 12px;
+}
+.buttonsOfApproval{
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+
+}
+.disLikeButton{
+    width: 75%;
+    margin-right: auto;
+    display:flex;
+    justify-content: center;
+    padding: 20px;
+}
+.likeButton{
+    width: 75%;
+    margin-left: auto;
+    display:flex;
+    justify-content: center;
+    padding: 20px;
+}
+.pic{
+    border: 3px rgba(0,0,0,1) solid;
+    padding: 6px;
+    margin: auto;
+}
+.disLikeButtonReSize{
+    height: 100%;
+    width: 20%;
+}
+
+.profile{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.viewProfile{
+    display:flex;
+    justify-content: center;
+    padding: 10px;
+}
+.padded {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.passwordHelp {
+    position: relative;
+    height: 100%;
+    width: 20%;
+}
+.popup {
+    display: none;
+    position: absolute;
+    background: #000;
+    opacity: 0.85;
+    border-radius: 5px;
+    width: 400px;
+    height:50px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin-top: -105px;
+    margin-left: 40px;
+    color: #1E90FF;
+    z-index: 1;
+    padding:12px;
+}
+.popup:before{
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: -25px;
+    z-index: 2;
+    border: solid 15px transparent;
+    border-right-color: black;
+    color: #1E90FF;
+    pointer-events: none;
+}
+.pic {
+    z-index: 0;
+    width: 20%;
+    height: 20%;
+}
+.pic:hover + .popup {
+    display: block;
+}
+.account{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center
+}
+.chatBoxes{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    padding: 20px;
+    margin:auto;
+}
+
+.pictureOfInterest{
+    width: 64px;
+    height: 64px;
+}
+.interestInfo{
+    display: flex;
+    flex-direction:column;
+    margin:auto;
+}
+.interestName, .interestLastMessage{
+    display:flex;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.interestLastMessage{
+    opacity: 0.5;
+}
+.chatText{
+    margin-top:auto;
+
+}
+
+.g-signin2{
+    padding:5px;
+    width: 100%;
 }

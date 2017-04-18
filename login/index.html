@@ -11,6 +11,9 @@
     <meta name="description" content="Match-making">
 
     <link rel="stylesheet" href="../css/stylesheet.css">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="906202686004-5jv644cc6cbba1gdequg667m974o5iiq.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -34,7 +37,8 @@
 
             <!--Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/-->
             <div class="login-input-container">
-                <input type="submit" class="ghost-buttonSignUp" value="Log In" id="loginButton"/>
+                <a class="ghost-buttonSignUp" href="#" id="loginButton">Log In</a>
+                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
             </div>
 
 
