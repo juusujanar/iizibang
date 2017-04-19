@@ -211,7 +211,7 @@ body,html{
     -webkit-align-items: center;
     align-items: center;
 }
-.ghost-buttonSignUp{
+.ghost-buttonSignUp, .ghost-buttonLogIn{
     display: inline-block;
     width: 200px;
     padding: 8px;
@@ -228,9 +228,15 @@ body,html{
 
 
 .ghost-buttonSignUp:hover,
-.ghost-buttonSignUp:active {
+.ghost-buttonSignUp:active ,
+.ghost-buttonLogIn:hover ,
+.ghost-buttonLogIn:active{
     background-color: black;
     color: white;
+}
+.ghost-buttonLogIn{
+    width: 100%;
+    margin: 0 0px;
 }
 h3{
     letter-spacing: 5px;
@@ -449,7 +455,10 @@ h3{
 
 }
 
-.g-signin2{
-    padding:5px;
-    width: 100%;
+.signInWithGoogle{
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
