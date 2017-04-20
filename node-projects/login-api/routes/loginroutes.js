@@ -78,6 +78,9 @@ exports.login = function(req, res) {
             bcrypt.compare(req.body.password, results[0][0]["@p_password"], function(err, result) {
                 if (result) {
                     // saves login to session store
+                    if (!req.session) {
+                        req.session = {};
+                    }
                     var sess = req.session;
                     sess.email = req.body.email;
                     res.send({
