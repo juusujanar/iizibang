@@ -79,6 +79,11 @@ exports.register = function(req, res) {
 };
 
 exports.login = function(req, res) {
+    if (req.session.stuff) {
+        req.session.stuff += 1;
+    } else {
+        req.session.stuff = 1;
+    }
 
     connection.query('call getUserPassword (?,@results)', [req.body.email], function(error, results, fields) {
         if (error) {
@@ -99,7 +104,8 @@ exports.login = function(req, res) {
                 } else {
                     res.send({
                         "code": 300,
-                        "failed": "User login failed."
+                        "failed": "User login failed.",
+                        "test": req.session.stuff
                     });
                     return;
                 }
