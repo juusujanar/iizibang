@@ -32,6 +32,7 @@ router.get('/', function(req, res) {
 
 router.post('/register', login.register);
 router.post('/login', login.login);
+router.post('/logout', login.logout);
 router.get('/loggedIn', login.loggedIn);
 app.use('/api', router);
 app.listen(5000);

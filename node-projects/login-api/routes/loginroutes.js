@@ -113,7 +113,7 @@ exports.loggedIn = function(req, res) {
     }
 };
 
-exports.loggedIn = function(req, res) {
+exports.logout = function(req, res) {
     req.session = null;
     res.send({
         "code": 200
