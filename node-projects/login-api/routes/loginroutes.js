@@ -113,6 +113,13 @@ exports.loggedIn = function(req, res) {
     }
 };
 
+exports.loggedIn = function(req, res) {
+    req.session = null;
+    res.send({
+        "code": 200
+    });
+};
+
 // Functions for generating random session IDs
 function genUuid(callback) {
     if (typeof(callback) !== 'function') {
