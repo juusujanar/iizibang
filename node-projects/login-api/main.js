@@ -4,18 +4,18 @@ var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var morgan       = require('morgan');
 //var redis        = require("redis").createClient();
-//var redisStore   = require('connect-redis')(session);
+var redisStore   = require('connect-redis')(session);
 var login        = require('./routes/loginroutes');
 
 var app = express();
 app.use(morgan('dev')); // log requests to the console
 app.use(cookieParser()); // read cookies (needed for auth)
-/*app.use(session({
+app.use(session({
     secret: process.env.SESSION_KEY,
     store: new redisStore({ host: process.env.REDIS_HOST, port: 6379, ttl:  260 }),
     saveUninitialized: false,
     resave: false
-}));*/
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
