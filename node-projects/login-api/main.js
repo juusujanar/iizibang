@@ -3,8 +3,8 @@ var session      = require('express-session');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var morgan       = require('morgan');
-var redis        = require("redis").createClient();
-var redisStore   = require('connect-redis')(session);
+//var redis        = require("redis").createClient();
+//var redisStore   = require('connect-redis')(session);
 var login        = require('./routes/loginroutes');
 
 var app = express();
