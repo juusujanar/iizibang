@@ -99,12 +99,12 @@ exports.login = function(req, res) {
 exports.loggedIn = function(req, res) {
     if (req.session) {
         res.send({
-            "code": 200
+            "code": 200,
             "loggedIn": "true"
         });
     } else {
         res.send({
-            "code": 200
+            "code": 200,
             "loggedIn": "false"
         });
     }
