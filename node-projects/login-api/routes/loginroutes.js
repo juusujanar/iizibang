@@ -79,12 +79,6 @@ exports.register = function(req, res) {
 };
 
 exports.login = function(req, res) {
-    var sess = req.session;
-    if (sess.stuff) {
-        sess.stuff += 1;
-    } else {
-        sess.stuff = 1;
-    }
 
     connection.query('call getUserPassword (?,@results)', [req.body.email], function(error, results, fields) {
         if (error) {
@@ -97,31 +91,21 @@ exports.login = function(req, res) {
         } else {
             bcrypt.compare(req.body.password, results[0][0]["@p_password"], function(err, result) {
                 if (result) {
+                    // saves login to session store
+                    var sess = req.session;
+                    sess.email = req.body.email;
                     res.send({
                         "code": 200,
                         "success": "Login successful.",
-                        "sessionid": genUuid()
                     });
                 } else {
                     res.send({
                         "code": 300,
                         "failed": "User login failed.",
-                        "test": sess.stuff
                     });
                     return;
                 }
             });
-        }
-    });
-
-    connection.query('INSERT INTO sessions (user, sessionID) VALUES (?,?)', [req.body.email, sessionID], function(error, results, fields) {
-        if (error) {
-            console.log("Error when saving session in database: ", error);
-            res.send({
-                "code": 400,
-                "failed": "Error when saving session in database!"
-            });
-            return;
         }
     });
 };
