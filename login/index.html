@@ -37,8 +37,7 @@
 
             <!--Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/-->
             <div class="login-input-container">
-                <a class="ghost-buttonSignUp" href="#" id="loginButton">Log In</a>
-                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                <input type="submit" class="ghost-buttonLogIn" value="Log in" id="loginButton"/>
             </div>
 
 
@@ -46,9 +45,16 @@
     </form>
 
 
+    <div class="signInWithGoogle">
+        <h3>Sign in with google</h3>
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    </div>
+
+
     <!-- Javascript file references. Keep this section at bottom -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/failover.js"></script>
     <script type="text/javascript" src="../scripts/login.js"></script>
+
 </body>
 </html>
