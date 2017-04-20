@@ -7,7 +7,6 @@ $("#logout").click(function() {
     $.ajax({
         url : "https://iizibang.jjdev.eu/api/logout",
         method : "POST",
-        data :token ,
         success : function(data) {
             console.log("clicked");
             window.location.replace("https://iizibang.jjdev.eu/");
