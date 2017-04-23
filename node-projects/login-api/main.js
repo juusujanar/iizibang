@@ -12,7 +12,7 @@ app.use(morgan('dev')); // log requests to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(session({
     secret: process.env.SESSION_KEY,
-    store: new redisStore({ host: process.env.REDIS_HOST, port: 6379, ttl:  260 }),
+//    store: new redisStore({ host: process.env.REDIS_HOST, port: 6379, ttl:  260 }),
     saveUninitialized: false,
     resave: false,
     proxy: true
