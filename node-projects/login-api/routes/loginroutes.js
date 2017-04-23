@@ -87,7 +87,7 @@ exports.login = function(req, res) {
                     });
                 } else {
                     res.send({
-                        "code": 300,
+                        "code": 400,
                         "failed": "User login failed.",
                     });
                     return;
