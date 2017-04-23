@@ -1,3 +1,8 @@
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
+
 function getFormData(form){
     var unindexed_array = form.serializeArray();
     var indexed_array = {};
@@ -11,7 +16,7 @@ function getFormData(form){
 
 $('#login-form').submit(function (e) {
     e.preventDefault();
-
+    console.log("loggedstuff");
     var form = $("#login-form");
     var formData = getFormData(form);
 
@@ -21,8 +26,12 @@ $('#login-form').submit(function (e) {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(formData),
         success: function(data) {
-            window.location.replace("https://iizibang.jjdev.eu/application/picker");
             console.log(data);
+            if(data["code"] === 200){
+                window.location.replace("https://iizibang.jjdev.eu/application/picker");
+            }
+
+
         },
         error: function(data) {
             alert('Error');

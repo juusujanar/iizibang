@@ -35,12 +35,12 @@
         </div>
             <!-- spot for username -->
             <div class = "userName">
-                <h3>Here goes the accounts username</h3>
+                <h3 id="profileUsername">Here goes the accounts username</h3>
 
         </div>
             <!-- spot for pic, real name and age -->
             <div class="userPic">
-                <div class="picLogo"><img src="../../pictures/iiZiBangLogo.png" ></div>
+                <div class="picLogo"><img id="profilePicture" src="../../pictures/iiZiBangLogo.png" ></div>
                 <div class="additionalInfo">
                     <div class="firstAndLastName"><h3>"eesnimi perekonnanimi"</h3></div>
                     <div class="age"><h3>"vanus"</h3></div>
@@ -49,8 +49,8 @@
 
             <!-- spot for like or dislike -->
             <div class="buttonsOfApproval">
-                <div class="disLikeButton"><img src="../../pictures/dislike.png" class="disLikeButtonReSize"> </div>
-                <div class="likeButton"><img src="../../pictures/like.png" class="disLikeButtonReSize"> </div>
+                <div class="disLikeButton"><img src="../../pictures/dislike.png" class="disLikeButtonReSize" onClick="sendDislike"> </div>
+                <div class="likeButton"><img src="../../pictures/like.png" class="disLikeButtonReSize" onClick="sendLike"> </div>
             </div>
 
         </div>
@@ -61,6 +61,7 @@
     <!-- Javascript file references. Keep this section at bottom -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="../../scripts/failover.js"></script>
+    <script type="text/javascript" src="../../scripts/picker.js"></script>
 
 </body>
 </html>
