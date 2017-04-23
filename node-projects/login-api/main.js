@@ -14,7 +14,8 @@ app.use(session({
     secret: process.env.SESSION_KEY,
     store: new redisStore({ host: process.env.REDIS_HOST, port: 6379, ttl:  260 }),
     saveUninitialized: false,
-    resave: false
+    resave: false,
+    proxy: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

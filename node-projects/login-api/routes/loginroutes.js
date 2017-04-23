@@ -78,9 +78,7 @@ exports.login = function(req, res) {
             bcrypt.compare(req.body.password, results[0][0]["@p_password"], function(err, result) {
                 if (result) {
                     // saves login to session store
-                    if (!req.session) {
-                        req.session = {};
-                    }
+                    
                     var sess = req.session;
                     sess.email = req.body.email;
                     res.send({
@@ -100,7 +98,7 @@ exports.login = function(req, res) {
 };
 
 exports.loggedIn = function(req, res) {
-    if (req.session) {
+    if (req.session.email) {
         res.send({
             "code": 200,
             "loggedIn": "true"
@@ -114,7 +112,7 @@ exports.loggedIn = function(req, res) {
 };
 
 exports.logout = function(req, res) {
-    req.session = null;
+    req.session.destroy();
     res.send({
         "code": 200
     });
