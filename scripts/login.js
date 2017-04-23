@@ -26,8 +26,7 @@ $('#login-form').submit(function (e) {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(formData),
         success: function(data) {
-            console.log(data);
-            if(data["code"] === 200 && data["readyState"] === 4){
+            if(data["code"] === 200){
                 window.location.replace("https://iizibang.jjdev.eu/application/picker");
             }
             if(data["code"] !== 200){
@@ -38,8 +37,8 @@ $('#login-form').submit(function (e) {
 
         },
         error: function(data) {
-            alert('Error');
-            console.log(data);
+            alert('Something went wrong...');
+
         }
     });
 
