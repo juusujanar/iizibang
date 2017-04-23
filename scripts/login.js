@@ -27,9 +27,13 @@ $('#login-form').submit(function (e) {
         data: JSON.stringify(formData),
         success: function(data) {
             console.log(data);
-            if(data["code"] === 200){
+            if(data["code"] === 200 && data["readyState"] === 4){
                 window.location.replace("https://iizibang.jjdev.eu/application/picker");
             }
+            if(data["code"] !== 200){
+                alert(data["failed"]);
+            }
+
 
 
         },
