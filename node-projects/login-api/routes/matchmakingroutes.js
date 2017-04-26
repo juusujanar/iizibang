@@ -15,7 +15,7 @@ var MATCHFIND_SQL = [
 ].join("");
 
 findMatchInDatabase = function(req) {
-    connection.query(MATCHFIND_SQL, [req.session.userdata.id], function(error, results, fields) {
+    connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
         if (error) {
             console.log(error);
             return null;
