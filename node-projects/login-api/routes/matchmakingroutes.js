@@ -27,6 +27,7 @@ exports.findmatch = function(req, res) {
     if (!req.session.match) {
         req.session.match = findMatchInDatabase(req);
     }
+    console.log(req.session.match);
     res.send(req.session.match);
     return;
 };
