@@ -21,16 +21,23 @@ findMatchInDatabase = function(req) {
             return null;
         }
         console.log(results);
-        return results[0];
+        req.session.match = results[0];
     });
 } 
 
 exports.findmatch = function(req, res) {
     console.log(req.session);
     if (!req.session.match) {
-        req.session.match = findMatchInDatabase(req);
+        connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
+            if (error) {
+                console.log(error);
+                res.send(null);
+            }
+            req.session.match = results[0];
+            res.send(req.session.match);
+        });
+    } else {
+        res.send(req.session.match);
+        return; 
     }
-    console.log(req.session.match);
-    res.send(req.session.match);
-    return;
 };
