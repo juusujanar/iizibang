@@ -20,6 +20,7 @@ findMatchInDatabase = function(req) {
             console.log(error);
             return null;
         }
+        console.log(results);
         return results[0];
     });
 } 
