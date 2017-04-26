@@ -66,7 +66,7 @@ exports.register = function(req, res) {
 
 exports.login = function(req, res) {
 
-    connection.query('SELECT * FROM users WHERE email = ? OR username = ?', [req.body.email], function(error, results, fields) {
+    connection.query('SELECT * FROM users WHERE email = ? OR username = ?', [req.body.email, req.body.email], function(error, results, fields) {
         if (error) {
             console.log("Error while getting login info from DB: ", error);
             res.send({
@@ -78,7 +78,7 @@ exports.login = function(req, res) {
             bcrypt.compare(req.body.password, results[0]["password_hash"], function(err, result) {
                 if (result) {
                     // saves login to session store
-                    
+
                     var sess = req.session;
                     sess.userdata = results[0];
                     res.send({
