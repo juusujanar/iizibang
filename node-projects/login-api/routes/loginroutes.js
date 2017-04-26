@@ -66,7 +66,7 @@ exports.register = function(req, res) {
 
 exports.login = function(req, res) {
 
-    connection.query('call getUserPassword (?,@results)', [req.body.email], function(error, results, fields) {
+    connection.query('SELECT * FROM users WHERE email = ? OR username = ?', [req.body.email], function(error, results, fields) {
         if (error) {
             console.log("Error while getting login info from DB: ", error);
             res.send({
@@ -75,12 +75,12 @@ exports.login = function(req, res) {
             });
             return;
         } else {
-            bcrypt.compare(req.body.password, results[0][0]["@p_password"], function(err, result) {
+            bcrypt.compare(req.body.password, results[0]["password_hash"], function(err, result) {
                 if (result) {
                     // saves login to session store
                     
                     var sess = req.session;
-                    sess.email = req.body.email;
+                    sess.userdata = results[0];
                     res.send({
                         "code": 200,
                         "success": "Login successful.",
@@ -98,7 +98,7 @@ exports.login = function(req, res) {
 };
 
 exports.loggedIn = function(req, res) {
-    if (req.session.email) {
+    if (req.session.userdata) {
         res.send({
             "code": 200,
             "loggedIn": "true"

@@ -6,6 +6,7 @@ var morgan       = require('morgan');
 //var redis        = require("redis").createClient();
 var redisStore   = require('connect-redis')(session);
 var login        = require('./routes/loginroutes');
+var matchmaking  = require('./routes/matchmakingroutes');
 
 var app = express();
 app.use(morgan('dev')); // log requests to the console
@@ -35,5 +36,6 @@ router.post('/register', login.register);
 router.post('/login', login.login);
 router.post('/logout', login.logout);
 router.get('/loggedIn', login.loggedIn);
+router.get('/findmatches', matchmaking.findmatch);
 app.use('/api', router);
 app.listen(5000);
