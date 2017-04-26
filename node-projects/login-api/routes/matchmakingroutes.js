@@ -12,7 +12,7 @@ var MATCHFIND_SQL = [
 , "WHERE users.id != ? AND NOT EXISTS (SELECT * FROM match_choice WHERE player1 = ? AND player2 = users.id)"
 , "ORDER BY RAND()"
 , "LIMIT 1"
-].join("");
+].join(" ");
 
 findMatchInDatabase = function(req) {
     connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
