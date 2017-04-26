@@ -27,6 +27,7 @@ findMatchInDatabase = function(req) {
 
 exports.findmatch = function(req, res) {
     console.log(req.session);
+    req.session.match = null;
     if (!req.session.match) {
         connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
             if (error) {
