@@ -102,6 +102,8 @@ function validateLastName() {
 function validateBirthDate() {
     var x = document.forms["reg-form"]["birthdate"];
     var birthAge = document.getElementById("birthdate").value;
+    console.log(birthAge);
+    console.log(get_age(birthAge));
     if (x === undefined){
         alert("Date not chosen");
         return false;
@@ -114,7 +116,7 @@ function validateBirthDate() {
         alert("I bet you are a catfish or a zombie ;) Try again");
         return false;
     }
-    return true;
+    return false;
 }
 
 var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
@@ -168,7 +170,9 @@ $('#registerButton').on('click', function (e) {
 
         data: JSON.stringify(formData),
         success: function(data) {
-            window.location.replace("https://iizibang.jjdev.eu/login");
+            if (data.code === 200) {
+                window.location.replace("https://iizibang.jjdev.eu/login");
+            }
             console.log(data);
 
         },
