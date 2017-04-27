@@ -101,16 +101,16 @@ function validateLastName() {
 }
 function validateBirthDate() {
     var x = document.forms["reg-form"]["birthdate"];
-    console.log(x);
+    var birthAge = document.getElementById("birthdate").value;
     if (x === undefined){
         alert("Date not chosen");
         return false;
     }
-    if (get_age(x)<< 18){
+    if (get_age(birthAge)<< 18){
         alert("Under the required age of use.");
         return false;
     }
-    if (get_age(x)>> 99){ //too old
+    if (get_age(birthAge)>> 99){ //too old
         alert("I bet you are a catfish or a zombie ;) Try again");
         return false;
     }
@@ -119,8 +119,7 @@ function validateBirthDate() {
 
 var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
 function get_age(time){
-    var stringTime = String(time);
-    var date_array = stringTime.split('-');
+    var date_array = time.split('-');
     var years_elapsed = (new Date() - new Date(date_array[0],date_array[1],date_array[2]))/(MILLISECONDS_IN_A_YEAR);
     return Math.floor(years_elapsed); }
 function validateGender() {
