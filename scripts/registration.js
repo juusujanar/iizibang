@@ -100,11 +100,8 @@ function validateLastName() {
     return true;
 }
 function validateBirthDate() {
-    var x = document.forms["reg-form"]["birthdate"];
     var birthAge = document.getElementById("birthdate").value;
-    console.log(birthAge);
-    console.log(get_age(birthAge));
-    if (x === undefined){
+    if (isNaN(birthAge)){
         alert("Date not chosen");
         return false;
     }
@@ -116,7 +113,7 @@ function validateBirthDate() {
         alert("I bet you are a catfish or a zombie ;) Try again");
         return false;
     }
-    return false;
+    return true;
 }
 
 var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
