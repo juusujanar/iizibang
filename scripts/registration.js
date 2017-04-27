@@ -101,7 +101,7 @@ function validateLastName() {
 }
 function validateBirthDate() {
     var birthAge = document.getElementById("birthdate").value;
-    if (isNaN(birthAge)){
+    if (birthAge === ""){
         alert("Date not chosen");
         return false;
     }
