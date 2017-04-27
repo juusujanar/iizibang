@@ -101,17 +101,27 @@ function validateLastName() {
 }
 function validateBirthDate() {
     var x = document.forms["reg-form"]["birthdate"];
-    var date_regex = /^\d{2}\/\d{2}\/\d{4}$/ ;
+
     if (x === undefined){
         alert("Date not chosen");
         return false;
     }
-    if (!date_regex.test(testdate)){
-        alert("Not a valid date");
+    if (get_age(x)<< 18){
+        alert("Under the required age of use.");
+        return false;
+    }
+    if (get_age(x)>> 99){ //too old
+        alert("I bet you are a catfish or a zombie ;) Try again");
         return false;
     }
     return true;
 }
+
+var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
+function get_age(time){
+    var date_array = time.split('-')
+    var years_elapsed = (new Date() - new Date(date_array[0],date_array[1],date_array[2]))/(MILLISECONDS_IN_A_YEAR);
+    return Math.floor(years_elapsed); }
 function validateGender() {
     var x = document.forms["reg-form"]["gender"].value;
     if (x === "Male" || x === "Female" || x === "Other") {
@@ -147,8 +157,7 @@ $('#registerButton').on('click', function (e) {
     var formData = getFormData(form);
     console.log(formData);
     if (
-        validateUserName() === true && validatePassword() === true && validateEmail() === true &&  validateFirstName() === true && validateLastName() === true &&
-        //validateBirthDate() === true
+        validateUserName() === true && validatePassword() === true && validateEmail() === true &&  validateFirstName() === true && validateLastName() === true && validateBirthDate() === true &&
         validateGender() && validateInterest()
         ) {
 
