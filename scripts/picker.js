@@ -10,11 +10,11 @@ $( document ).ready(function() {
         contentType: "application/json; charset=utf-8",
         success: function(data) {
             $("#profileUsername").text(data.username);
+            $("#name").text(data.firstname + " "+ data.lastname);
             console.log(data);
         },
         error: function(data) {
-            alert('Error');
-            $("#profileUsername").text(data);
+            $("#profileUsername").text("No Matches Found...");
             console.log(data);
         }
     });
@@ -36,12 +36,12 @@ function sendDislike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            $("#profileUsername").text = data.username;
+            $("#profileUsername").text(data.username);
+            $("#name").text(data.firstname + " "+ data.lastname);
             console.log(data);
         },
         error: function(data) {
-            alert('Error');
-            $("#profileUsername").text = data;
+            $("#profileUsername").text("No Matches Found...");
             console.log(data);
         }
     });
@@ -54,12 +54,12 @@ function sendLike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            $("#profileUsername").text = data.username;
+            $("#profileUsername").text(data.username);
+            $("#name").text(data.firstname + " "+ data.lastname);
             console.log(data);
         },
         error: function(data) {
-            alert('Error');
-            $("#profileUsername").text = data;
+            $("#profileUsername").text("No Matches Found...");
             console.log(data);
         }
     });
