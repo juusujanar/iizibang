@@ -11,7 +11,7 @@ $( document ).ready(function() {
         success: function(data) {
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
-            $("#vanus").text("Piisavalt");
+            $("#vanus").text(get_age(data.birthdate));
 
             console.log(data);
         },
@@ -40,7 +40,7 @@ function sendDislike(){
         success: function(data) {
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
-            $("#vanus").text("Piisavalt");
+            $("#vanus").text(get_age(data.birthdate));
             console.log(data);
         },
         error: function(data) {
@@ -59,7 +59,7 @@ function sendLike(){
         success: function(data) {
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
-            $("#vanus").text("Piisavalt");
+            $("#vanus").text(get_age(data.birthdate));
             console.log(data);
         },
         error: function(data) {
@@ -68,3 +68,9 @@ function sendLike(){
         }
     });
 }
+
+var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
+function get_age(time){
+    var date_array = time.split('-')
+    var years_elapsed = (new Date() - new Date(date_array[0],date_array[1],date_array[2]))/(MILLISECONDS_IN_A_YEAR);
+    return years_elapsed; }
