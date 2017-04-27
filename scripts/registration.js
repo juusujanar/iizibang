@@ -101,7 +101,7 @@ function validateLastName() {
 }
 function validateBirthDate() {
     var x = document.forms["reg-form"]["birthdate"];
-    console.log(get_age(x));
+    console.log(x);
     if (x === undefined){
         alert("Date not chosen");
         return false;
