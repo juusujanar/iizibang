@@ -30,6 +30,7 @@ $( document ).ready(function() {
 
 
 function sendDislike(){
+    console.log("Dislike button clicked");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
@@ -47,6 +48,7 @@ function sendDislike(){
 }
 
 function sendLike(){
+    console.log("Like button clicked");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
