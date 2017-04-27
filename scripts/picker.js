@@ -29,6 +29,36 @@ $( document ).ready(function() {
 
 
 
-function sendDislike(){}
+function sendDislike(){
+    $.ajax({
+        url: 'https://iizibang.jjdev.eu/api/findmatches',
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+            $("#profileUsername").text = data.username;
+            console.log(data);
+        },
+        error: function(data) {
+            alert('Error');
+            $("#profileUsername").text = data;
+            console.log(data);
+        }
+    });
+}
 
-function sendLike(){}
+function sendLike(){
+    $.ajax({
+        url: 'https://iizibang.jjdev.eu/api/findmatches',
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+            $("#profileUsername").text = data.username;
+            console.log(data);
+        },
+        error: function(data) {
+            alert('Error');
+            $("#profileUsername").text = data;
+            console.log(data);
+        }
+    });
+}
