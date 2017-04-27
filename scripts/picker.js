@@ -11,6 +11,8 @@ $( document ).ready(function() {
         success: function(data) {
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
+            $("#vanus").text("Piisavalt");
+
             console.log(data);
         },
         error: function(data) {
@@ -38,6 +40,7 @@ function sendDislike(){
         success: function(data) {
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
+            $("#vanus").text("Piisavalt");
             console.log(data);
         },
         error: function(data) {
@@ -56,6 +59,7 @@ function sendLike(){
         success: function(data) {
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
+            $("#vanus").text("Piisavalt");
             console.log(data);
         },
         error: function(data) {
