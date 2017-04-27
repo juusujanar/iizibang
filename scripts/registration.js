@@ -105,11 +105,11 @@ function validateBirthDate() {
         alert("Date not chosen");
         return false;
     }
-    if (get_age(birthAge)<< 18){
+    if (get_age(birthAge)< 18){
         alert("Under the required age of use.");
         return false;
     }
-    if (get_age(birthAge)>> 99){ //too old
+    if (get_age(birthAge)> 99){ //too old
         alert("I bet you are a catfish or a zombie ;) Try again");
         return false;
     }
