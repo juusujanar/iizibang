@@ -3,7 +3,7 @@
  */
 var xhttp = new XMLHttpRequest();
 $( document ).ready(function() {
-
+    $("#profilePicture").attr("src","../pictures/loading.gif");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
@@ -12,11 +12,16 @@ $( document ).ready(function() {
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
             $("#vanus").text(get_age(data.birthdate));
-
+            if(data.profile_pic === null){
+                $("#profilePicture").attr("src","../pictures/question-mark.gif");
+            }else{
+                $("#profilePicture").attr("src",data.profile_pic);
+            }
             console.log(data);
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
+            $("#profilePicture").attr("src","../pictures/iiziBangLogo.png");
             console.log(data);
         }
     });
@@ -33,6 +38,7 @@ $( document ).ready(function() {
 
 function sendDislike(){
     console.log("Dislike button clicked");
+    $("#profilePicture").attr("src","../pictures/loading.gif");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
@@ -41,10 +47,16 @@ function sendDislike(){
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
             $("#vanus").text(get_age(data.birthdate));
+            if(data.profile_pic === null){
+                $("#profilePicture").attr("src","../pictures/question-mark.gif");
+            }else{
+                $("#profilePicture").attr("src",data.profile_pic);
+            }
             console.log(data);
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
+            $("#profilePicture").attr("src","../pictures/iiziBangLogo.png");
             console.log(data);
         }
     });
@@ -52,6 +64,7 @@ function sendDislike(){
 
 function sendLike(){
     console.log("Like button clicked");
+    $("#profilePicture").attr("src","../pictures/loading.gif");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
@@ -60,11 +73,20 @@ function sendLike(){
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
             $("#vanus").text(get_age(data.birthdate));
+            if(data.profile_pic === null){
+                $("#profilePicture").attr("src","../pictures/question-mark.gif");
+            }else{
+                $("#profilePicture").attr("src",data.profile_pic);
+            }
+
+
             console.log(data);
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
+            $("#profilePicture").attr("src","../pictures/iiziBangLogo.png");
             console.log(data);
+
         }
     });
 }
