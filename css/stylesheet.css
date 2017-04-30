@@ -313,16 +313,17 @@ h3{
     border: 3px rgba(0,0,0,1) solid;
     width:100%;
 }
-.upperBarElement{
+.upperBarElement,.ageText,.nameText,.profileUsername{
     font-size: 3vw;
 }
 @media screen and (min-width: 660px) {
     /*.upperBarElement{
         padding: 15px 32px;
     }*/
-    .upperBarElement {
+    .upperBarElement,.ageText,.nameText,.profileUsername{
         font-size: 20px;
     }
+
 }
 .chatOption{
     padding-right: 12px;
