@@ -308,7 +308,6 @@ h3{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 8px 16px;
     border: 3px rgba(0,0,0,1) solid;
     width:100%;
 }
@@ -316,15 +315,22 @@ h3{
     font-size: 3vw;
 }
 @media screen and (min-width: 660px) {
-    .upperBarElement{
+    /*.upperBarElement{
         padding: 15px 32px;
-    }
+    }*/
     .upperBarElement {
         font-size: 20px;
     }
 }
-.chatOption, .matchMakerOption,.settingsOption{
-    padding: 12px;
+.chatOption{
+    padding-right: 12px;
+}
+/*.matchMakerOption{*/
+    /*padding-left: 12px;*/
+    /*padding-right: 12px;*/
+/*}*/
+.settingsOption{
+    padding-left:12px;
 }
 .noUnderline{
     text-decoration: none;
