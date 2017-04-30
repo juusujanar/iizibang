@@ -4,13 +4,14 @@ body,html{
     font: 400 15px/1.8 "Lato", sans-serif;
     color: #777;
 }
-/*
-Refrence:http://stackoverflow.com/questions/3802455/min-width-in-window-resizing
-*/
-body{
-    min-width:560px; /* suppose you want minimun width of 1000px */
-    width: auto !important;  /* Firefox will set width as auto */
-}
+/*!**/
+/*Refrence:http://stackoverflow.com/questions/3802455/min-width-in-window-resizing*/
+
+/*body{*/
+    /*min-width:560px; !* suppose you want minimun width of 1000px *!*/
+    /*width: auto !important;  !* Firefox will set width as auto *!*/
+/*}*/
+
 
 .firstBackground, .secondBackground, .thirdBackground{
     position: relative;
@@ -309,6 +310,7 @@ h3{
     justify-content: center;
     padding: 15px 32px;
     border: 3px rgba(0,0,0,1) solid;
+    width:100%;
 }
 .chatOption, .matchMakerOption,.settingsOption{
     padding: 12px;
