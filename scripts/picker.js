@@ -84,14 +84,18 @@ function sendLike(){
             }
 
 
-            console.log(data);
+            console.log(data.profi);
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
             $("#name").text("Don't worry, ");
             $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
-            console.log(data);
+            console.log(data.profile_pic);
+            console.log(data.profile_pic == null);
+            console.log(data.profile_pic === null);
+            console.log(data.profile_pic == undefined);
+            console.log(data.profile_pic === undefined);
 
         }
     });
