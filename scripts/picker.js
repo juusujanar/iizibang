@@ -12,7 +12,7 @@ $( document ).ready(function() {
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
             $("#vanus").text(get_age(data.birthdate));
-            if(data.profile_pic === null){
+            if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
                 $("#profilePicture").attr("src",data.profile_pic);
@@ -21,6 +21,8 @@ $( document ).ready(function() {
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
+            $("#name").text("Don't worry, ");
+            $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
             console.log(data);
         }
@@ -47,7 +49,7 @@ function sendDislike(){
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
             $("#vanus").text(get_age(data.birthdate));
-            if(data.profile_pic === null){
+            if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
                 $("#profilePicture").attr("src",data.profile_pic);
@@ -56,6 +58,8 @@ function sendDislike(){
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
+            $("#name").text("Don't worry, ");
+            $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
             console.log(data);
         }
@@ -73,7 +77,7 @@ function sendLike(){
             $("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
             $("#vanus").text(get_age(data.birthdate));
-            if(data.profile_pic === null){
+            if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
                 $("#profilePicture").attr("src",data.profile_pic);
@@ -84,6 +88,8 @@ function sendLike(){
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
+            $("#name").text("Don't worry, ");
+            $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
             console.log(data);
 

@@ -387,8 +387,24 @@ h3{
 }
 .pic, .picLogo{
     border: 3px rgba(0,0,0,1) solid;
-    padding: 6px;
+    padding: 12px;
     margin: auto;
+}
+
+.picLogo{
+    width: 480px;
+    height: 480px;
+}
+.userProfilePic{
+    max-width:100%;
+    max-height:100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.profilePic{
+    max-width:100%;
+    max-height:100%;
 }
 .disLikeButtonReSize{
     height: 100%;
