@@ -25,12 +25,24 @@ body,html{
     height:100%;
 
 }
+.firstBackgroundContact{
+    background-color: whitesmoke;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
 .firstBackgroundChat{
     position: relative;
     opacity: 0.65;
     background-position: center;
     background-size: cover;
     background-color: whitesmoke;
+}
+.contactInfo{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding: 12px;
 }
 .whatIsIiziBang{
     text-align:center;
@@ -266,10 +278,11 @@ h3{
     color: #111;
 }
 .registrationButton{
-    left:50%;
-    margin: 0 auto;
     font: 20px "Lato", sans-serif;
     color: white;
+    display: flex;
+    justify-content: center;
+    padding: 0px 0px 20px 0px;
 }
 .button {
     background-color: #4CAF50;
@@ -373,6 +386,10 @@ h3{
     padding-top: 64px;
     margin: auto;
 }
+.map{
+    height: 400px;
+    width: 100%;
+}
 .firstAndLastName,.age{
     padding: 12px;
 }
@@ -400,6 +417,27 @@ h3{
     border: 3px rgba(0,0,0,1) solid;
     padding: 12px;
     margin: auto;
+}
+.iiziBangLogo{
+    paddding: 12px;
+    margin: auto;
+    opacity:0.65;
+}
+.opacityDefault{
+    opacity:0.65;
+    display:flex;
+    justify-content: center;
+}
+.dev{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.devPic{
+    max-width: 410px;
+    heigh:auto;
+    padding: 12px 0px 12px 0px;
 }
 
 .picLogo{

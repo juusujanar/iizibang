@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>iiZiBang - The home of future matchmaker</title>
+
+    <meta name="keywords" content="matchmaker">
+    <meta name="description" content="Match-making">
+
+    <link rel="stylesheet" href="../css/stylesheet.css">
+</head>
+
+<body>
+
+
+    <!-- Parallex effect studied from W3Schools-->
+    <div class="firstBackgroundContact">
+        <!--Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/-->
+        <div class="contactInfo">
+            <img src="../pictures/iiZiBangLogo.png" alt="logo" class="iiziBangLogo" onclick="sendHome()">
+            <h3 class="opacityDefault">Contact info</h3>
+            <div class="dev">
+                <h3 class="opacityDefault">Front-end : Cardo Kambla</h3>
+                <img src="../pictures/dev/front_end_dev.jpg" alt="front_end_dev" class="devPic">
+            </div>
+            <div class="dev">
+                <h3 class="opacityDefault">Back-end #1 : Janar Juusu</h3>
+                <img src="../pictures/dev/back_end_dev1.jpg" alt="back_end_dev_1" class="devPic">
+            </div>
+            <div class="dev">
+                <h3 class="opacityDefault">Back-end #2 : Madis Janno</h3>
+                <img src="../pictures/dev/back_end_dev2.jpg" alt="back_end_dev_2" class="devPic">
+            </div>
+            <h3>iiZiBang HQ (Juhan Liivi 2)</h3>
+            <div id="map" class="map"></div>
+        </div>
+
+
+
+    </div>
+
+    <!-- Javascript file references. Keep this section at bottom -->
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/failover.js"></script>
+    <script type="text/javascript" src="../scripts/aboutus.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPUREbXqZPDBgMw6QEH2ib3Nfn8X_6Zu8&callback=initMap"></script>
+</body>
+</html>
