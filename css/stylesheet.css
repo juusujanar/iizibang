@@ -25,6 +25,13 @@ body,html{
     height:100%;
 
 }
+.firstBackgroundChat{
+    position: relative;
+    opacity: 0.65;
+    background-position: center;
+    background-size: cover;
+    background-color: whitesmoke;
+}
 .whatIsIiziBang{
     text-align:center;
     color: white
