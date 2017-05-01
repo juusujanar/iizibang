@@ -97,6 +97,24 @@ exports.login = function(req, res) {
     });
 };
 
+exports.totalUsers = function(req, res){
+    connection.query('SELECT COUNT(*) FROM users', function (error, results, fields) {
+        if (error) {
+            console.log("Error while getting login info from DB: ", error);
+            res.send({
+                "code": 400,
+                "totalUsers": "Could not recieve data from database."
+            });
+            return;
+        } else {
+            res.send({
+                "code": 200,
+                "totalUsers": results[0]
+            })
+        }
+    });
+};
+
 exports.loggedIn = function(req, res) {
     if (req.session.userdata) {
         res.send({
