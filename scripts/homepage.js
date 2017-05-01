@@ -7,11 +7,11 @@ $(document).ready(function(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            $("#joinUs").innerHTML = "Join our " + data.totalUsers + " today!";
+            $("#joinUs").innerHTML = "Join our " + data.totalUsers["COUNT(*)"] + " today!";
             console.log(data);
         },
         error: function(data) {
-            alert(data.totalUsers);
+            alert(data.totalUsers["COUNT(*)"]);
             console.log(data);
         }
     });
