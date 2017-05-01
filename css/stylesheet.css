@@ -195,6 +195,11 @@ body,html{
 .clickHereButton{
     display: flex;
     align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+.whiteText{
+    color:white;
 }
 
 .registration > div > input {
