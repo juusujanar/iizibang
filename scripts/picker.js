@@ -5,6 +5,17 @@
 
 $( document ).ready(function() {
     $("#profilePicture").attr("src","../../pictures/loading.gif");
+    var sessID = getJSessionId();
+    $.ajax({
+        url: 'https://iizibang.jjdev.eu/api/loggedIn?userdata=' + sessID,
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+        },
+        error: function(data) {
+            sendHome();
+        }
+    });
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
@@ -28,17 +39,7 @@ $( document ).ready(function() {
             console.log(data);
         }
     });
-    var sessID = getJSessionId();
-    $.ajax({
-        url: 'https://iizibang.jjdev.eu/api/loggedIn?userdata=' + sessID,
-        type: 'GET',
-        contentType: "application/json; charset=utf-8",
-        success: function(data) {
-        },
-        error: function(data) {
-            sendHome();
-        }
-    });
+
     /*xhttp.onreadystatechange = function() {
         // if (this.readyState == 4 && this.status == 200) {
             $("#profileUsername").text = this.responseText;
@@ -103,12 +104,6 @@ function sendLike(){
             $("#name").text("Don't worry, ");
             $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
-            console.log(data.profile_pic);
-            console.log(data.profile_pic == null);
-            console.log(data.profile_pic === null);
-            console.log(data.profile_pic == undefined);
-            console.log(data.profile_pic === undefined);
-
         }
     });
 }
