@@ -4,7 +4,6 @@
  */
 
 $( document ).ready(function() {
-    console.log(document.cookie);
     $("#profilePicture").attr("src","../../pictures/loading.gif");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
@@ -27,6 +26,17 @@ $( document ).ready(function() {
             $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
             console.log(data);
+        }
+    });
+    var sessID = getJSessionId();
+    $.ajax({
+        url: 'https://iizibang.jjdev.eu/api/loggedIn?userdata=' + sessID,
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+        },
+        error: function(data) {
+            sendHome();
         }
     });
     /*xhttp.onreadystatechange = function() {
@@ -108,3 +118,14 @@ function get_age(time){
     var date_array = time.split('-');
     var years_elapsed = (new Date() - new Date(date_array[0],date_array[1],date_array[2]))/(MILLISECONDS_IN_A_YEAR);
     return Math.floor(years_elapsed); }
+
+function getJSessionId(){
+    var jsId = document.cookie.match(/JSESSIONID=[^;]+/);
+    if(jsId != null) {
+        if (jsId instanceof Array)
+            jsId = jsId[0].substring(11);
+        else
+            jsId = jsId.substring(11);
+    }
+    return jsId;
+}
