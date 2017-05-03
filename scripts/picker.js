@@ -1,8 +1,10 @@
+
 /**
  * Created by CARDOKAMBLA on 4/23/2017.
  */
-var xhttp = new XMLHttpRequest();
+
 $( document ).ready(function() {
+    console.log(document.cookie);
     $("#profilePicture").attr("src","../../pictures/loading.gif");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
