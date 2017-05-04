@@ -100,18 +100,27 @@ function validateLastName() {
     return true;
 }
 function validateBirthDate() {
-    var x = document.forms["reg-form"]["birthdate"];
-    var date_regex = /^\d{2}\/\d{2}\/\d{4}$/ ;
-    if (x === undefined){
+    var birthAge = document.getElementById("birthdate").value;
+    if (birthAge === ""){
         alert("Date not chosen");
         return false;
     }
-    if (!date_regex.test(testdate)){
-        alert("Not a valid date");
+    if (get_age(birthAge)< 18){
+        alert("Under the required age of use.");
+        return false;
+    }
+    if (get_age(birthAge)> 99){ //too old
+        alert("I bet you are a catfish or a zombie ;) Try again");
         return false;
     }
     return true;
 }
+
+var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
+function get_age(time){
+    var date_array = time.split('-');
+    var years_elapsed = (new Date() - new Date(date_array[0],date_array[1],date_array[2]))/(MILLISECONDS_IN_A_YEAR);
+    return Math.floor(years_elapsed); }
 function validateGender() {
     var x = document.forms["reg-form"]["gender"].value;
     if (x === "Male" || x === "Female" || x === "Other") {
@@ -142,11 +151,12 @@ $('#registerButton').on('click', function (e) {
         return;
     }*/
 
-    var formData = getFormData($("#reg-form"));
+
+    var form = $("#reg-form");
+    var formData = getFormData(form);
     console.log(formData);
     if (
-        validateUserName() === true && validatePassword() === true && validateEmail() === true &&  validateFirstName() === true && validateLastName() === true &&
-        //validateBirthDate() === true
+        validateUserName() === true && validatePassword() === true && validateEmail() === true &&  validateFirstName() === true && validateLastName() === true && validateBirthDate() === true &&
         validateGender() && validateInterest()
         ) {
 
@@ -157,7 +167,9 @@ $('#registerButton').on('click', function (e) {
 
         data: JSON.stringify(formData),
         success: function(data) {
-            window.location.replace("https://iizibang.jjdev.eu/login");
+            if (data.code === 200) {
+                window.location.replace("https://iizibang.jjdev.eu/login");
+            }
             console.log(data);
 
         },
@@ -166,25 +178,5 @@ $('#registerButton').on('click', function (e) {
             console.log(data);
         }
     });
-
-    var imageForm = new FormData();
-
-
-    /*$.ajax({
-        url: 'https://iizibang.jjdev.eu/api/uploadImage',
-        type: 'POST',
-        contentType: "multipart/form-data; charset=utf-8",
-
-        data: JSON.stringify(formData),
-        success: function(data) {
-            window.location.replace("https://iizibang.jjdev.eu/login");
-            console.log(data);
-
-        },
-        error: function (data) {
-            alert('Error');
-            console.log(data);
-        }
-    });*/
 }
 });
