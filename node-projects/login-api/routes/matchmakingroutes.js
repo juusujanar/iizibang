@@ -49,7 +49,7 @@ var INSERT_SUCCESSFUL_MATCH = "INSERT INTO succesful_match VALUES (?, ?, NOW() )
 exports.acceptmatch = function(req, res) {
     connection.query(INSERT_MATCH_DECISION_SQL, [req.session.userdata.id, req.session.match.id, true], function(error, results, fields) {
         connection.query(MATCH_CHOICE_QUERY, [req.session.match.id, req.session.userdata.id], function(error, results, fields) {
-            if (results[0][0]) {
+            if (results[0] != null && results[0][0]) {
                 connection.query(INSERT_SUCCESSFUL_MATCH, [req.session.userdata.id, req.session.match.id]);
             }
             
