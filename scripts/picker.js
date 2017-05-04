@@ -11,12 +11,12 @@ $( document ).ready(function() {
         contentType: "application/json; charset=utf-8",
         success: function(data) {
             console.log(data);
-            if(data.loggedIn === 'false'){
+            if(data.loggedIn === false){
                 sendHome();
             }
         },
         error: function(data) {
-            if(data.loggedIn === 'false'){
+            if(data.loggedIn === false){
                 sendHome();
             }
             console.log(data);
