@@ -61,7 +61,7 @@ function sendDislike(){
     console.log("Dislike button clicked");
     $("#profilePicture").attr("src","../../pictures/loading.gif");
     $.ajax({
-        url: 'https://iizibang.jjdev.eu/api/acceptmatch',
+        url: 'https://iizibang.jjdev.eu/api/rejectmatch',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
@@ -100,7 +100,7 @@ function sendLike(){
     console.log("Like button clicked");
     $("#profilePicture").attr("src","../../pictures/loading.gif");
     $.ajax({
-        url: 'https://iizibang.jjdev.eu/api/rejectmatch',
+        url: 'https://iizibang.jjdev.eu/api/acceptmatch',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
