@@ -552,6 +552,15 @@ h3{
     flex-direction:column;
     margin:auto;
 }
+.userInputPlacement{
+    display:flex;
+    flex-direction:row;
+}
+.interestUsername{
+    display: flex;
+    flex-direction:column;
+    margin:auto;
+}
 .interestName, .interestLastMessage{
     display:flex;
     justify-content: center;

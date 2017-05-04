@@ -23,7 +23,7 @@ $(document).ready(function() {
     // <div class="chatBox">
         var chatBox = document.createElement("DIV");
         chatBox.setAttribute("class", "chatBox");
-        chatBox.setAttribute('data-id', '1');
+        chatBox.setAttribute('data-id', i.toString());
         //chatBox.setAttribute("onClick", "openChat()");
     //         <img src="../../pictures/no_pic.jpg" class="pictureOfInterest" alt="pictureOfInterest">
         var image = document.createElement("IMG");
@@ -35,7 +35,7 @@ $(document).ready(function() {
         interestInfo.setAttribute("class","interestInfo");
         //         <div class="interestName"><p class="chatText">Username</p></div>
         var interestName = document.createElement("DIV");
-        interestName.setAttribute("class","interestInfo");
+        interestName.setAttribute("class","interestUsername");
         var username = document.createElement("P");
         username.setAttribute("class","chatText");
         username.innerHTML = "Username";
@@ -61,6 +61,43 @@ $(document).ready(function() {
 });
 
 
-$('.chatBox').click(function(e) {
-    $(e.currentTarget).data('id')
+/*$('.chatBox').click(function(e) {
+    console.log($(e.currentTarget).attr("data-id"));
+});*/
+$('div.chatBoxes').on('click', 'div.chatBox', function(e) {
+    if($(e.currentTarget).attr("style") === 'height: 300px;'){
+        $(e.currentTarget).animate({height: "100px"});
+        var interestLastMessage = document.createElement("DIV");
+        interestLastMessage.setAttribute("class","interestLastMessage");
+        var chatText = document.createElement("P");
+        chatText.setAttribute("class","chatText");
+        chatText.innerHTML = "How you doing?";
+        interestLastMessage.appendChild(chatText);
+        $(this).find('.interestInfo').append(interestLastMessage);
+        $(this).find('.userInputPlacement').remove();
+    }else{
+        $(e.currentTarget).animate({height: "300px"});
+        $(this).find('.interestLastMessage').remove();
+        var userInputDiv = document.createElement("DIV");
+        userInputDiv.setAttribute("class","userInputPlacement");
+        var userInput = document.createElement("INPUT");
+        userInput.setAttribute("type","text");
+        userInput.setAttribute("name","userInputField");
+        userInputDiv.appendChild(userInput);
+        var userSubmit = document.createElement("INPUT");
+        userSubmit.setAttribute("type","submit");
+        userSubmit.setAttribute("value","Send");
+        userInputDiv.appendChild(userSubmit);
+        $(this).find('.interestInfo').append(userInputDiv);
+
+    }
+
 });
+
+/*
+$("#btn1").click(function(){
+    $("#box").animate({height: "300px"});
+});
+$("#btn2").click(function(){
+    $("#box").animate({height: "100px"});
+});*/
