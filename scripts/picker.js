@@ -65,13 +65,25 @@ function sendDislike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
+            $("#profileUsername").text(data.username);
+            $("#name").text(data.firstname + " "+ data.lastname);
+            $("#vanus").text(get_age(data.birthdate));
+            if(data.profile_pic == null){
+                $("#profilePicture").attr("src","../../pictures/question-mark.gif");
+            }else{
+                $("#profilePicture").attr("src",data.profile_pic);
+            }
             console.log(data);
         },
         error: function(data) {
+            $("#profileUsername").text("No Matches Found...");
+            $("#name").text("Don't worry, ");
+            $("#vanus").text("you will find someone...");
+            $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
             console.log(data);
         }
     });
-    $.ajax({
+    /*$.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
@@ -93,7 +105,7 @@ function sendDislike(){
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
             console.log(data);
         }
-    });
+    });*/
 }
 
 function sendLike(){
@@ -101,17 +113,6 @@ function sendLike(){
     $("#profilePicture").attr("src","../../pictures/loading.gif");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/acceptmatch',
-        type: 'GET',
-        contentType: "application/json; charset=utf-8",
-        success: function(data) {
-            console.log(data);
-        },
-        error: function(data) {
-            console.log(data);
-        }
-    });
-    $.ajax({
-        url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
@@ -134,6 +135,30 @@ function sendLike(){
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
         }
     });
+    /*$.ajax({
+        url: 'https://iizibang.jjdev.eu/api/findmatches',
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+            $("#profileUsername").text(data.username);
+            $("#name").text(data.firstname + " "+ data.lastname);
+            $("#vanus").text(get_age(data.birthdate));
+            if(data.profile_pic == null){
+                $("#profilePicture").attr("src","../../pictures/question-mark.gif");
+            }else{
+                $("#profilePicture").attr("src",data.profile_pic);
+            }
+
+
+            console.log(data.profi);
+        },
+        error: function(data) {
+            $("#profileUsername").text("No Matches Found...");
+            $("#name").text("Don't worry, ");
+            $("#vanus").text("you will find someone...");
+            $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
+        }
+    });*/
 }
 
 var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
