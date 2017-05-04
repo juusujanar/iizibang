@@ -38,5 +38,7 @@ router.post('/logout', login.logout);
 router.get('/loggedIn', login.loggedIn);
 router.get('/totalUsers', login.totalUsers);
 router.get('/findmatches', matchmaking.findmatch);
+router.get('/acceptmatch', matchmaking.acceptmatch);
+router.get('/rejectmatch', matchmaking.rejectmatch);
 app.use('/api', router);
 app.listen(5000);

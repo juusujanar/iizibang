@@ -26,8 +26,7 @@ findMatchInDatabase = function(req) {
 } 
 
 exports.findmatch = function(req, res) {
-    console.log(req.session);
-    req.session.match = null;
+    req.session.match = null; // remove to stop refresh changing match
     if (!req.session.match) {
         connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
             if (error) {
@@ -41,4 +40,43 @@ exports.findmatch = function(req, res) {
         res.send(req.session.match);
         return; 
     }
+};
+
+var INSERT_MATCH_DECISION_SQL = "INSERT INTO match_choice (player1, player2, player1_agreed) VALUES (?, ?, ?)";
+var MATCH_CHOICE_QUERY = "SELECT player1_agreed FROM match_choice WHERE player1 = ? AND player2 = ?";
+var INSERT_SUCCESSFUL_MATCH = "INSERT INTO succesful_match VALUES (?, ?, NOW() )";
+
+exports.acceptmatch = function(req, res) {
+    connection.query(INSERT_MATCH_DECISION_SQL, [req.session.userdata.id, req.session.match.id, true], function(error, results, fields) {
+        connection.query(MATCH_CHOICE_QUERY, [req.session.match.id, req.session.userdata.id], function(error, results, fields) {
+            if (results[0][0]) {
+                connection.query(INSERT_SUCCESSFUL_MATCH, [req.session.userdata.id, req.session.match.id]);
+            }
+            
+            connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
+                if (error) {
+                    console.log(error);
+                    res.send(null);
+                }
+                req.session.match = results[0];
+                res.send(req.session.match);
+            });
+            
+        });        
+    });
+};
+
+exports.rejectmatch = function(req, res) {
+    connection.query(INSERT_MATCH_DECISION_SQL, [req.session.userdata.id, req.session.match.id, false], function(error, results, fields) {
+        
+        connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
+            if (error) {
+                console.log(error);
+                res.send(null);
+            }
+            req.session.match = results[0];
+            res.send(req.session.match);
+        });
+        
+    });
 };
