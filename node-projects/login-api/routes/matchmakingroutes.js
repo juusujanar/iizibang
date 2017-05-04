@@ -48,36 +48,35 @@ var INSERT_SUCCESSFUL_MATCH = "INSERT INTO succesful_match VALUES (?, ?, NOW() )
 
 exports.acceptmatch = function(req, res) {
     connection.query(INSERT_MATCH_DECISION_SQL, [req.session.userdata.id, req.session.match.id, true], function(error, results, fields) {
-        if (error) {
-            console.log(error);
-            res.send(null);
-        }
         connection.query(MATCH_CHOICE_QUERY, [req.session.match.id, req.session.userdata.id], function(error, results, fields) {
-            if (error) {
-                console.log(error);
-                res.send(null);
-            }
             if (results[0] != null && results[0][0]) {
-                connection.query(INSERT_SUCCESSFUL_MATCH, [req.session.userdata.id, req.session.match.id], function(error, results, fields) {
-                    if (error) {
-                        console.log(error);
-                        res.send(null);
-                    }
-                    res.send("Successfully matched with " + req.session.match.username);
-                });
-            } else {
-                res.send("You like "  + req.session.match.username);
+                connection.query(INSERT_SUCCESSFUL_MATCH, [req.session.userdata.id, req.session.match.id]);
             }
+            
+            connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
+                if (error) {
+                    console.log(error);
+                    res.send(null);
+                }
+                req.session.match = results[0];
+                res.send(req.session.match);
+            });
+            
         });        
     });
 };
 
 exports.rejectmatch = function(req, res) {
     connection.query(INSERT_MATCH_DECISION_SQL, [req.session.userdata.id, req.session.match.id, false], function(error, results, fields) {
-        if (error) {
-            console.log(error);
-            res.send(null);
-        }
-        res.send("You don't like "  + req.session.match.username); 
+        
+        connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
+            if (error) {
+                console.log(error);
+                res.send(null);
+            }
+            req.session.match = results[0];
+            res.send(req.session.match);
+        });
+        
     });
 };
