@@ -60,7 +60,7 @@ $(document).ready(function() {
     }
 });
 
-/*
+
 $('.chatBox').click(function(e) {
     $(e.currentTarget).data('id')
-})*/
+});
