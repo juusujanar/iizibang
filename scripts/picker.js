@@ -83,7 +83,7 @@ function sendDislike(){
             console.log(data);
         }
     });
-    /*$.ajax({
+    $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
@@ -105,7 +105,7 @@ function sendDislike(){
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
             console.log(data);
         }
-    });*/
+    });
 }
 
 function sendLike(){
@@ -135,7 +135,7 @@ function sendLike(){
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
         }
     });
-    /*$.ajax({
+    $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
@@ -158,7 +158,7 @@ function sendLike(){
             $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
         }
-    });*/
+    });
 }
 
 var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
