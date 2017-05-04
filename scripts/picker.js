@@ -5,15 +5,16 @@
 
 $( document ).ready(function() {
     $("#profilePicture").attr("src","../../pictures/loading.gif");
-    var sessID = getJSessionId();
     $.ajax({
-        url: 'https://iizibang.jjdev.eu/api/loggedIn?userdata=' + sessID,
+        url: 'https://iizibang.jjdev.eu/api/loggedIn',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
+            console.log(data);
         },
         error: function(data) {
             sendHome();
+            console.log(data);
         }
     });
     $.ajax({
@@ -114,6 +115,7 @@ function get_age(time){
     var years_elapsed = (new Date() - new Date(date_array[0],date_array[1],date_array[2]))/(MILLISECONDS_IN_A_YEAR);
     return Math.floor(years_elapsed); }
 
+/*
 function getJSessionId(){
     var jsId = document.cookie.match(/JSESSIONID=[^;]+/);
     if(jsId != null) {
@@ -123,4 +125,4 @@ function getJSessionId(){
             jsId = jsId.substring(11);
     }
     return jsId;
-}
+}*/
