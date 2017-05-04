@@ -119,12 +119,12 @@ exports.loggedIn = function(req, res) {
     if (req.session.userdata) {
         res.send({
             "code": 200,
-            "loggedIn": "true"
+            "loggedIn": true
         });
     } else {
         res.send({
             "code": 200,
-            "loggedIn": "false"
+            "loggedIn": false
         });
     }
 };
