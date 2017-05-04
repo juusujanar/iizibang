@@ -152,8 +152,7 @@ $('#registerButton').on('click', function (e) {
     }*/
 
 
-    var form = $("#reg-form");
-    var formData = getFormData(form);
+    var formData = getFormData($("#reg-form"));
     console.log(formData);
     if (
         validateUserName() === true && validatePassword() === true && validateEmail() === true &&  validateFirstName() === true && validateLastName() === true && validateBirthDate() === true &&
@@ -178,5 +177,23 @@ $('#registerButton').on('click', function (e) {
             console.log(data);
         }
     });
+
+    var imageForm = new FormData();
+    /*$.ajax({
+        url: 'https://iizibang.jjdev.eu/api/uploadImage',
+        type: 'POST',
+        contentType: "multipart/form-data; charset=utf-8",
+
+        data: JSON.stringify(formData),
+        success: function(data) {
+            window.location.replace("https://iizibang.jjdev.eu/login");
+            console.log(data);
+
+        },
+        error: function (data) {
+            alert('Error');
+            console.log(data);
+        }
+    });*/
 }
 });
