@@ -11,9 +11,14 @@ $( document ).ready(function() {
         contentType: "application/json; charset=utf-8",
         success: function(data) {
             console.log(data);
+            if(data.loggedIn === 'false'){
+                sendHome();
+            }
         },
         error: function(data) {
-            sendHome();
+            if(data.loggedIn === 'false'){
+                sendHome();
+            }
             console.log(data);
         }
     });
