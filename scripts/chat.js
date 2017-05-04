@@ -2,6 +2,23 @@
  * Created by CARDOKAMBLA on 4/30/2017.
  */
 $(document).ready(function() {
+    $.ajax({
+        url: 'https://iizibang.jjdev.eu/api/loggedIn',
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+            console.log(data);
+            if(data.loggedIn === false){
+                sendToLogin();
+            }
+        },
+        error: function(data) {
+            if(data.loggedIn === false){
+                sendToLogin();
+            }
+            console.log(data);
+        }
+    });
     for (var i = 0;i<10;i++){
     // <div class="chatBox">
         var chatBox = document.createElement("DIV");

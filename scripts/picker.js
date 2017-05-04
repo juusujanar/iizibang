@@ -12,12 +12,12 @@ $( document ).ready(function() {
         success: function(data) {
             console.log(data);
             if(data.loggedIn === false){
-                sendHome();
+                sendToLogin();
             }
         },
         error: function(data) {
             if(data.loggedIn === false){
-                sendHome();
+                sendToLogin();
             }
             console.log(data);
         }
