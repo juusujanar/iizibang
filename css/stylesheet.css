@@ -1,95 +1,106 @@
-body,html{
+body, html {
     height: 100%;
     margin: 0;
     font: 400 15px/1.8 "Lato", sans-serif;
     color: #777;
 }
+
 /*!**/
 /*Refrence:http://stackoverflow.com/questions/3802455/min-width-in-window-resizing*/
 
 /*body{*/
-    /*min-width:560px; !* suppose you want minimun width of 1000px *!*/
-    /*width: auto !important;  !* Firefox will set width as auto *!*/
+/*min-width:560px; !* suppose you want minimun width of 1000px *!*/
+/*width: auto !important;  !* Firefox will set width as auto *!*/
 /*}*/
 
-
-.firstBackground, .secondBackground, .thirdBackground{
+.firstBackground, .secondBackground, .thirdBackground {
     position: relative;
     opacity: 0.65;
     background-position: center;
     background-size: cover;
 }
 
-.firstBackground{
+.firstBackground {
     background-color: whitesmoke;
-    height:100%;
+    height: 100%;
 
 }
-.firstBackgroundContact{
+
+.firstBackgroundContact {
     background-color: whitesmoke;
     position: relative;
     background-position: center;
     background-size: cover;
 }
-.firstBackgroundChat{
+
+.firstBackgroundChat {
     position: relative;
     opacity: 0.65;
     background-position: center;
     background-size: cover;
     background-color: whitesmoke;
 }
-.contactInfo{
-    display:flex;
-    flex-direction:column;
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 12px;
 }
-.whatIsIiziBang{
-    text-align:center;
+
+.whatIsIiziBang {
+    text-align: center;
     color: white
 }
 
-.whatIsIiziBangLine2{
+.whatIsIiziBangLine2 {
     text-align: center
 }
 
-.whatIsIiziBangLine1{
+.whatIsIiziBangLine1 {
     text-align: center
 }
-.whatIsIiziBangLine3{
+
+.whatIsIiziBangLine3 {
     text-align: center
 }
-.reasons{
-    text-align:center;
+
+.reasons {
+    text-align: center;
     color: white;
     font-size: 25px;
 }
-.reasonsText1{
+
+.reasonsText1 {
     text-align: center;
     font-size: 15px;
 }
-.reasonsText2{
+
+.reasonsText2 {
     text-align: center;
     font-size: 15px;
 }
-.reasonsText3{
+
+.reasonsText3 {
     text-align: center;
     font-size: 15px;
 }
-.firstSpace{
+
+.firstSpace {
     color: #777;
-    background-color:black;
+    background-color: black;
     text-align: center;
-    padding:50px 80px;
-    text-align:justify;
+    padding: 50px 80px;
+    text-align: justify;
 
 }
-.secondSpace{
+
+.secondSpace {
     color: #777;
-    background-color:black;
-    text-align:center;
-    padding:50px 80px;
-    text-align:justify;
+    background-color: black;
+    text-align: center;
+    padding: 50px 80px;
+    text-align: justify;
 }
 
 .firstBackground > img {
@@ -101,15 +112,17 @@ body,html{
     margin: auto;
 }
 
-.secondBackground{
+.secondBackground {
     background-image: url("../pictures/bigimage2.jpg");
     min-height: 100%;
 }
-.thirdBackground{
+
+.thirdBackground {
     background-image: url("../pictures/bigimage3.jpg");
     min-height: 100%;
 }
-.caption{
+
+.caption {
     position: absolute;
     left: 0;
     top: 50%;
@@ -118,7 +131,7 @@ body,html{
     color: #000;
 }
 
-.caption span.border{
+.caption span.border {
     background-color: #111;
     color: #fff;
     padding: 18px;
@@ -126,37 +139,42 @@ body,html{
     letter-spacing: 10px;
 }
 
-.caption span.borderFirst{
-    background-color:transparent;
-    font-size:25px;
-    color:#f7f7f7;
+.caption span.borderFirst {
+    background-color: transparent;
+    font-size: 25px;
+    color: #f7f7f7;
     letter-spacing: 10px;
     padding: 18px;
 }
-.caption span.borderSecond{
-    background-color:black;
-    font-size:35px;
-    color:#f7f7f7;
+
+.caption span.borderSecond {
+    background-color: black;
+    font-size: 35px;
+    color: #f7f7f7;
     letter-spacing: 10px;
     padding: 18px;
 }
-.endOfPageSpace{
+
+.endOfPageSpace {
     color: #777;
-    background-color:black;
-    text-align:center;
-    padding:50px 80px;
+    background-color: black;
+    text-align: center;
+    padding: 50px 80px;
 }
-.signUpText{
-    text-align:center;
+
+.signUpText {
+    text-align: center;
     color: white;
     padding-bottom: 20px;
 }
+
 .flexContainerToLeft {
-    display:flex;
+    display: flex;
     padding-top: 8px;
     padding-right: 8px;
     justify-content: flex-end;
 }
+
 .loader {
     border-top: 16px solid #3498db; /* Blue */
     border-radius: 50%;
@@ -166,10 +184,15 @@ body,html{
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
-.oneColumn{
+
+.oneColumn {
     display: flex;
     -webkit-flex-direction: column; /* works with row or column */
     flex-direction: column;
@@ -181,9 +204,10 @@ body,html{
     top: 50%;
     left: 50%;
     right: 50%;
-    position:absolute;
+    position: absolute;
 
 }
+
 .registration {
     /*http://www.sketchingwithcss.com/samplechapter/cheatsheet.html*/
     background: whitesmoke;
@@ -196,7 +220,7 @@ body,html{
     -webkit-justify-content: center;
     justify-content: center;
     margin: auto;
-    border: 3px rgba(0,0,0,1) solid;
+    border: 3px rgba(0, 0, 0, 1) solid;
     padding: 30px;
 }
 
@@ -204,51 +228,58 @@ body,html{
     width: 100%;
     max-width: 250px;
 }
-.clickHereButton{
+
+.clickHereButton {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: center;
 }
-.whiteText{
-    color:white;
+
+.whiteText {
+    color: white;
 }
 
 .registration > div > input {
     width: 100%;
 }
 
-.registration > img{
+.registration > img {
     top: auto;
     opacity: 0.65;
 }
-.registration-input{
+
+.registration-input {
     padding: 8px;
 }
-.registration-input-container{
+
+.registration-input-container {
     padding: 8px;
 }
-.registration-container{
+
+.registration-container {
     display: flex;
 
+}
+
+.gender-orienatation {
+    display: flex;
 
 }
-.gender-orienatation{
-    display:flex;
 
-}
-.birthDay{
+.birthDay {
     display: flex;
     -webkit-flex-direction: row; /* works with row or column */
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
 }
-.ghost-buttonSignUp, .ghost-buttonLogIn{
+
+.ghost-buttonSignUp, .ghost-buttonLogIn {
     display: inline-block;
     width: 200px;
     padding: 8px;
-    margin:0 8px;
+    margin: 0 8px;
     color: black;
     border: 1px solid black;
     border-radius: 5px;
@@ -259,31 +290,34 @@ body,html{
     top: 5px;
 }
 
-
 .ghost-buttonSignUp:hover,
-.ghost-buttonSignUp:active ,
-.ghost-buttonLogIn:hover ,
-.ghost-buttonLogIn:active{
+.ghost-buttonSignUp:active,
+.ghost-buttonLogIn:hover,
+.ghost-buttonLogIn:active {
     background-color: black;
     color: white;
 }
-.ghost-buttonLogIn{
+
+.ghost-buttonLogIn {
     width: 100%;
     margin: 0 0px;
 }
-h3{
+
+h3 {
     letter-spacing: 5px;
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
     color: #111;
 }
-.registrationButton{
+
+.registrationButton {
     font: 20px "Lato", sans-serif;
     color: white;
     display: flex;
     justify-content: center;
     padding: 0px 0px 20px 0px;
 }
+
 .button {
     background-color: #4CAF50;
     border: none;
@@ -297,16 +331,19 @@ h3{
     margin: 4px 2px;
     cursor: pointer;
 }
-.login-input{
+
+.login-input {
     padding: 5px;
 }
-.login-input-container{
+
+.login-input-container {
     padding: 8px;
     justify-content: center;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
-.forgot-password{
+
+.forgot-password {
     background: whitesmoke;
     display: -webkit-flex;
     display: inline-flex;
@@ -318,158 +355,188 @@ h3{
     justify-content: center;
     margin: auto;
 }
-.forgot-password-text{
+
+.forgot-password-text {
     letter-spacing: 0px;
     font: 12px "Lato", sans-serif;
 }
-.sexual-interest, .gender{
-    display:flex;
+
+.sexual-interest, .gender {
+    display: flex;
     -webkit-flex-direction: row; /* works with row or column */
     flex-direction: row;
 }
 
-.upperBar{
+.upperBar {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-top: 6px;
     padding-bottom: 6px;
     justify-content: center;
-    border: 3px rgba(0,0,0,1) solid;
-    width:100%;
+    border: 3px rgba(0, 0, 0, 1) solid;
+    width: 100%;
 }
-.upperBarElement,.ageText,.nameText,.profileUsername{
+
+.upperBarElement, .ageText, .nameText, .profileUsername {
     font-size: 3vw;
 }
+
 @media screen and (min-width: 660px) {
     /*.upperBarElement{
         padding: 15px 32px;
     }*/
-    .upperBarElement,.ageText,.nameText,.profileUsername{
+    .upperBarElement, .ageText, .nameText, .profileUsername {
         font-size: 20px;
     }
 
 }
-.chatOption{
+
+.chatOption {
     padding-right: 12px;
 }
-/*.matchMakerOption{*/
-    /*padding-left: 12px;*/
-    /*padding-right: 12px;*/
-/*}*/
-.settingsOption{
-    padding-left:12px;
+.fillArea{
+    flex: 1 0 auto;
 }
-.noUnderline{
+.submitButton{
+
+}
+/*.matchMakerOption{*/
+/*padding-left: 12px;*/
+/*padding-right: 12px;*/
+/*}*/
+.settingsOption {
+    padding-left: 12px;
+}
+
+.noUnderline {
     text-decoration: none;
 }
-.columnizeEverything{
-    display:flex;
+
+.columnizeEverything {
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.userName{
-    display:flex;
+
+.userName {
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px;
 }
-.additionalInfo{
-    display:flex;
+
+.additionalInfo {
+    display: flex;
 }
-.userPic{
-    display:flex;
+
+.userPic {
+    display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
-    border: 3px rgba(0,0,0,1) solid;
+    border: 3px rgba(0, 0, 0, 1) solid;
     padding-top: 64px;
     margin: auto;
 }
-.map{
+
+.map {
     height: 400px;
     width: 100%;
 }
-.firstAndLastName,.age{
+
+.firstAndLastName, .age {
     padding: 12px;
 }
-.buttonsOfApproval{
+
+.buttonsOfApproval {
     display: flex;
     flex-direction: row;
-    margin:auto;
+    margin: auto;
 
 }
-.disLikeButton{
+
+.disLikeButton {
     width: 75%;
     margin-right: auto;
-    display:flex;
+    display: flex;
     justify-content: center;
     padding: 20px;
 }
-.likeButton{
+
+.likeButton {
     width: 75%;
     margin-left: auto;
-    display:flex;
+    display: flex;
     justify-content: center;
     padding: 20px;
 }
-.pic, .picLogo{
-    border: 3px rgba(0,0,0,1) solid;
+
+.pic, .picLogo {
+    border: 3px rgba(0, 0, 0, 1) solid;
     padding: 12px;
     margin: auto;
 }
-.iiziBangLogo{
+
+.iiziBangLogo {
     paddding: 12px;
     margin: auto;
-    opacity:0.65;
+    opacity: 0.65;
 }
-.opacityDefault{
-    opacity:0.65;
-    display:flex;
+
+.opacityDefault {
+    opacity: 0.65;
+    display: flex;
     justify-content: center;
 }
-.dev{
-    display:flex;
+
+.dev {
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.devPic{
+.devPic {
     max-width: 410px;
-    height:auto;
+    height: auto;
     padding: 12px 0px 12px 0px;
 }
 
-.picLogo{
+.picLogo {
     width: 480px;
     height: 480px;
 }
-.userProfilePic{
-    max-width:100%;
-    max-height:100%;
+
+.userProfilePic {
+    max-width: 100%;
+    max-height: 100%;
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
-.profilePic{
-    max-width:100%;
-    max-height:100%;
+
+.profilePic {
+    max-width: 100%;
+    max-height: 100%;
 }
-.disLikeButtonReSize{
+
+.disLikeButtonReSize {
     height: 100%;
     width: 20%;
 }
 
-.profile{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.viewProfile{
-    display:flex;
+
+.viewProfile {
+    display: flex;
     justify-content: center;
     padding: 10px;
 }
+
 .padded {
     padding-left: 20px;
     padding-right: 20px;
@@ -478,11 +545,13 @@ h3{
     font: 20px "Lato", sans-serif;
     color: #111;
 }
+
 .passwordHelp {
     position: relative;
     height: 100%;
     width: 20%;
 }
+
 .popup {
     display: none;
     position: absolute;
@@ -490,16 +559,17 @@ h3{
     opacity: 0.85;
     border-radius: 5px;
     width: 400px;
-    height:50px;
+    height: 50px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     margin-top: -105px;
     margin-left: -290px;
     color: #1E90FF;
     z-index: 1;
-    padding:12px;
+    padding: 12px;
 }
-.popup:before{
+
+.popup:before {
     content: "";
     position: absolute;
     top: 60px;
@@ -509,29 +579,33 @@ h3{
     color: #1E90FF;
     pointer-events: none;
 }
+
 .pic {
     z-index: 0;
     width: 20%;
     height: 20%;
 }
+
 .pic:hover + .popup {
     display: block;
 }
-.account{
-    display:flex;
-    flex-direction:row;
+
+.account {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center
 }
-.chatBoxes{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+
+.chatBoxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 20px;
     margin: 10px auto;
 }
-.chatBox{
-    height: 121px;
+
+.chatBox {
     max-width: 500px;
     width: 70vw;
     display: flex;
@@ -539,61 +613,93 @@ h3{
     align-content: center;
     justify-content: center;
     margin: 20px;
-    border: 3px rgba(0,0,0,1) solid;
+    border: 3px rgba(0, 0, 0, 1) solid;
     transition: height 0.3s;
 }
+
 .chatBox.expand {
     height: 300px;
 }
-.chatBoxRow{
+
+.chatBoxRow {
     display: flex;
-    flex: 1 0 auto;
+    flex: 1;
     flex-direction: row;
     padding: 12px 12px 0px 12px;
 
 }
-.pictureOfInterest{
+
+.pictureOfInterest {
     width: 64px;
     height: 64px;
-    border: 3px rgba(0,0,0,1) solid;
+    border: 3px rgba(0, 0, 0, 1) solid;
 
 }
-.interestInfo{
+
+.interestInfo {
     display: flex;
     flex: 1 0 auto;
-    flex-direction:column;
+    flex-direction: column;
 }
-.userInputPlacement{
-    display:flex;
-    flex-direction:row;
-}
-.interestUsername{
+
+.userInputPlacement {
     display: flex;
-    flex-direction:column;
+    flex-direction: row;
+}
+
+.interestUsername {
+    display: flex;
+    flex-direction: column;
     padding-left: 20px;
 }
-.interestName, .interestLastMessage{
-    display:flex;
-    justify-content: center;
+
+.interestName, .interestLastMessage {
+    display: flex;
     padding-left: 10px;
 }
 
-.interestLastMessage{
+.interestLastMessage {
     opacity: 0.5;
-    flex:1 0 auto;
+    flex: 1;
 }
-.chatText{
-    margin-top:auto;
+.interestLastMessage.expand{
+    flex-direction: column;
+    overflow: auto;
+}
+
+.chatText {
+    margin-top: auto;
+    margin-left:auto;
+
+}
+.chatTextMiddle {
+    max-width: 200px;
+    align-self:center;
+    word-wrap: break-word;
+    margin: 0px auto 12px auto;
 
 }
 
-.signInWithGoogle{
+.chatTextRight {
+    max-width: 200px;
+    align-self:flex-end;
+    word-wrap: break-word;
+
+}
+.chatTextLeft {
+    max-width: 200px;
+    align-self:flex-start;
+    word-wrap: break-word;
+
+}
+.signInWithGoogle {
     display: flex;
     padding-top: 20px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 i {
     border: solid black;
     border-width: 0 3px 3px 0;
@@ -610,7 +716,8 @@ i {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }
-.expandButton{
+
+.expandButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -618,4 +725,5 @@ i {
     padding-top: 6px;
     padding-bottom: 6px;
 }
+
 }
