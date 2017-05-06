@@ -111,7 +111,7 @@ var CHAT_HISTORY_SQL = [
 
 exports.getchathistory = function(req, res) {
     console.log(req);
-    connection.query(CHAT_HISTORY_SQL, [req.session.userdata.id, req.matchid, req.matchid, req.session.userdata.id], function(error, results, fields) {
+    connection.query(CHAT_HISTORY_SQL, [req.session.userdata.id, req.query.matchid, req.query.matchid, req.session.userdata.id], function(error, results, fields) {
         if (error) {
             console.log(error);
             res.send(null);
@@ -124,7 +124,7 @@ exports.getchathistory = function(req, res) {
 var INSERT_CHAT_MESSAGE_SQL = "INSERT INTO chat_msgs (sender, receiver, text, timestamp) VALUES (?, ?, ?, NOW())";
 
 exports.sendchatmessage = function(req, res) {
-    connection.query(INSERT_CHAT_MESSAGE_SQL, [req.session.userdata.id, req.matchid, req.textmessage], function(error, results, fields) {
+    connection.query(INSERT_CHAT_MESSAGE_SQL, [req.session.userdata.id, req.query.matchid, req.query.textmessage], function(error, results, fields) {
         if (error) {
             console.log(error);
             res.send("Server error.");
