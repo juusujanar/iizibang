@@ -12,7 +12,26 @@ var login        = require('./routes/loginroutes');
 var matchmaking  = require('./routes/matchmakingroutes');
 
 var multer       = require('multer');
-var upload       = multer({ destination: '/var/www/html/iizibang/uploads/' });
+
+// Multer configuration
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '/tmp/my-uploads');
+    },
+    filename: function (req, file, cb) {
+        cb(null, +new Date() + "-" + randomInt(1000000, 9999999) + "-" + file.fieldname);
+    }
+});
+var limits = multer.limits({
+    fileSize: 3145728,
+    files: 1
+});
+
+function randomInt (low, high) {
+    return Math.floor(Math.random() * (high - low) + low);
+}
+
+var upload = multer({ storage: storage, limits: limits });
 
 //require('./config/passport')(passport); // pass passport for configuration
 

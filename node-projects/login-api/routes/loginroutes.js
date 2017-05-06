@@ -29,12 +29,9 @@ connection.connect(function(err) {
 
 exports.register = function(req, res) {
 
-    console.log(req);
-    console.log("Error here");
-    console.log(req.body);
-    console.log("Or here");
     console.log(req.file);
-    console.log("Or maybe even here");
+
+    var filename = "test";
 
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
@@ -49,8 +46,8 @@ exports.register = function(req, res) {
                 }
             });
 
-            connection.query('call addUser (?,?,?,?,?,?,?,?,@results)', [req.body.username, req.body.firstname,
-                req.body.lastname, req.body.email, req.body.birthdate, hash, req.body.gender, req.body.interest],
+            connection.query('INSERT INTO users (username, profile_pic, firstname, lastname, birthdate, email, password_hash, gender, interest) VALUES (?,?,?,?,?,?,?,?,?)',
+                [req.body.username, filename, req.body.firstname, req.body.lastname, req.body.birthdate, req.body.email, hash, req.body.gender, req.body.interest],
                 function(error, results, fields) {
 
                     if (error) {
