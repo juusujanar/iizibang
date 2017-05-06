@@ -607,6 +607,7 @@ h3 {
 
 .chatBox {
     max-width: 500px;
+    height:121px;
     width: 70vw;
     display: flex;
     flex-direction: column;
@@ -663,7 +664,6 @@ h3 {
     flex: 1;
     flex-direction: column;
     overflow: auto;
-    justify-content: flex-end;
 }
 /*.messageBox.expand{*/
     /*flex-direction: column;*/
