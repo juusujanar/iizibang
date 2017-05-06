@@ -151,10 +151,12 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInput.setAttribute("type", "text");
         userInput.setAttribute("class", "fillArea");
         userInput.setAttribute("name", "userInputField");
+        userInput.setAttribute("size", "1");
         userInputDiv.appendChild(userInput);
         var userSubmit = document.createElement("INPUT");
         userSubmit.setAttribute("type", "submit");
         userSubmit.setAttribute("class", "submitButton");
+
         userSubmit.setAttribute("value", "Send");
         userInputDiv.appendChild(userSubmit);
         var messageBox = document.createElement("DIV");

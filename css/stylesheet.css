@@ -399,7 +399,6 @@ h3 {
     flex: 1 0 auto;
 }
 .submitButton{
-
 }
 /*.matchMakerOption{*/
 /*padding-left: 12px;*/
@@ -641,7 +640,7 @@ h3 {
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-    min-width: 80px;
+
 }
 
 .userInputPlacement {
