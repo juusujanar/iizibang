@@ -53,20 +53,21 @@ $(document).ready(function() {
         username.innerHTML = "Username";
         interestName.appendChild(username);
     //         <div class="interestLastMessage"><p class="chatText">How you doing?</p></div>
-        var interestLastMessage = document.createElement("DIV");
-        interestLastMessage.setAttribute("class","interestLastMessage");
+        /*var messageBox = document.createElement("DIV");
+        messageBox.setAttribute("class","messageBox");*/
         var chatText = document.createElement("P");
         chatText.setAttribute("class","chatTextMiddle");
         chatText.innerHTML = "How you doing?";
-        for (var j = 0;j<10;j++) {
-            interestLastMessage.appendChild(chatText);
-        }
+        /*for (var j = 0;j<10;j++) {
+            messageBox.appendChild(chatText);
+        }*/
+
         var expandButton = document.createElement("BUTTON");
         expandButton.setAttribute("class","expandButton")
         var downArrow = document.createElement("I");
         downArrow.setAttribute("class","down");
         interestInfo.appendChild(interestName);
-        interestInfo.appendChild(interestLastMessage);
+        interestInfo.appendChild(chatText);
         chatBoxRow.appendChild(image);
         chatBoxRow.appendChild(interestInfo);
         expandButton.appendChild(downArrow);
@@ -118,27 +119,30 @@ $(document).ready(function() {
 });*/
 $('div.chatBoxes').on('click', 'button.expandButton', function(e) {
 // $("button.expandButton").click(function() {
+    var lastMessage = $(this).parent().find('div.messageBox').children().last().text();
     if ($(this).parent().hasClass('expand')) {
         $(this).parent().removeClass('expand');
         $(this).find("i.up").attr("class","down");
         $(this).find("i.up").remove();
-        $(this).parent().find('div.interestLastMessage').remove();
-        $(this).parent().find("div.interestLastMessage").removeClass('expand');
-        var interestLastMessage = document.createElement("DIV");
-        interestLastMessage.setAttribute("class","interestLastMessage");
+        $(this).parent().find('div.messageBox').remove();
+        $(this).parent().find("div.messageBox").removeClass('expand');
         var chatText = document.createElement("P");
-        chatText.setAttribute("class","chatText");
-        chatText.innerHTML = "How you doing?";
-        interestLastMessage.appendChild(chatText);
-        $(this).parent().find('.interestInfo').append(interestLastMessage);
+        chatText.setAttribute("class","chatTextMiddle");
+        if (lastMessage === ""){
+            chatText.innerHTML = "Say Hello!";
+        }else{
+            chatText.innerHTML = lastMessage;
+        }
+
+        $(this).parent().find('div.interestInfo').append(chatText);
         $(this).parent().find('.userInputPlacement').remove();
     }
     else {
         $(this).parent().addClass('expand');
         $(this).find("i.down").attr("class","up");
         $(this).find("i.down").remove();
-        $(this).parent().find("div.interestLastMessage").addClass('expand');
-        $(this).find('.interestLastMessage').remove();
+        $(this).parent().find("div.messageBox").addClass('expand');
+        $(this).parent().find('p.chatTextMiddle').remove();
         var userInputDiv = document.createElement("DIV");
         userInputDiv.setAttribute("class","userInputPlacement");
         var userInput = document.createElement("INPUT");
@@ -151,21 +155,25 @@ $('div.chatBoxes').on('click', 'button.expandButton', function(e) {
         userSubmit.setAttribute("class","submitButton");
         userSubmit.setAttribute("value","Send");
         userInputDiv.appendChild(userSubmit);
+        var messageBox = document.createElement("DIV");
+        messageBox.setAttribute("class","messageBox");
+        $(this).parent().find('.interestInfo').append(messageBox);
         $(this).parent().find('.interestInfo').append(userInputDiv);
 
     }
 });
 
 $('div.chatBoxes').on('click', 'input.submitButton', function(e) {
-    var message = $(this).parent().find("input.fillArea").val()
+    var message = $(this).parent().find("input.fillArea").val();
     if (message !== ""){
     $(this).parent().find("input.fillArea").val("");
-    console.log(message);
+    //console.log(message);
     var chatText = document.createElement("P");
     chatText.setAttribute("class","chatTextRight");
     chatText.innerHTML = message;
-    $(this).parent().parent().find("div.interestLastMessage.expand").append(chatText);
-    var wtf = $(this).parent().parent().find("div.interestLastMessage.expand");
+    console.log(chatText.innerHTML);
+    $(this).parent().parent().find("div.messageBox").append(chatText);
+    var wtf = $(this).parent().parent().find("div.messageBox");
     var height = wtf.height();
     wtf.scrollTop(height);
     //    console.log($(this).parent().parent().find('div.interestLastMessage')[0].scrollHeight);

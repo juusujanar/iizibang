@@ -653,19 +653,22 @@ h3 {
     padding-left: 20px;
 }
 
-.interestName, .interestLastMessage {
+.interestName, .messageBox {
     display: flex;
     padding-left: 10px;
 }
 
-.interestLastMessage {
+.messageBox {
     opacity: 0.5;
     flex: 1;
-}
-.interestLastMessage.expand{
     flex-direction: column;
     overflow: auto;
+    justify-content: flex-end;
 }
+/*.messageBox.expand{*/
+    /*flex-direction: column;*/
+    /*overflow: auto;*/
+/*}*/
 
 .chatText {
     margin-top: auto;
