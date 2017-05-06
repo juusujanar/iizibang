@@ -35,8 +35,8 @@ function getFormData(form){
 }
 
 function validateUserName(){
-    var x = document.forms["reg-form"]["username"].value.trim();
-    if (x) {
+    var x = document.forms["reg-form"].username.value.trim();
+    if (!x) {
         alert("Username must be filled out");
         return false;
     }
@@ -48,9 +48,9 @@ function validateUserName(){
 function validatePassword() {
     //Refrence : http://stackoverflow.com/questions/14850553/javascript-regex-for-password-containing-at-least-8-characters-1-number-1-uppe
     var re = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/);
-    var x = document.forms["reg-form"]["password"].value.trim();
-    var y = document.forms["reg-form"]["passwordConfirm"].value.trim();
-    if (x) {
+    var x = document.forms["reg-form"].password.value.trim();
+    var y = document.forms["reg-form"].passwordConfirm.value.trim();
+    if (!x) {
         alert("Password must be filled out");
         return false;
     }
@@ -68,9 +68,9 @@ function validatePassword() {
 function validateEmail() {
     // Refrence : http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var x = document.forms["reg-form"]["email"].value.trim();
-    var y = document.forms["reg-form"]["emailConfirm"].value.trim();
-    if (x) {
+    var x = document.forms["reg-form"].email.value.trim();
+    var y = document.forms["reg-form"].emailConfirm.value.trim();
+    if (!x) {
         alert("Email must be filled out");
         return false;
     }
@@ -86,8 +86,8 @@ function validateEmail() {
 }
 
 function validateFirstName() {
-    var x = document.forms["reg-form"]["firstname"].value.trim();
-    if (x) {
+    var x = document.forms["reg-form"].firstname.value.trim();
+    if (!x) {
         alert("First name must be filled out");
         return false;
     }
@@ -95,8 +95,8 @@ function validateFirstName() {
 }
 
 function validateLastName() {
-    var x = document.forms["reg-form"]["lastname"].value.trim();
-    if (x) {
+    var x = document.forms["reg-form"].lastname.value.trim();
+    if (!x) {
         alert("Surname must be filled out");
         return false;
     }
@@ -105,15 +105,15 @@ function validateLastName() {
 
 function validateBirthDate() {
     var birthAge = document.getElementById("birthdate").value;
-    if (birthAge === ""){
+    if (birthAge === "") {
         alert("Date not chosen");
         return false;
     }
-    if (get_age(birthAge)< 18){
+    if (get_age(birthAge)< 18) {
         alert("Under the required age of use.");
         return false;
     }
-    if (get_age(birthAge)> 99){ //too old
+    if (get_age(birthAge)> 99) { //too old
         alert("I bet you are a catfish or a zombie ;) Try again");
         return false;
     }
@@ -128,7 +128,7 @@ function get_age(time) {
 }
 
 function validateGender() {
-    var x = document.forms["reg-form"]["gender"].value;
+    var x = document.forms["reg-form"].gender.value;
     if (x === "Male" || x === "Female" || x === "Other") {
         return true;
     }
@@ -137,7 +137,7 @@ function validateGender() {
 }
 
 function validateInterest() {
-    var x = document.forms["reg-form"]["interest"].value;
+    var x = document.forms["reg-form"].interest.value;
     if (x === "Men" || x === "Women" || x === "Other") {
         return true;
     }
@@ -161,6 +161,7 @@ $('#registerButton').on('click', function (e) {
 
     var formData = getFormData($("#reg-form"));
     console.log(formData);
+
     if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() && validateLastName() && validateBirthDate() &&
         validateGender() && validateInterest()
        ) {
