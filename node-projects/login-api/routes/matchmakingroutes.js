@@ -44,7 +44,7 @@ exports.findmatch = function(req, res) {
 
 var INSERT_MATCH_DECISION_SQL = "INSERT INTO match_choice (player1, player2, player1_agreed) VALUES (?, ?, ?)";
 var MATCH_CHOICE_QUERY = "SELECT player1_agreed FROM match_choice WHERE player1 = ? AND player2 = ?";
-var INSERT_SUCCESSFUL_MATCH = "INSERT INTO succesful_match VALUES (?, ?, NOW() )";
+var INSERT_SUCCESSFUL_MATCH = "INSERT INTO succesful_matches VALUES (?, ?, NOW() )";
 
 exports.acceptmatch = function(req, res) {
     connection.query(INSERT_MATCH_DECISION_SQL, [req.session.userdata.id, req.session.match.id, true], function(error, results, fields) {
