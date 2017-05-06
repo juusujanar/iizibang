@@ -110,11 +110,13 @@ var CHAT_HISTORY_SQL = [
 ].join(" ");
 
 exports.getchathistory = function(req, res) {
+    console.log(req);
     connection.query(CHAT_HISTORY_SQL, [req.session.userdata.id, req.matchid, req.matchid, req.session.userdata.id], function(error, results, fields) {
         if (error) {
             console.log(error);
             res.send(null);
         }
+        console.log(results);
         res.send(results); 
     });
 };
