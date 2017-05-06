@@ -84,3 +84,49 @@ exports.rejectmatch = function(req, res) {
         res.send("You don't like "  + req.session.match.username); 
     });
 };
+
+var SUCCESSFUL_MATCHES_USERS_SQL = [
+"SELECT users.*"
+, "FROM users JOIN successful_matches ON (users.id = successful_matches.player1 OR users.id = successful_matches.player2)"
+, "WHERE (player1 = ? AND users.id = player2) OR (player2 = ? AND users.id = player1)"
+, "ORDER BY timestamp"
+].join(" ");
+
+exports.getsuccessfulmatches = function(req, res) {
+    connection.query(SUCCESSFUL_MATCHES_USERS_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
+        if (error) {
+            console.log(error);
+            res.send(null);
+        }
+        res.send(results); 
+    });
+};
+
+var CHAT_HISTORY_SQL = [
+"SELECT *"
+, "FROM chat_msgs"
+, "WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?)"
+, "ORDER BY timestamp"
+].join(" ");
+
+exports.getchathistory = function(req, res) {
+    connection.query(CHAT_HISTORY_SQL, [req.session.userdata.id, req.matchid, req.matchid, req.session.userdata.id], function(error, results, fields) {
+        if (error) {
+            console.log(error);
+            res.send(null);
+        }
+        res.send(results); 
+    });
+};
+
+var INSERT_CHAT_MESSAGE_SQL = "INSERT INTO chat_msgs (sender, receiver, text, timestamp) VALUES (?, ?, ?, NOW())";
+
+exports.sendchatmessage = function(req, res) {
+    connection.query(INSERT_CHAT_MESSAGE_SQL, [req.session.userdata.id, req.matchid, req.textmessage], function(error, results, fields) {
+        if (error) {
+            console.log(error);
+            res.send("Server error.");
+        }
+        res.send("Message sent."); 
+    });
+};

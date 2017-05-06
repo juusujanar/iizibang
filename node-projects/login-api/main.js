@@ -55,9 +55,16 @@ router.post('/register', upload.single('picture'), login.register);
 router.post('/login', login.login);
 router.post('/logout', login.logout);
 router.get('/loggedIn', login.loggedIn);
+
 router.get('/totalUsers', login.totalUsers);
+
 router.get('/findmatches', matchmaking.findmatch);
 router.get('/acceptmatch', matchmaking.acceptmatch);
 router.get('/rejectmatch', matchmaking.rejectmatch);
+
+router.get('/successfulmatches', matchmaking.getsuccessfulmatches);
+router.get('/chathistory', matchmaking.getchathistory);
+router.post('/sendchatmessage', matchmaking.sendchatmessage);
+
 app.use('/api', router);
 app.listen(5000);
