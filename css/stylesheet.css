@@ -436,7 +436,7 @@ h3{
 
 .devPic{
     max-width: 410px;
-    heigh:auto;
+    height:auto;
     padding: 12px 0px 12px 0px;
 }
 
@@ -531,15 +531,26 @@ h3{
     margin: 10px auto;
 }
 .chatBox{
+    height: 121px;
     max-width: 500px;
     width: 70vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-content: center;
     justify-content: center;
     margin: 20px;
-    padding:12px;
     border: 3px rgba(0,0,0,1) solid;
+    transition: height 0.3s;
+}
+.chatBox.expand {
+    height: 300px;
+}
+.chatBoxRow{
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row;
+    padding: 12px 12px 0px 12px;
+
 }
 .pictureOfInterest{
     width: 64px;
@@ -549,8 +560,8 @@ h3{
 }
 .interestInfo{
     display: flex;
+    flex: 1 0 auto;
     flex-direction:column;
-    margin:auto;
 }
 .userInputPlacement{
     display:flex;
@@ -559,7 +570,7 @@ h3{
 .interestUsername{
     display: flex;
     flex-direction:column;
-    margin:auto;
+    padding-left: 20px;
 }
 .interestName, .interestLastMessage{
     display:flex;
@@ -569,6 +580,7 @@ h3{
 
 .interestLastMessage{
     opacity: 0.5;
+    flex:1 0 auto;
 }
 .chatText{
     margin-top:auto;
@@ -581,4 +593,29 @@ h3{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.expandButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
 }
