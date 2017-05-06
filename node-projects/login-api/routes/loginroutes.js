@@ -29,8 +29,11 @@ connection.connect(function(err) {
 
 exports.register = function(req, res) {
 
+    console.log("Error here");
     console.log(req.body);
+    console.log("Or here");
     console.log(req.file);
+    console.log("Or maybe even here");
 
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
@@ -106,7 +109,7 @@ exports.totalUsers = function(req, res){
             console.log("Error while getting login info from DB: ", error);
             res.send({
                 "code": 400,
-                "totalUsers": "Could not recieve data from database."
+                "totalUsers": "Could not receive data from database."
             });
             return;
         } else {
@@ -138,22 +141,3 @@ exports.logout = function(req, res) {
         "code": 200
     });
 };
-
-// Functions for generating random session IDs
-function genUuid(callback) {
-    if (typeof(callback) !== 'function') {
-        return uuidFromBytes(crypto.randomBytes(16));
-    }
-    crypto.randomBytes(16, function(err, rnd) {
-        if (err) return callback(err);
-        callback(null, uuidFromBytes(rnd));
-    });
-}
-
-function uuidFromBytes(rnd) {
-    rnd[6] = (rnd[6] & 0x0f) | 0x40;
-    rnd[8] = (rnd[8] & 0x3f) | 0x80;
-    rnd = rnd.toString('hex').match(/(.{8})(.{4})(.{4})(.{4})(.{12})/);
-    rnd.shift();
-    return rnd.join('-');
-}
