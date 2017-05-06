@@ -38,6 +38,16 @@ $(document).ready(function () {
                     success: function (data) {
                         chatMessages = data;
                         console.log(data);
+                        var searchID = "#"+matches[i].id;
+                        var lastMessage = chatMessages[chatMessages.length-1];
+                        var chatText = document.createElement("P");
+                        chatText.setAttribute("class", "chatTextMiddle");
+                        if (lastMessage.text() === "") {
+                            chatText.innerHTML = "Say Hello!";
+                        } else {
+                            chatText.innerHTML = lastMessage.text();
+                        }
+                        $(searchID).append(chatText)
 
 
                     },
