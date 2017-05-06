@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-const saltRounds = 10;
+var saltRounds = 10;
 
 /**
 * Return codes
@@ -30,6 +30,7 @@ connection.connect(function(err) {
 exports.register = function(req, res) {
 
     console.log(req.body);
+    console.log(req.files);
 
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
@@ -77,7 +78,7 @@ exports.login = function(req, res) {
             });
             return;
         } else {
-            bcrypt.compare(req.body.password, results[0]["password_hash"], function(err, result) {
+            bcrypt.compare(req.body.password, results[0].password_hash, function(err, result) {
                 if (result) {
                     // saves login to session store
 
@@ -112,7 +113,7 @@ exports.totalUsers = function(req, res){
             res.send({
                 "code": 200,
                 "totalUsers": results[0]
-            })
+            });
         }
     });
 };

@@ -11,6 +11,9 @@ var app          = express();
 var login        = require('./routes/loginroutes');
 var matchmaking  = require('./routes/matchmakingroutes');
 
+var multer       = require('multer');
+var upload       = multer({ destination: '/var/www/html/iizibang/uploads/' });
+
 //require('./config/passport')(passport); // pass passport for configuration
 
 app.use(morgan('dev')); // log requests to the console
@@ -33,11 +36,7 @@ app.use(function(req, res, next) {
 
 var router = express.Router();
 
-router.get('/', function(req, res) {
-    res.json({ message: 'This is the main iiZiBang API. Nothing to see here.' });
-});
-
-router.post('/register', login.register);
+router.post('/register', upload.single('profilePic'), login.register);
 router.post('/login', login.login);
 router.post('/logout', login.logout);
 router.get('/loggedIn', login.loggedIn);
