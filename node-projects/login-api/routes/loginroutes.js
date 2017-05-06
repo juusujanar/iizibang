@@ -30,7 +30,7 @@ connection.connect(function(err) {
 exports.register = function(req, res) {
 
     console.log(req.body);
-    console.log(req.files);
+    console.log(req.file);
 
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
