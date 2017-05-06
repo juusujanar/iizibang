@@ -22,16 +22,12 @@ var storage = multer.diskStorage({
         cb(null, +new Date() + "-" + randomInt(1000000, 9999999) + "-" + file.fieldname);
     }
 });
-var limits = multer.limits({
-    fileSize: 3145728,
-    files: 1
-});
 
 function randomInt (low, high) {
     return Math.floor(Math.random() * (high - low) + low);
 }
 
-var upload = multer({ storage: storage, limits: limits });
+var upload = multer({ storage: storage, limits: {fileSize: 3145728} });
 
 //require('./config/passport')(passport); // pass passport for configuration
 
