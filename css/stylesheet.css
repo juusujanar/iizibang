@@ -502,8 +502,8 @@ h3 {
 }
 
 .picLogo {
-    width: 480px;
-    height: 480px;
+    max-width: 480px;
+    height: auto;
 }
 
 .userProfilePic {
