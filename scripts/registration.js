@@ -23,16 +23,7 @@ $('#email, #emailConfirm').on('change keyup', function () {
     }
 });
 
-function getFormData(form){
-    var unindexed_array = form.serializeArray();
-    var indexed_array = {};
-
-    $.map(unindexed_array, function(n, i){
-        indexed_array[n.name] = n.value;
-    });
-
-    return indexed_array;
-}
+// Validate fields in form
 
 function validateUserName(){
     var x = document.forms["reg-form"].username.value.trim();
@@ -42,8 +33,6 @@ function validateUserName(){
     }
     return true;
 }
-
-
 
 function validatePassword() {
     //Refrence : http://stackoverflow.com/questions/14850553/javascript-regex-for-password-containing-at-least-8-characters-1-number-1-uppe
@@ -145,44 +134,67 @@ function validateInterest() {
     return false;
 }
 
-$('#registerButton').on('click', function (e) {
+// Function for gathering form data
+
+function getFormData(form){
+    var unindexed_array = form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n.name] = n.value;
+    });
+
+    return indexed_array;
+}
+
+// Request to the backend
+
+$(document).ready(function() {
+
+    $('.registration').submit(function() {
+        if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
+        validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
+            alert("File is uploading...");
+            $(this).ajaxSubmit({
+
+                error: function(xhr) {
+                    console.log(xhr);
+                },
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+            //Very important line, it disable the page refresh.
+            return false;
+        }
+    });
+});
+
+/*$('#registerButton').on('click', function (e) {
     e.preventDefault();
-
-    /*if (!$('#email').val() === $('#emailConfirm').val()) {
-        alert('Email addresses do not match!');
-        return;
-    }
-*/
-    /*if (!$('#password').val() == $('#passwordConfirm').val()) {
-        alert('Passwords do not match!');
-        return;
-    }*/
-
 
     var formData = getFormData($("#reg-form"));
     console.log(formData);
 
-    if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() && validateLastName() && validateBirthDate() &&
-        validateGender() && validateInterest()
-       ) {
+    if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
+        validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
 
-    $.ajax({
-        url: 'https://iizibang.jjdev.eu/api/register',
-        type: 'POST',
-        contentType: "application/json; charset=utf-8",
+        $.ajax({
+            url: 'https://iizibang.jjdev.eu/api/register',
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            data: formData,
+            success: function(data) {
+                if (data.code === 200) {
+                    window.location.replace("https://iizibang.jjdev.eu/login");
+                }
+                console.log(data);
 
-        data: JSON.stringify(formData),
-        success: function(data) {
-            if (data.code === 200) {
-                window.location.replace("https://iizibang.jjdev.eu/login");
+            },
+            error: function (data) {
+                alert('Error');
+                console.log(data);
             }
-            console.log(data);
-
-        },
-        error: function (data) {
-            alert('Error');
-            console.log(data);
-        }
-    });
-}
-});
+        });
+    }
+});*/
