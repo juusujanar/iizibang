@@ -170,7 +170,7 @@ $(document).ready(function() {
     });
 });
 
-/*$('#registerButton').on('click', function (e) {
+$('#registerButton').on('click', function (e) {
     e.preventDefault();
 
     var formData = getFormData($("#reg-form"));
@@ -197,4 +197,4 @@ $(document).ready(function() {
             }
         });
     }
-});*/
+});
