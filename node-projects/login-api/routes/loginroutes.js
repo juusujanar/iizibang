@@ -29,6 +29,7 @@ connection.connect(function(err) {
 
 exports.register = function(req, res) {
 
+    console.log(req);
     console.log("Error here");
     console.log(req.body);
     console.log("Or here");
