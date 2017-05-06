@@ -31,14 +31,15 @@ $(document).ready(function () {
             console.log(data);
             showMatches(matches);
             for (var i = 0; i < matches.length; i++) {
+                var matchID = matches[i].id;
                 $.ajax({
-                    url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matches[i].id,
+                    url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
                     type: 'GET',
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         chatMessages = data;
                         console.log(data);
-                        var searchID = "#"+matches[i].id.toString();
+                        var searchID = "#"+matchID;
                         var lastMessage = chatMessages[chatMessages.length-1];
                         var chatText = document.createElement("P");
                         chatText.setAttribute("class", "chatTextMiddle");
