@@ -38,7 +38,7 @@ $(document).ready(function () {
                     success: function (data) {
                         chatMessages = data;
                         console.log(data);
-                        var searchID = "#"+matches[i].id;
+                        var searchID = "#"+matches[i].id.toString();
                         var lastMessage = chatMessages[chatMessages.length-1];
                         var chatText = document.createElement("P");
                         chatText.setAttribute("class", "chatTextMiddle");
