@@ -1,7 +1,9 @@
 /**
  * Created by CARDOKAMBLA on 4/30/2017.
  */
-//var matches;
+var matches;
+var chatMessages;
+
 $(document).ready(function () {
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/loggedIn',
@@ -25,21 +27,37 @@ $(document).ready(function () {
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            //matches = data;
+            matches = data;
             console.log(data);
-            showMatches(data)
+            showMatches(matches);
+            for (var i = 0; i < matches.length; i++) {
+                $.ajax({
+                    url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matches[i].id,
+                    type: 'GET',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        chatMessages = data;
+                        console.log(data);
+
+
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
         },
         error: function (data) {
             console.log(data);
         }
     });
+
 });
 
-function showMatches (matches) {
+function showMatches (matches,chatMessages) {
     for (var i = 0; i < matches.length; i++) {
         var chatBox = document.createElement("DIV");
         chatBox.setAttribute("class", "chatBox");
-        chatBox.setAttribute('data-id', i.toString());
         var chatBoxRow = document.createElement("DIV");
         chatBoxRow.setAttribute("class", "chatBoxRow")
         var image = document.createElement("IMG");
@@ -48,21 +66,18 @@ function showMatches (matches) {
         image.setAttribute("alt", "pictureOfInterest");
         var interestInfo = document.createElement("DIV");
         interestInfo.setAttribute("class", "interestInfo");
+        interestInfo.id = matches[i].id;
         var interestName = document.createElement("DIV");
         interestName.setAttribute("class", "interestUsername");
         var username = document.createElement("P");
-        username.setAttribute("class", "chatTextLeft");
+        username.setAttribute("class", "userNameToTheLeft");
         username.innerHTML = matches[i].username;
         interestName.appendChild(username);
-        var chatText = document.createElement("P");
-        chatText.setAttribute("class", "chatTextMiddle");
-        chatText.innerHTML = mockMessages[mockMessages.length - 1];
         var expandButton = document.createElement("BUTTON");
         expandButton.setAttribute("class", "expandButton")
         var downArrow = document.createElement("I");
         downArrow.setAttribute("class", "down");
         interestInfo.appendChild(interestName);
-        interestInfo.appendChild(chatText);
         chatBoxRow.appendChild(image);
         chatBoxRow.appendChild(interestInfo);
         expandButton.appendChild(downArrow);
@@ -73,38 +88,6 @@ function showMatches (matches) {
 }
 
 
-/*$('.chatBox').click(function(e) {
- console.log($(e.currentTarget).attr("data-id"));
- });*/
-/*$('div.chatBoxes').on('click', 'div.chatBox', function(e) {
- if($(e.currentTarget).attr("style") === 'height: 300px;'){
- $(e.currentTarget).animate({height: "121px"});
- var interestLastMessage = document.createElement("DIV");
- interestLastMessage.setAttribute("class","interestLastMessage");
- var chatText = document.createElement("P");
- chatText.setAttribute("class","chatText");
- chatText.innerHTML = "How you doing?";
- interestLastMessage.appendChild(chatText);
- $(this).find('.interestInfo').append(interestLastMessage);
- $(this).find('.userInputPlacement').remove();
- }else{
- $(e.currentTarget).animate({height: "300px"});
- $(this).find('.interestLastMessage').remove();
- var userInputDiv = document.createElement("DIV");
- userInputDiv.setAttribute("class","userInputPlacement");
- var userInput = document.createElement("INPUT");
- userInput.setAttribute("type","text");
- userInput.setAttribute("name","userInputField");
- userInputDiv.appendChild(userInput);
- var userSubmit = document.createElement("INPUT");
- userSubmit.setAttribute("type","submit");
- userSubmit.setAttribute("value","Send");
- userInputDiv.appendChild(userSubmit);
- $(this).find('.interestInfo').append(userInputDiv);
-
- }
-
- });*/
 
 var mockMessages = ["message1", "message2", "message3", "message4", "message5", "message6", "message7", "message8", "message9", "message10"];
 $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
