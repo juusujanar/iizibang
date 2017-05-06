@@ -43,10 +43,10 @@ $(document).ready(function () {
                         var lastMessage = chatMessages[chatMessages.length-1];
                         var chatText = document.createElement("P");
                         chatText.setAttribute("class", "chatTextMiddle");
-                        if (lastMessage.text() === "") {
+                        if (lastMessage.text === "") {
                             chatText.innerHTML = "Say Hello!";
                         } else {
-                            chatText.innerHTML = lastMessage.text();
+                            chatText.innerHTML = lastMessage.text;
                         }
                         $(searchID).append(chatText)
 
