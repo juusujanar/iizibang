@@ -29,6 +29,8 @@ connection.connect(function(err) {
 
 exports.register = function(req, res) {
 
+    console.log(req.body);
+
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
 
