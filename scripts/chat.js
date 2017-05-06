@@ -1,7 +1,7 @@
 /**
  * Created by CARDOKAMBLA on 4/30/2017.
  */
-var matches;
+//var matches;
 $(document).ready(function () {
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/loggedIn',
@@ -25,13 +25,17 @@ $(document).ready(function () {
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            matches = data;
-            console.log(matches);
+            //matches = data;
+            console.log(data);
+            showMatches(data)
         },
         error: function (data) {
             console.log(data);
         }
     });
+});
+
+function showMatches (matches) {
     for (var i = 0; i < matches.length; i++) {
         var chatBox = document.createElement("DIV");
         chatBox.setAttribute("class", "chatBox");
@@ -66,7 +70,7 @@ $(document).ready(function () {
         chatBox.appendChild(expandButton);
         document.getElementById('chatBoxes').appendChild(chatBox);
     }
-});
+}
 
 
 /*$('.chatBox').click(function(e) {
