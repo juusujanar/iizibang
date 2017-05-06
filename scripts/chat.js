@@ -1,6 +1,7 @@
 /**
  * Created by CARDOKAMBLA on 4/30/2017.
  */
+var matches;
 $(document).ready(function () {
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/loggedIn',
@@ -19,6 +20,19 @@ $(document).ready(function () {
             console.log(data);
         }
     });
+    $.ajax({
+        url: 'https://iizibang.jjdev.eu/api/successfulmatches',
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            matches = data;
+            console.log(matches);
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
+
     for (var i = 0; i < 10; i++) {
         /*<div class="chatBox">
          <div class="chatBoxRow">
