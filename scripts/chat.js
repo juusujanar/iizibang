@@ -32,50 +32,27 @@ $(document).ready(function () {
             console.log(data);
         }
     });
-
-    for (var i = 0; i < 10; i++) {
-        /*<div class="chatBox">
-         <div class="chatBoxRow">
-         <img src="../../pictures/no_pic.jpg" class="pictureOfInterest" alt="pictureOfInterest">
-         <div class="interestInfo">
-         <div class="interestName"><p class="chatText">Username</p></div>
-         <div class="interestLastMessage"><p class="chatText">How you doing?</p></div>
-         </div>
-         </div>
-         <button class="expandButton" id="btnExpand"onclick="doSomething();" /><i class="down"></i></button>
-         </div>*/
-        // <div class="chatBox">
+    for (var i = 0; i < matches.length; i++) {
         var chatBox = document.createElement("DIV");
         chatBox.setAttribute("class", "chatBox");
         chatBox.setAttribute('data-id', i.toString());
-        //chatBox.setAttribute("onClick", "openChat()");
-        //         <img src="../../pictures/no_pic.jpg" class="pictureOfInterest" alt="pictureOfInterest">
         var chatBoxRow = document.createElement("DIV");
         chatBoxRow.setAttribute("class", "chatBoxRow")
         var image = document.createElement("IMG");
         image.setAttribute("src", "../../pictures/no_pic.jpg");
         image.setAttribute("class", "pictureOfInterest");
         image.setAttribute("alt", "pictureOfInterest");
-        //         <div class="interestInfo">
         var interestInfo = document.createElement("DIV");
         interestInfo.setAttribute("class", "interestInfo");
-        //         <div class="interestName"><p class="chatText">Username</p></div>
         var interestName = document.createElement("DIV");
         interestName.setAttribute("class", "interestUsername");
         var username = document.createElement("P");
         username.setAttribute("class", "chatTextLeft");
-        username.innerHTML = "Username";
+        username.innerHTML = matches[i].username;
         interestName.appendChild(username);
-        //         <div class="interestLastMessage"><p class="chatText">How you doing?</p></div>
-        /*var messageBox = document.createElement("DIV");
-         messageBox.setAttribute("class","messageBox");*/
         var chatText = document.createElement("P");
         chatText.setAttribute("class", "chatTextMiddle");
         chatText.innerHTML = mockMessages[mockMessages.length - 1];
-        /*for (var j = 0;j<10;j++) {
-         messageBox.appendChild(chatText);
-         }*/
-
         var expandButton = document.createElement("BUTTON");
         expandButton.setAttribute("class", "expandButton")
         var downArrow = document.createElement("I");
@@ -85,16 +62,9 @@ $(document).ready(function () {
         chatBoxRow.appendChild(image);
         chatBoxRow.appendChild(interestInfo);
         expandButton.appendChild(downArrow);
-
-
         chatBox.appendChild(chatBoxRow);
         chatBox.appendChild(expandButton);
-
         document.getElementById('chatBoxes').appendChild(chatBox);
-        //     </div>
-        //     </div>
-
-
     }
 });
 
