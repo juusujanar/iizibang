@@ -5,10 +5,14 @@ var cookieParser = require('cookie-parser');
 var morgan       = require('morgan');
 //var redis        = require("redis").createClient();
 var redisStore   = require('connect-redis')(session);
+//var passport     = require('passport');
+var app          = express();
+
 var login        = require('./routes/loginroutes');
 var matchmaking  = require('./routes/matchmakingroutes');
 
-var app = express();
+//require('./config/passport')(passport); // pass passport for configuration
+
 app.use(morgan('dev')); // log requests to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(session({
@@ -26,6 +30,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
 var router = express.Router();
 
 router.get('/', function(req, res) {
