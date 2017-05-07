@@ -34,7 +34,7 @@ $(document).ready(function () {
                 (function (index) {
                     var matchID = matches[index].id;
                     $.ajax({
-                        url: 'https://iizib ang.jjdev.eu/api/chathistory?matchid='+matchID,
+                        url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
                         type: 'GET',
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
