@@ -245,7 +245,7 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                                 message.setAttribute("class", "chatTextRight");
                                             }
                                             message.innerHTML = chatMessages[k].text;
-                                            $(searchID).find(".messageBox").appendChild(message);
+                                            $(searchID).find(".messageBox").append(message);
                                         }
                                         var wtf = $(this).parent().find("div.messageBox");
                                         var height = wtf[0].scrollHeight;
