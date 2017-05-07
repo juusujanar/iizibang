@@ -66,6 +66,14 @@ $(document).ready(function () {
         }
     });
 
+    $("input.fillArea").keypress(function( event ) {
+        console.log(event);
+        if ( event.which == 13 ) {
+            console.log("Got it!");
+            console.log($(this).parent());
+            $(this).parent().find("input.submitButton").click();
+        }
+    });
 });
 
 function showMatches (matches) {
@@ -223,14 +231,6 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
     }
 });
 
-$("input.fillArea").keypress(function( event ) {
-    console.log(event);
-    if ( event.which == 13 ) {
-        console.log("Got it!");
-        console.log($(this).parent());
-        $(this).parent().find("input.submitButton").click();
-    }
-});
 $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
     var message = $(this).parent().find("input.fillArea").val();
     var matchID = $(this).parent().parent().parent().find(".interestInfo").attr("id");
@@ -289,6 +289,9 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                 var searchID = "#" + matchID;
                                 var lastMessage = chatMessages[chatMessages.length - 1];
                                 if ($(searchID).find(".chatTextMiddle").length === 0) {
+                                    if ($(searchID).find("p.chatTextMiddle").length !== 0){
+                                        $(searchID).find("p.chatTextMiddle").remove();
+                                    }
                                     //Kindlalt mesasgeBox siis
                                     if ($(searchID).find(".messageBox").children().last().text() !== lastMessage) {
                                         $(searchID).find(".messageBox").children().remove();
