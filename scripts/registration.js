@@ -155,12 +155,14 @@ $('.registration').submit(function(e) {
             success: function(data) {
                 if (data.code === 200) {
                     window.location.replace("https://iizibang.jjdev.eu/login");
+                } else {
+                    alert('Error occurred: ' + data);
                 }
                 console.log(data);
 
             },
             error: function (data) {
-                alert('Error');
+                alert('Error communicating with the API');
                 console.log(data);
             }
         });
