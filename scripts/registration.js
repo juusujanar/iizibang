@@ -134,45 +134,10 @@ function validateInterest() {
     return false;
 }
 
-// Function for gathering form data
-function getFormData(form){
-    var unindexed_array = form.serializeArray();
-    var indexed_array = {};
-
-    $.map(unindexed_array, function(n, i){
-        indexed_array[n.name] = n.value;
-    });
-
-    return indexed_array;
-}
 
 // Request to the backend
-/*$(document).ready(function() {
-
-    $('.registration').submit(function(e) {
-        if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
-        validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
-            $(this).ajaxSubmit({
-                success: function(res) {
-                    console.log(res);
-                },
-                error: function(res) {
-                    console.log(res);
-                }
-            });
-            //Very important line, it disable the page refresh.
-            return false;
-        } else {
-            e.preventDefault();
-        }
-    });
-});*/
-
 $('.registration').submit(function(e) {
     e.preventDefault();
-
-    //var formData = getFormData($("#reg-form"));
-    //console.log(formData);
 
     if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
         validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
