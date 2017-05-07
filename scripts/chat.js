@@ -213,6 +213,7 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
 });
 
 function doPoll(){
+    console.log("Data polled");
     for (var i = 0; i < matches.length; i++) {
         (function (index) {
             var matchID = matches[index].id;
