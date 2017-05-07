@@ -42,12 +42,9 @@ exports.register = function(req, res) {
         size: 1737827
     }
     */
-
-    upload(req,res,function(err) {
-        if(req.fileValidationError) {
-              return res.end(req.fileValidationError);
-        }
-    });
+    if (req.fileValidationError) {
+        return res.end(req.fileValidationError);
+    }
 
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
