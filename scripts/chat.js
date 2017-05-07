@@ -207,7 +207,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     message.innerHTML = chatMessages[k].text;
                     messageBox.appendChild(message);
                 }
-                var wtf = $(this).parent().find("div.messageBox");
+                var wtf = $(this).parent().parent().find("div.messageBox");
                 var height = wtf[0].scrollHeight;
                 console.log(wtf);
                 wtf.scrollTop(height);
