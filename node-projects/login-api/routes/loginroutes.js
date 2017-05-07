@@ -29,6 +29,26 @@ connection.connect(function(err) {
 
 exports.register = function(req, res) {
 
+    /*
+    console.log(req.file) gives us this
+    {
+        fieldname: 'picture',
+        originalname: 'DSC_0004-min.JPG',
+        encoding: '7bit',
+        mimetype: 'image/jpeg',
+        destination: '/var/www/html/iizibang/uploads/profilepics',
+        filename: '1494157961216-1479193-picture',
+        path: '/var/www/html/iizibang/uploads/profilepics/1494157961216-1479193-picture',
+        size: 1737827
+    }
+    */
+
+    upload(req,res,function(err) {
+        if(req.fileValidationError) {
+              return res.end(req.fileValidationError);
+        }
+    });
+
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
 

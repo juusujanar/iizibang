@@ -21,12 +21,17 @@ var storage = multer.diskStorage({
         cb(null, +new Date() + "-" + randomInt(1000000, 9999999) + "-" + path.extname(file.originalname));
     }
 });
-
-function randomInt (low, high) {
-    return Math.floor(Math.random() * (high - low) + low);
-}
-
-var upload = multer({ storage: storage, limits: { fileSize: 3145728 } });
+var upload = multer({
+    storage: storage,
+    limits: { fileSize: 3145728 },
+    fileFilter: function (req, file, cb) {
+        if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpeg') {
+            req.fileValidationError = 'Wrong file format, only JPEG and PNG allowed.';
+            return cb(null, false, new Error('Wrong file format, only JPEG and PNG allowed.'));
+        }
+        cb(null, true);
+    }
+});
 
 //require('./config/passport')(passport); // pass passport for configuration
 
@@ -67,3 +72,8 @@ router.post('/sendchatmessage', matchmaking.sendchatmessage);
 
 app.use('/api', router);
 app.listen(5000);
+
+// Function for generating random integer, used for file naming after upload
+function randomInt (low, high) {
+    return Math.floor(Math.random() * (high - low) + low);
+}
