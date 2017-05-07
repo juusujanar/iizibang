@@ -179,6 +179,49 @@ function sendLike(){
     });
 }
 
+(function(){
+    var poll = function(){
+        $.ajax({
+            url: 'https://iizibang.jjdev.eu/api/findmatches',
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+                if (data.firstname === undefined || data.lastname === undefined){
+                    $("#profileUsername").text("No Matches Found...");
+                    $("#name").text("Don't worry, ");
+                    $("#vanus").text("you will find someone...");
+                }else{
+                    $("#profileUsername").text(data.username);
+                    $("#name").text(data.firstname + " "+ data.lastname);
+                    $("#vanus").text(get_age(data.birthdate));
+                }
+                if(data.profile_pic == null){
+                    $("#profilePicture").attr("src","../../pictures/question-mark.gif");
+                }else{
+                    $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
+                }
+
+
+                console.log(data);
+            },
+            error: function(data) {
+                $("#profileUsername").text("No Matches Found...");
+                $("#name").text("Don't worry, ");
+                $("#vanus").text("you will find someone...");
+                $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
+            }
+        });
+
+
+    };
+
+
+    poll();
+    setInterval(function(){
+        poll();
+    }, 5000);
+})();
+
 var MILLISECONDS_IN_A_YEAR = 1000*60*60*24*365;
 function get_age(time){
     var date_array = time.split('-');
