@@ -1,7 +1,7 @@
 /**
  * Created by CARDOKAMBLA on 4/30/2017.
  */
-var matches;
+var matches = {};
 var chatMessages;
 var myAccountID;
 $(document).ready(function () {
@@ -27,12 +27,12 @@ $(document).ready(function () {
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            window.matches = data;
+            matches = data;
             console.log(data);
-            showMatches(window.matches);
-            for (var i = 0; i < window.matches.length; i++) {
+            showMatches(matches);
+            for (var i = 0; i < matches.length; i++) {
                 (function (index) {
-                    var matchID = window.matches[index].id;
+                    var matchID = matches[index].id;
                     $.ajax({
                         url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
                         type: 'GET',
@@ -213,55 +213,71 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
 });
 (function(){
     var poll = function(){
-        console.log("Data polled");
-        for (var i = 0; i < window.matches.length; i++) {
-            (function (index) {
-                var matchID = window.matches[index].id;
-                $.ajax({
-                    url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
-                    type: 'GET',
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        chatMessages = data;
-                        console.log(data);
-                        var searchID = "#"+matchID;
-                        var lastMessage = chatMessages[chatMessages.length-1];
-                        if($(searchID).find(".chatTextMiddle").length === 0){
-                            //Kindlalt mesasgeBox siis
-                            if ($(searchID).find(".messageBox").children().last().text() !== lastMessage) {
-                                $(searchID).find(".messageBox").children().remove();
-                                for (var k = 0; k < chatMessages.length; k++) {
-                                    var message = document.createElement("P");
-                                    if (chatMessages[k].sender == matchID) {
-                                        myAccountID = chatMessages[k].receiver;
-                                        message.setAttribute("class", "chatTextLeft");
-                                    } else {
-                                        message.setAttribute("class", "chatTextRight");
+        $.ajax({
+            url: 'https://iizibang.jjdev.eu/api/successfulmatches',
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                matches = data;
+                console.log("Data polled");
+                for (var i = 0; i < matches.length; i++) {
+                    (function (index) {
+                        var matchID = matches[index].id;
+                        $.ajax({
+                            url: 'https://iizibang.jjdev.eu/api/chathistory?matchid=' + matchID,
+                            type: 'GET',
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                chatMessages = data;
+                                console.log(data);
+                                var searchID = "#" + matchID;
+                                var lastMessage = chatMessages[chatMessages.length - 1];
+                                if ($(searchID).find(".chatTextMiddle").length === 0) {
+                                    //Kindlalt mesasgeBox siis
+                                    if ($(searchID).find(".messageBox").children().last().text() !== lastMessage) {
+                                        $(searchID).find(".messageBox").children().remove();
+                                        for (var k = 0; k < chatMessages.length; k++) {
+                                            var message = document.createElement("P");
+                                            if (chatMessages[k].sender == matchID) {
+                                                myAccountID = chatMessages[k].receiver;
+                                                message.setAttribute("class", "chatTextLeft");
+                                            } else {
+                                                message.setAttribute("class", "chatTextRight");
+                                            }
+                                            message.innerHTML = chatMessages[k].text;
+                                            $(searchID).find(".messageBox").appendChild(message);
+                                        }
+                                        var wtf = $(this).parent().find("div.messageBox");
+                                        var height = wtf[0].scrollHeight;
+                                        console.log(wtf);
+                                        wtf.scrollTop(height);
                                     }
-                                    message.innerHTML = chatMessages[k].text;
-                                    $(searchID).find(".messageBox").appendChild(message);
+
+                                } else {
+                                    if (lastMessage !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")) {
+                                        // Last message siis
+                                        $(searchID).find("p.chatTextMiddle").text(lastMessage);
+                                    }
+
                                 }
-                                var wtf = $(this).parent().find("div.messageBox");
-                                var height = wtf[0].scrollHeight;
-                                console.log(wtf);
-                                wtf.scrollTop(height);
+                            },
+                            error: function (data) {
+                                console.log(data);
                             }
+                        });
+                    })(i)
 
-                        }else{
-                            if (lastMessage !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")){
-                                // Last message siis
-                                $(searchID).find("p.chatTextMiddle").text(lastMessage);
-                            }
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
 
-                        }
-                    },
-                    error: function (data) {
-                        console.log(data);
-                    }
-                });
-            })(i)
-        }
-    };
+
+
+        };
+
 
     poll();
     setInterval(function(){
