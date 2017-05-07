@@ -65,7 +65,7 @@ $(document).ready(function () {
             console.log(data);
         }
     });
-    doPoll();
+    doPoll(matches);
 
 });
 
@@ -213,7 +213,7 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
     }
 });
 
-function doPoll(){
+function doPoll(matches){
     console.log("Data polled");
     for (var i = 0; i < matches.length; i++) {
         (function (index) {
