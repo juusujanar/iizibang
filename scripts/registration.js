@@ -134,67 +134,37 @@ function validateInterest() {
     return false;
 }
 
-// Function for gathering form data
-
-function getFormData(form){
-    var unindexed_array = form.serializeArray();
-    var indexed_array = {};
-
-    $.map(unindexed_array, function(n, i){
-        indexed_array[n.name] = n.value;
-    });
-
-    return indexed_array;
-}
 
 // Request to the backend
-
-$(document).ready(function() {
-
-    $('.registration').submit(function() {
-        if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
-        validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
-            alert("File is uploading...");
-            $(this).ajaxSubmit({
-
-                error: function(xhr) {
-                    console.log(xhr);
-                },
-                success: function(response) {
-                    console.log(response);
-                }
-            });
-            //Very important line, it disable the page refresh.
-            return false;
-        }
-    });
-});
-
-/*$('#registerButton').on('click', function (e) {
+$('.registration').submit(function(e) {
     e.preventDefault();
-
-    var formData = getFormData($("#reg-form"));
-    console.log(formData);
 
     if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
         validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
 
+        var data = new FormData(jQuery('.registration')[0]);
+        console.log(data);
+
         $.ajax({
             url: 'https://iizibang.jjdev.eu/api/register',
             type: 'POST',
-            contentType: "application/json; charset=utf-8",
-            data: formData,
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(data) {
                 if (data.code === 200) {
                     window.location.replace("https://iizibang.jjdev.eu/login");
+                } else {
+                    alert('Error occurred: ' + data);
                 }
                 console.log(data);
 
             },
             error: function (data) {
-                alert('Error');
+                alert('Error communicating with the API');
                 console.log(data);
             }
         });
     }
-});*/
+});
