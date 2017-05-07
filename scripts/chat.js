@@ -113,7 +113,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         $(this).find("i.up").remove();
         $(this).parent().find('div.messageBox').remove();
         $(this).parent().find("div.messageBox").removeClass('expand');
-        var matchID = $(this).parent().find(".interestInfo").id;
+        var matchID = $(this).parent().find(".interestInfo").attr("id");
         $.ajax({
             url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
             type: 'GET',
