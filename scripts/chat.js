@@ -68,14 +68,19 @@ $(document).ready(function () {
 
 });
 
-function showMatches (matches,chatMessages) {
+function showMatches (matches) {
     for (var i = 0; i < matches.length; i++) {
         var chatBox = document.createElement("DIV");
         chatBox.setAttribute("class", "chatBox");
         var chatBoxRow = document.createElement("DIV");
         chatBoxRow.setAttribute("class", "chatBoxRow")
         var image = document.createElement("IMG");
-        image.setAttribute("src", "../../pictures/no_pic.jpg");
+        if (matches.profile_pic === null) {
+            image.setAttribute("src", "../../pictures/no_pic.jpg");
+        }else{
+            image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches.profile_pic);
+        }
+
         image.setAttribute("class", "pictureOfInterest");
         image.setAttribute("alt", "pictureOfInterest");
         var interestInfo = document.createElement("DIV");
@@ -100,7 +105,42 @@ function showMatches (matches,chatMessages) {
         document.getElementById('chatBoxes').appendChild(chatBox);
     }
 }
+function addMatch(profile_pic, id, userName){
+    var chatBox = document.createElement("DIV");
+    chatBox.setAttribute("class", "chatBox");
+    var chatBoxRow = document.createElement("DIV");
+    chatBoxRow.setAttribute("class", "chatBoxRow")
+    var image = document.createElement("IMG");
+    if (profile_pic === null) {
+        image.setAttribute("src", "../../pictures/no_pic.jpg");
+    }else{
+        image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches.profile_pic);
+    }
 
+    image.setAttribute("class", "pictureOfInterest");
+    image.setAttribute("alt", "pictureOfInterest");
+    var interestInfo = document.createElement("DIV");
+    interestInfo.setAttribute("class", "interestInfo");
+    interestInfo.id = id;
+    var interestName = document.createElement("DIV");
+    interestName.setAttribute("class", "interestUsername");
+    var username = document.createElement("P");
+    username.setAttribute("class", "userNameToTheLeft");
+    username.innerHTML = userName;
+    interestName.appendChild(username);
+    var expandButton = document.createElement("BUTTON");
+    expandButton.setAttribute("class", "expandButton")
+    var downArrow = document.createElement("I");
+    downArrow.setAttribute("class", "down");
+    interestInfo.appendChild(interestName);
+    chatBoxRow.appendChild(image);
+    chatBoxRow.appendChild(interestInfo);
+    expandButton.appendChild(downArrow);
+    chatBox.appendChild(chatBoxRow);
+    chatBox.appendChild(expandButton);
+    document.getElementById('chatBoxes').appendChild(chatBox);
+
+}
 
 
 var mockMessages = ["message1", "message2", "message3", "message4", "message5", "message6", "message7", "message8", "message9", "message10"];
@@ -220,6 +260,13 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
             success: function (data) {
                 matches = data;
                 console.log("Data polled");
+                if (matches.length > $(".chatBoxes").children().length){
+                    for (var j = 0; j < matches.length; j++) {
+                        if ($("#"+matches[j].id).length === 0){
+                            addMatch(matches[j].profile_pic,matches[j].id,matches[j].username)
+                        }
+                    }
+                }
                 for (var i = 0; i < matches.length; i++) {
                     (function (index) {
                         var matchID = matches[index].id;
