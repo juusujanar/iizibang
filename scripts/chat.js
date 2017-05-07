@@ -206,11 +206,11 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     }
                     message.innerHTML = chatMessages[k].text;
                     messageBox.appendChild(message);
-                    var wtf = $(this).parent().find("div.messageBox");
-                    var height = wtf[0].scrollHeight;
-                    console.log(wtf);
-                    wtf.scrollTop(height);
                 }
+                var wtf = $(this).parent().find("div.messageBox");
+                var height = wtf[0].scrollHeight;
+                console.log(wtf);
+                wtf.scrollTop(height);
             },
             error: function (data) {
                 console.log(data);
@@ -294,10 +294,10 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                             message.innerHTML = chatMessages[k].text;
                                             $(searchID).find(".messageBox").append(message);
                                         }
-                                        var wtf = $(searchID).find(".messageBox");
+                                        /*var wtf = $(searchID).find(".messageBox");
                                         var height = wtf[0].scrollHeight;
                                         console.log(wtf);
-                                        wtf.scrollTop(height);
+                                        wtf.scrollTop(height);*/
                                     }
 
                                 } else {
