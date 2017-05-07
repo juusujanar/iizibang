@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
         cb(null, '/var/www/html/iizibang/uploads/profilepics');
     },
     filename: function (req, file, cb) {
-        cb(null, +new Date() + "_" + randomInt(1000000, 9999999) + "_profile" + file.originalname.split('.').pop());
+        cb(null, +new Date() + "_" + randomInt(1000000, 9999999) + "_profile." + file.originalname.split('.').pop());
     }
 });
 var upload = multer({
