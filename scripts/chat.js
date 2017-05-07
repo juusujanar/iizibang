@@ -254,9 +254,9 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                     }
 
                                 } else {
-                                    if (lastMessage !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")) {
+                                    if (lastMessage.text !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")) {
                                         // Last message siis
-                                        $(searchID).find("p.chatTextMiddle").text(lastMessage);
+                                        $(searchID).find("p.chatTextMiddle").text(lastMessage.text);
                                     }
 
                                 }
