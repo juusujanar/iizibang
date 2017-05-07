@@ -151,21 +151,21 @@ function getFormData(form){
 
 $(document).ready(function() {
 
-    $('.registration').submit(function() {
+    $('.registration').submit(function(e) {
         if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
         validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
-            alert("File is uploading...");
             $(this).ajaxSubmit({
-
-                error: function(xhr) {
-                    console.log(xhr);
+                success: function(res) {
+                    console.log(res);
                 },
-                success: function(response) {
-                    console.log(response);
+                error: function(res) {
+                    console.log(res);
                 }
             });
             //Very important line, it disable the page refresh.
             return false;
+        } else {
+            e.preventDefault();
         }
     });
 });
