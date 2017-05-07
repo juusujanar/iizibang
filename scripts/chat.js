@@ -27,12 +27,12 @@ $(document).ready(function () {
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            matches = data;
+            window.matches = data;
             console.log(data);
-            showMatches(matches);
-            for (var i = 0; i < matches.length; i++) {
+            showMatches(window.matches);
+            for (var i = 0; i < window.matches.length; i++) {
                 (function (index) {
-                    var matchID = matches[index].id;
+                    var matchID = window.matches[index].id;
                     $.ajax({
                         url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
                         type: 'GET',
@@ -65,7 +65,6 @@ $(document).ready(function () {
             console.log(data);
         }
     });
-    doPoll(matches);
 
 });
 
@@ -215,9 +214,9 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
 (function(){
     var poll = function(){
         console.log("Data polled");
-        for (var i = 0; i < matches.length; i++) {
+        for (var i = 0; i < window.matches.length; i++) {
             (function (index) {
-                var matchID = matches[index].id;
+                var matchID = window.matches[index].id;
                 $.ajax({
                     url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
                     type: 'GET',
@@ -269,9 +268,7 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
         poll();
     }, 5000);
 })();
-function doPoll(matches){
 
-}
 
 
 /*
