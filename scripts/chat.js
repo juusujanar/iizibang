@@ -31,31 +31,34 @@ $(document).ready(function () {
             console.log(data);
             showMatches(matches);
             for (var i = 0; i < matches.length; i++) {
-                var matchID = matches[i].id;
-                $.ajax({
-                    url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
-                    type: 'GET',
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        chatMessages = data;
-                        console.log(data);
-                        var searchID = "#"+matchID;
-                        var lastMessage = chatMessages[chatMessages.length-1];
-                        var chatText = document.createElement("P");
-                        chatText.setAttribute("class", "chatTextMiddle");
-                        if (data.length <= 0) {
-                            chatText.innerHTML = "Say Hello!";
-                        } else {
-                            chatText.innerHTML = lastMessage.text;
+                (function (index) {
+                    var matchID = matches[index].id;
+                    $.ajax({
+                        url: 'https://iizib ang.jjdev.eu/api/chathistory?matchid='+matchID,
+                        type: 'GET',
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            chatMessages = data;
+                            console.log(data);
+                            var searchID = "#"+matchID;
+                            var lastMessage = chatMessages[chatMessages.length-1];
+                            var chatText = document.createElement("P");
+                            chatText.setAttribute("class", "chatTextMiddle");
+                            if (data.length <= 0) {
+                                chatText.innerHTML = "Say Hello!";
+                            } else {
+                                chatText.innerHTML = lastMessage.text;
+                            }
+                            $(searchID).append(chatText)
+
+
+                        },
+                        error: function (data) {
+                            console.log(data);
                         }
-                        $(searchID).append(chatText)
+                    });
+                })(i)
 
-
-                    },
-                    error: function (data) {
-                        console.log(data);
-                    }
-                });
             }
         },
         error: function (data) {
