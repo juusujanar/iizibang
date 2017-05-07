@@ -221,7 +221,11 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
 
     }
 });
-
+$("input.fillArea").keyup(function(event){
+    if(event.keyCode == 13){
+        $(this).parent().find("input.submitButton").click();
+    }
+});
 $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
     var message = $(this).parent().find("input.fillArea").val();
     var matchID = $(this).parent().parent().parent().find(".interestInfo").attr("id");
