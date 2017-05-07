@@ -33,7 +33,7 @@ $( document ).ready(function() {
             if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
-                $("#profilePicture").attr("src",data.profile_pic);
+                $("#profilePicture").attr("src","http://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
             console.log(data);
         },
@@ -71,7 +71,7 @@ function sendDislike(){
             if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
-                $("#profilePicture").attr("src",data.profile_pic);
+                $("#profilePicture").attr("src","http://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
             console.log(data);
         },
@@ -94,7 +94,7 @@ function sendDislike(){
             if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
-                $("#profilePicture").attr("src",data.profile_pic);
+                $("#profilePicture").attr("src","http://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
             console.log(data);
         },
@@ -122,7 +122,7 @@ function sendLike(){
             if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
-                $("#profilePicture").attr("src",data.profile_pic);
+                $("#profilePicture").attr("src","http://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
 
 
@@ -146,7 +146,7 @@ function sendLike(){
             if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
-                $("#profilePicture").attr("src",data.profile_pic);
+                $("#profilePicture").attr("src","http://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
 
 
