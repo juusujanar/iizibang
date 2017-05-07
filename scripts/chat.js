@@ -223,7 +223,10 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
 });
 
 $("input.fillArea").keypress(function( event ) {
+    console.log(event);
     if ( event.which == 13 ) {
+        console.log("Got it!");
+        console.log($(this).parent());
         $(this).parent().find("input.submitButton").click();
     }
 });
