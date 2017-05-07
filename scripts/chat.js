@@ -113,40 +113,24 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         $(this).find("i.up").remove();
         $(this).parent().find('div.messageBox').remove();
         $(this).parent().find("div.messageBox").removeClass('expand');
+        var matchID = $(this).parent().find(".interestInfo").id;
         $.ajax({
-            url: 'https://iizibang.jjdev.eu/api/successfulmatches',
+            url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
             type: 'GET',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                matches = data;
+                chatMessages = data;
                 console.log(data);
-                for (var i = 0; i < matches.length; i++) {
-                    var matchID = matches[i].id;
-                    $.ajax({
-                        url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
-                        type: 'GET',
-                        contentType: "application/json; charset=utf-8",
-                        success: function (data) {
-                            chatMessages = data;
-                            console.log(data);
-                            var searchID = "#"+matchID;
-                            var lastMessage = chatMessages[chatMessages.length-1];
-                            var chatText = document.createElement("P");
-                            chatText.setAttribute("class", "chatTextMiddle");
-                            if (data.length <= 0) {
-                                chatText.innerHTML = "Say Hello!";
-                            } else {
-                                chatText.innerHTML = lastMessage.text;
-                            }
-                            $(searchID).append(chatText)
-
-
-                        },
-                        error: function (data) {
-                            console.log(data);
-                        }
-                    });
+                var searchID = "#"+matchID;
+                var lastMessage = chatMessages[chatMessages.length-1];
+                var chatText = document.createElement("P");
+                chatText.setAttribute("class", "chatTextMiddle");
+                if (data.length <= 0) {
+                    chatText.innerHTML = "Say Hello!";
+                } else {
+                    chatText.innerHTML = lastMessage.text;
                 }
+                $(this).parent().find(searchID).append(chatText);
             },
             error: function (data) {
                 console.log(data);
