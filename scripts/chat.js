@@ -116,6 +116,9 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         $(this).parent().find('.userInputPlacement').remove();
         var lastMessageP = document.createElement("P");
         lastMessageP.setAttribute("class","chatTextMiddle");
+        if(lastMessage === "" ||lastMessage === undefined || lastMessage == undefined){
+            lastMessageP.innerHTML = "Say Hello!";
+        }
         lastMessageP.innerHTML = lastMessage;
         $(this).parent().find('.interestInfo').append(lastMessageP);
     }
