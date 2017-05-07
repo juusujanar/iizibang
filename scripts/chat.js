@@ -159,6 +159,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInputDiv.appendChild(userSubmit);
         var messageBox = document.createElement("DIV");
         messageBox.setAttribute("class", "messageBox");
+        $(this).parent().find('.interestInfo').append(messageBox);
         var matchID = $(this).parent().find(".interestInfo").attr("id");
         $.ajax({
             url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
@@ -179,7 +180,6 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     message.innerHTML = chatMessages[k].text;
                     messageBox.appendChild(message);
                 }
-                $(this).parent().find('.interestInfo').append(messageBox);
                 $(this).parent().find('.interestInfo').append(userInputDiv);
                 var wtf = $(this).parent().find("div.messageBox");
                 var height = wtf[0].scrollHeight;
