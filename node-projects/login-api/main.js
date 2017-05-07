@@ -11,15 +11,14 @@ var app          = express();
 var login        = require('./routes/loginroutes');
 var matchmaking  = require('./routes/matchmakingroutes');
 
-var multer       = require('multer');
-
-// Multer configuration
+// Multer configuration, needed for picture upload
+var multer  = require('multer');
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, '/var/www/html/iizibang/uploads/profilepics');
     },
     filename: function (req, file, cb) {
-        cb(null, +new Date() + "-" + randomInt(1000000, 9999999) + "-" + file.fieldname);
+        cb(null, +new Date() + "-" + randomInt(1000000, 9999999) + "-" + path.extname(file.originalname));
     }
 });
 

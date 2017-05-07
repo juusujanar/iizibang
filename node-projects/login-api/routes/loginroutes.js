@@ -29,10 +29,6 @@ connection.connect(function(err) {
 
 exports.register = function(req, res) {
 
-    console.log(req.file);
-
-    var filename = "test";
-
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
 
@@ -47,7 +43,7 @@ exports.register = function(req, res) {
             });
 
             connection.query('INSERT INTO users (username, profile_pic, firstname, lastname, birthdate, email, password_hash, gender, interest) VALUES (?,?,?,?,?,?,?,?,?)',
-                [req.body.username, filename, req.body.firstname, req.body.lastname, req.body.birthdate, req.body.email, hash, req.body.gender, req.body.interest],
+                [req.body.username, req.file.filename, req.body.firstname, req.body.lastname, req.body.birthdate, req.body.email, hash, req.body.gender, req.body.interest],
                 function(error, results, fields) {
 
                     if (error) {
