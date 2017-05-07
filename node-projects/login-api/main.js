@@ -16,7 +16,7 @@ var multer       = require('multer');
 // Multer configuration
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '/tmp/my-uploads');
+        cb(null, '/var/www/html/iizibang/uploads/profilepics');
     },
     filename: function (req, file, cb) {
         cb(null, +new Date() + "-" + randomInt(1000000, 9999999) + "-" + file.fieldname);
@@ -27,7 +27,7 @@ function randomInt (low, high) {
     return Math.floor(Math.random() * (high - low) + low);
 }
 
-var upload = multer({ storage: storage, limits: {fileSize: 3145728} });
+var upload = multer({ storage: storage, limits: { fileSize: 3145728 } });
 
 //require('./config/passport')(passport); // pass passport for configuration
 
