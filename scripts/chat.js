@@ -221,8 +221,9 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
 
     }
 });
-$("input.fillArea").keyup(function(event){
-    if(event.keyCode == 13){
+
+$("input.fillArea").keypress(function( event ) {
+    if ( event.which == 13 ) {
         $(this).parent().find("input.submitButton").click();
     }
 });
