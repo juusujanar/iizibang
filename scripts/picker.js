@@ -65,7 +65,7 @@ function sendDislike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            $("#profileUsername").text(data.username);
+            /*$("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
             $("#vanus").text(get_age(data.birthdate));
             if(data.profile_pic == null){
@@ -73,14 +73,14 @@ function sendDislike(){
             }else{
                 $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
-            console.log(data);
+            console.log(data);*/
         },
         error: function(data) {
-            $("#profileUsername").text("No Matches Found...");
+            /*$("#profileUsername").text("No Matches Found...");
             $("#name").text("Don't worry, ");
             $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
-            console.log(data);
+            console.log(data);*/
         }
     });
     $.ajax({
@@ -116,7 +116,7 @@ function sendLike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            $("#profileUsername").text(data.username);
+            /*$("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " "+ data.lastname);
             $("#vanus").text(get_age(data.birthdate));
             if(data.profile_pic == null){
@@ -126,13 +126,13 @@ function sendLike(){
             }
 
 
-            console.log(data.profi);
+            console.log(data);*/
         },
         error: function(data) {
-            $("#profileUsername").text("No Matches Found...");
+            /*$("#profileUsername").text("No Matches Found...");
             $("#name").text("Don't worry, ");
             $("#vanus").text("you will find someone...");
-            $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
+            $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");*/
         }
     });
     $.ajax({
@@ -150,7 +150,7 @@ function sendLike(){
             }
 
 
-            console.log(data.profi);
+            console.log(data);
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
