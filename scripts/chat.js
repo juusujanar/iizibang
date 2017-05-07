@@ -29,7 +29,7 @@ $(document).ready(function () {
         success: function (data) {
             matches = data;
             console.log(data);
-            showMatches(matches);
+            //showMatches(matches);
             for (var i = 0; i < matches.length; i++) {
                 (function (index) {
                     var matchID = matches[index].id;
