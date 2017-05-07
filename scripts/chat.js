@@ -117,7 +117,6 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
             success: function (data) {
                 matches = data;
                 console.log(data);
-                showMatches(matches);
                 for (var i = 0; i < matches.length; i++) {
                     var matchID = matches[i].id;
                     $.ajax({
