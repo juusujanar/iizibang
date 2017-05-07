@@ -479,7 +479,7 @@ h3 {
 }
 
 .iiziBangLogo {
-    paddding: 12px;
+    padding: 12px;
     margin: auto;
     opacity: 0.65;
 }
@@ -577,7 +577,6 @@ h3 {
     z-index: 2;
     border: solid 15px transparent;
     color: #1E90FF;
-    pointer-events: none;
 }
 
 .pic {
@@ -733,6 +732,4 @@ i {
     flex-direction: column;
     padding-top: 6px;
     padding-bottom: 6px;
-}
-
 }
