@@ -159,7 +159,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInputDiv.appendChild(userSubmit);
         var messageBox = document.createElement("DIV");
         messageBox.setAttribute("class", "messageBox");
-        var matchID = $("button.expandButton").parent().find(".interestInfo").attr("id");
+        var matchID = $(this).parent().find(".interestInfo").attr("id");
         $.ajax({
             url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
             type: 'GET',
@@ -180,17 +180,18 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     messageBox.appendChild(message);
                 }
                 $(this).parent().find('.interestInfo').append(messageBox);
+                $(this).parent().find('.interestInfo').append(userInputDiv);
+                var wtf = $(this).parent().find("div.messageBox");
+                var height = wtf[0].scrollHeight;
+                console.log(wtf);
+                wtf.scrollTop(height);
             },
             error: function (data) {
                 console.log(data);
             }
         });
 
-        $(this).parent().find('.interestInfo').append(userInputDiv);
-        var wtf = $(this).parent().find("div.messageBox");
-        var height = wtf[0].scrollHeight;
-        console.log(wtf);
-        wtf.scrollTop(height);
+
 
     }
 });
