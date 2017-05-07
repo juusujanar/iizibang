@@ -135,7 +135,6 @@ function validateInterest() {
 }
 
 // Function for gathering form data
-
 function getFormData(form){
     var unindexed_array = form.serializeArray();
     var indexed_array = {};
@@ -148,8 +147,7 @@ function getFormData(form){
 }
 
 // Request to the backend
-
-$(document).ready(function() {
+/*$(document).ready(function() {
 
     $('.registration').submit(function(e) {
         if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
@@ -168,22 +166,27 @@ $(document).ready(function() {
             e.preventDefault();
         }
     });
-});
+});*/
 
-/*$('#registerButton').on('click', function (e) {
+$('.registration').submit(function(e) {
     e.preventDefault();
 
-    var formData = getFormData($("#reg-form"));
-    console.log(formData);
+    //var formData = getFormData($("#reg-form"));
+    //console.log(formData);
 
     if (validateUserName() && validatePassword() && validateEmail() && validateFirstName() &&
         validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
 
+        var data = new FormData(jQuery('.registration')[0]);
+        console.log(data);
+
         $.ajax({
             url: 'https://iizibang.jjdev.eu/api/register',
             type: 'POST',
-            contentType: "application/json; charset=utf-8",
-            data: formData,
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(data) {
                 if (data.code === 200) {
                     window.location.replace("https://iizibang.jjdev.eu/login");
@@ -197,4 +200,4 @@ $(document).ready(function() {
             }
         });
     }
-});*/
+});
