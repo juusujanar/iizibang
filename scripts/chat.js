@@ -184,6 +184,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
 
 $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
     var message = $(this).parent().find("input.fillArea").val();
+    var matchID = $(this).parent().parent().find(".interestInfo").attr("id");
     if (message !== "") {
         $(this).parent().find("input.fillArea").val("");
         //console.log(message);
@@ -192,6 +193,18 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
         chatText.innerHTML = message;
         console.log(chatText.innerHTML);
         $(this).parent().parent().find("div.messageBox").append(chatText);
+        $.ajax({
+            url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid='+matchID+"&textmessage="+message,
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+                console.log(data);
+            },
+            error: function (data) {
+                alert('Error');
+                console.log(data);
+            }
+        });
         var wtf = $(this).parent().parent().find("div.messageBox");
         var height = wtf[0].scrollHeight;
         wtf.scrollTop(height);
