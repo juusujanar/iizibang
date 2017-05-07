@@ -172,9 +172,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                 var searchID = "#"+matchID;
                 for (var k = 0; k < chatMessages.length; k++) {
                     var message = document.createElement("P");
-                    console.log(chatMessages[k].sender === matchID);
-                    console.log(chatMessages[k].sender == matchID);
-                    if (chatMessages[k].sender === matchID) {
+                    if (chatMessages[k].sender == matchID) {
                         myAccountID = chatMessages[k].receiver;
                         message.setAttribute("class", "chatTextLeft");
                     } else {
