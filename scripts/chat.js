@@ -113,30 +113,11 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         $(this).find("i.up").remove();
         $(this).parent().find('div.messageBox').remove();
         $(this).parent().find("div.messageBox").removeClass('expand');
-        /*var matchID = $("button.expandButton").parent().find(".interestInfo").attr("id");
-        $.ajax({
-            url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
-            type: 'GET',
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                chatMessages = data;
-                console.log(data);
-                var searchID = "#"+matchID;
-                var lastMessage = chatMessages[chatMessages.length-1];
-                var chatText = document.createElement("P");
-                chatText.setAttribute("class", "chatTextMiddle");
-                if (data.length <= 0) {
-                    chatText.innerHTML = "Say Hello!";
-                } else {
-                    chatText.innerHTML = lastMessage.text;
-                }
-                $(this).parent().find(searchID).append(chatText);
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });*/
         $(this).parent().find('.userInputPlacement').remove();
+        var lastMessageP = document.createElement("P");
+        lastMessageP.setAttribute("class","chatTextMiddle");
+        lastMessageP.innerHTML = lastMessage;
+        $(this).parent().find('.interestInfo').append(lastMessageP);
     }
     else {
         $(this).parent().addClass('expand');
