@@ -7,11 +7,11 @@ var connection = mysql.createConnection({
 });
 
 var MATCHFIND_SQL = [
-"SELECT *"
-, "FROM users"
-, "WHERE users.id != ? AND NOT EXISTS (SELECT * FROM match_choice WHERE player1 = ? AND player2 = users.id)"
-, "ORDER BY RAND()"
-, "LIMIT 1"
+"SELECT *",
+"FROM users",
+"WHERE users.id != ? AND NOT EXISTS (SELECT * FROM match_choice WHERE player1 = ? AND player2 = users.id)",
+"ORDER BY RAND()",
+"LIMIT 1"
 ].join(" ");
 
 findMatchInDatabase = function(req) {
@@ -23,7 +23,7 @@ findMatchInDatabase = function(req) {
         console.log(results);
         req.session.match = results[0];
     });
-} 
+};
 
 exports.findmatch = function(req, res) {
     req.session.match = null; // remove to stop refresh changing match
@@ -38,7 +38,7 @@ exports.findmatch = function(req, res) {
         });
     } else {
         res.send(req.session.match);
-        return; 
+        return;
     }
 };
 
@@ -71,7 +71,7 @@ exports.acceptmatch = function(req, res) {
             } else {
                 res.send("You like "  + req.session.match.username);
             }
-        });        
+        });
     });
 };
 
@@ -81,15 +81,15 @@ exports.rejectmatch = function(req, res) {
             console.log(error);
             res.send(null);
         }
-        res.send("You don't like "  + req.session.match.username); 
+        res.send("You don't like "  + req.session.match.username);
     });
 };
 
 var SUCCESSFUL_MATCHES_USERS_SQL = [
-"SELECT users.*"
-, "FROM users JOIN successful_matches ON (users.id = successful_matches.player1 OR users.id = successful_matches.player2)"
-, "WHERE (player1 = ? AND users.id = player2) OR (player2 = ? AND users.id = player1)"
-, "ORDER BY timestamp"
+"SELECT users.*",
+"FROM users JOIN successful_matches ON (users.id = successful_matches.player1 OR users.id = successful_matches.player2)",
+"WHERE (player1 = ? AND users.id = player2) OR (player2 = ? AND users.id = player1)",
+"ORDER BY timestamp"
 ].join(" ");
 
 exports.getsuccessfulmatches = function(req, res) {
@@ -98,26 +98,26 @@ exports.getsuccessfulmatches = function(req, res) {
             console.log(error);
             res.send(null);
         }
-        res.send(results); 
+        res.send(results);
     });
 };
 
 var CHAT_HISTORY_SQL = [
-"SELECT *"
-, "FROM chat_msgs"
-, "WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?)"
-, "ORDER BY timestamp"
+"SELECT *",
+"FROM chat_msgs",
+"WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?)",
+"ORDER BY timestamp"
 ].join(" ");
 
 exports.getchathistory = function(req, res) {
-    console.log(req);
+    //console.log(req);
     connection.query(CHAT_HISTORY_SQL, [req.session.userdata.id, req.query.matchid, req.query.matchid, req.session.userdata.id], function(error, results, fields) {
         if (error) {
             console.log(error);
             res.send(null);
         }
         console.log(results);
-        res.send(results); 
+        res.send(results);
     });
 };
 
@@ -129,6 +129,6 @@ exports.sendchatmessage = function(req, res) {
             console.log(error);
             res.send("Server error.");
         }
-        res.send("Message sent."); 
+        res.send("Message sent.");
     });
 };
