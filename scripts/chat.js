@@ -124,7 +124,7 @@ function addMatch(profile_pic, id, userName){
     if (profile_pic === null) {
         image.setAttribute("src", "../../pictures/no_pic.jpg");
     }else{
-        image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches.profile_pic);
+        image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+profile_pic);
     }
 
     image.setAttribute("class", "pictureOfInterest");
