@@ -199,10 +199,10 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     console.log(chatText.innerHTML);
                     $(this).parent().parent().find("div.messageBox").append(chatText);
                     $.ajax({
-                        url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid='+matchID+"&textmessage="+message,
+                        url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + matchID + "&textmessage=" + message,
                         type: 'POST',
                         contentType: "application/json; charset=utf-8",
-                        success: function(data) {
+                        success: function (data) {
                             console.log(data);
                         },
                         error: function (data) {
@@ -213,6 +213,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     var wtf = $(this).parent().parent().find("div.messageBox");
                     var height = wtf[0].scrollHeight;
                     wtf.scrollTop(height);
+                }
             }
         });
         userInput.setAttribute("size", "1");
