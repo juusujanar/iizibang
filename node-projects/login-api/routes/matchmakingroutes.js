@@ -58,9 +58,9 @@ exports.acceptmatch = function(req, res) {
                 res.send(null);
             }
             console.log(results);
-            if (results[0] != null)
+            if (results[0] !== null)
                 console.log(results[0].player1_agreed);
-            if (results[0] != null && results[0].player1_agreed) {
+            if (results[0] !== null && results[0].player1_agreed) {
                 connection.query(INSERT_SUCCESSFUL_MATCH, [req.session.userdata.id, req.session.match.id], function(error, results, fields) {
                     if (error) {
                         console.log(error);
