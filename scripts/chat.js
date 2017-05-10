@@ -86,6 +86,8 @@ function showMatches (matches) {
         if (matches[i].profile_pic === null) {
             image.setAttribute("src", "../../pictures/no_pic.jpg");
         }else{
+            console.log(matches[i].profile_pic);
+            console.log(matches.profile_pic);
             image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches[i].profile_pic);
         }
 
