@@ -188,7 +188,31 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInput.setAttribute("name", "userInputField");
         userInput.addEventListener('keypress',function(e){
             if (e.keyCode === 13){
-                console.log("Enter pressed!");
+                var message = $(this).val();
+                var matchID = $(this).parent().parent().find(".interestInfo").attr("id");
+                if (message !== "") {
+                    $(this).parent().find("input.fillArea").val("");
+                    //console.log(message);
+                    var chatText = document.createElement("P");
+                    chatText.setAttribute("class", "chatTextRight");
+                    chatText.innerHTML = message;
+                    console.log(chatText.innerHTML);
+                    $(this).parent().parent().find("div.messageBox").append(chatText);
+                    $.ajax({
+                        url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid='+matchID+"&textmessage="+message,
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        success: function(data) {
+                            console.log(data);
+                        },
+                        error: function (data) {
+                            alert('Error');
+                            console.log(data);
+                        }
+                    });
+                    var wtf = $(this).parent().parent().find("div.messageBox");
+                    var height = wtf[0].scrollHeight;
+                    wtf.scrollTop(height);
             }
         });
         userInput.setAttribute("size", "1");
