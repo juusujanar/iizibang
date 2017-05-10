@@ -83,7 +83,7 @@ function showMatches (matches) {
         var chatBoxRow = document.createElement("DIV");
         chatBoxRow.setAttribute("class", "chatBoxRow")
         var image = document.createElement("IMG");
-        if (matches.profile_pic === null) {
+        if (matches[i].profile_pic === null) {
             image.setAttribute("src", "../../pictures/no_pic.jpg");
         }else{
             image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches[i].profile_pic);
