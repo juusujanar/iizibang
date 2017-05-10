@@ -23,15 +23,16 @@ body, html {
 .firstBackground {
     background-color: whitesmoke;
     height: 100%;
-    background-color: whitesmoke;
+
 
 }
 
 .firstBackgroundMatchmaker{
+    background-color: whitesmoke;
     position: relative;
-    opacity: 0.65;
     background-position: center;
     background-size: cover;
+    min-height: 100%;
 }
 
 .firstBackgroundContact {
