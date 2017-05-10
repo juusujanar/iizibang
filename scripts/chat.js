@@ -295,9 +295,9 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                         $(searchID).find("p.chatTextMiddle").remove();
                                     }
                                     //Kindlalt mesasgeBox siis
-                                    if ($(searchID).find(".messageBox").children().last().text() !== lastMessage) {
-                                        $(searchID).find(".messageBox").children().remove();
-                                        for (var k = 0; k < chatMessages.length; k++) {
+                                    //if ($(searchID).find(".messageBox").children().last().text() !== lastMessage) {
+
+                                        for (var k = $(searchID).find(".messageBox").children().length; k < chatMessages.length; k++) {
                                             var message = document.createElement("P");
                                             if (chatMessages[k].sender == matchID) {
                                                 myAccountID = chatMessages[k].receiver;
@@ -307,12 +307,12 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                             }
                                             message.innerHTML = chatMessages[k].text;
                                             $(searchID).find(".messageBox").append(message);
+
+                                            /*var wtf = $(searchID).find(".messageBox");
+                                             var height = wtf[0].scrollHeight;
+                                             console.log(wtf);
+                                             wtf.scrollTop(height);*/
                                         }
-                                        /*var wtf = $(searchID).find(".messageBox");
-                                        var height = wtf[0].scrollHeight;
-                                        console.log(wtf);
-                                        wtf.scrollTop(height);*/
-                                    }
 
                                 } else {
                                     if (lastMessage.text !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")) {
