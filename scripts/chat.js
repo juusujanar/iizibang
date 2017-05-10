@@ -86,7 +86,7 @@ function showMatches (matches) {
         if (matches.profile_pic === null) {
             image.setAttribute("src", "../../pictures/no_pic.jpg");
         }else{
-            image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches.profile_pic);
+            image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches[i].profile_pic);
         }
 
         image.setAttribute("class", "pictureOfInterest");

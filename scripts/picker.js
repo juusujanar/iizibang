@@ -27,13 +27,13 @@ $( document ).ready(function() {
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            if (data.firstname === undefined || data.lastname === undefined){
+            if (data.firstname === undefined){
                 $("#profileUsername").text("No Matches Found...");
                 $("#name").text("Don't worry, ");
                 $("#vanus").text("you will find someone...");
             }else{
                 $("#profileUsername").text(data.username);
-                $("#name").text(data.firstname + " "+ data.lastname);
+                $("#name").text(data.firstname + " ");
                 $("#vanus").text(get_age(data.birthdate));
             }
             if(data.profile_pic == null){
@@ -72,7 +72,7 @@ function sendDislike(){
         contentType: "application/json; charset=utf-8",
         success: function(data) {
             /*$("#profileUsername").text(data.username);
-            $("#name").text(data.firstname + " "+ data.lastname);
+            $("#name").text(data.firstname + " ");
             $("#vanus").text(get_age(data.birthdate));
             if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
@@ -94,13 +94,13 @@ function sendDislike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            if (data.firstname === undefined || data.lastname === undefined){
+            if (data.firstname === undefined){
                 $("#profileUsername").text("No Matches Found...");
                 $("#name").text("Don't worry, ");
                 $("#vanus").text("you will find someone...");
             }else{
                 $("#profileUsername").text(data.username);
-                $("#name").text(data.firstname + " "+ data.lastname);
+                $("#name").text(data.firstname + " ");
                 $("#vanus").text(get_age(data.birthdate));
             }
             if(data.profile_pic == null){
@@ -129,7 +129,7 @@ function sendLike(){
         contentType: "application/json; charset=utf-8",
         success: function(data) {
             /*$("#profileUsername").text(data.username);
-            $("#name").text(data.firstname + " "+ data.lastname);
+            $("#name").text(data.firstname + " ");
             $("#vanus").text(get_age(data.birthdate));
             if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
@@ -152,13 +152,13 @@ function sendLike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            if (data.firstname === undefined || data.lastname === undefined){
+            if (data.firstname === undefined){
                 $("#profileUsername").text("No Matches Found...");
                 $("#name").text("Don't worry, ");
                 $("#vanus").text("you will find someone...");
             }else{
                 $("#profileUsername").text(data.username);
-                $("#name").text(data.firstname + " "+ data.lastname);
+                $("#name").text(data.firstname + " ");
                 $("#vanus").text(get_age(data.birthdate));
             }
             if(data.profile_pic == null){
@@ -186,13 +186,13 @@ function sendLike(){
             type: 'GET',
             contentType: "application/json; charset=utf-8",
             success: function(data) {
-                if (data.firstname === undefined || data.lastname === undefined){
+                if (data.firstname === undefined){
                     $("#profileUsername").text("No Matches Found...");
                     $("#name").text("Don't worry, ");
                     $("#vanus").text("you will find someone...");
                 }else{
                     $("#profileUsername").text(data.username);
-                    $("#name").text(data.firstname + " "+ data.lastname);
+                    $("#name").text(data.firstname + " ");
                     $("#vanus").text(get_age(data.birthdate));
                 }
                 if(data.profile_pic == null){
