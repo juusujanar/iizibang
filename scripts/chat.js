@@ -186,6 +186,11 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInput.setAttribute("type", "text");
         userInput.setAttribute("class", "fillArea");
         userInput.setAttribute("name", "userInputField");
+        userInput.addEventListener('keypress',function(e){
+            if (e.keyCode === 13){
+                console.log("Enter pressed!");
+            }
+        });
         userInput.setAttribute("size", "1");
         userInputDiv.appendChild(userInput);
         var userSubmit = document.createElement("INPUT");
