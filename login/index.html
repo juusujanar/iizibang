@@ -17,33 +17,35 @@
 </head>
 
 <body>
+    <div class="firstBackground">
+        <form id="login-form" class="registration-container" method="post">
+            <div class="registration">
+                <img src="../pictures/iiZiBangLogo.png" alt="logo" onclick="sendHome()">
+                <h3>Your Account</h3>
 
-    <form id="login-form" class="registration-container" method="post">
-        <div class="registration">
-            <img src="../pictures/iiZiBangLogo.png" alt="logo" onclick="sendHome()">
-            <h3>Your Account</h3>
+                <div class="login-input-container">
+                    <input class="login-input" type="text" placeholder="Username or E-mail" name="email"/>
+                </div>
 
-            <div class="login-input-container">
-                <input class="login-input" type="text" placeholder="Username or E-mail" name="email"/>
+                <div class="login-input-container">
+                    <input class="login-input" type="password" placeholder="Password" name="password"/>
+                </div>
+
+                <div class="forgot-password"> <h3 class="forgot-password-text">Forgot your password?</h3>
+                    <a href="../recovery/index.html" class="forgot-password-text" >Click here!</a>
+                </div>
+
+                <!--Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/-->
+                <div class="login-input-container">
+                    <input type="submit" class="ghost-buttonLogIn" value="Log in" id="loginButton"/>
+                    <!--<a href="#" class="ghost-buttonLogIn" id="loginButton">Log In</a>-->
+                </div>
+
+
             </div>
+        </form>
+    </div>
 
-            <div class="login-input-container">
-                <input class="login-input" type="password" placeholder="Password" name="password"/>
-            </div>
-
-            <div class="forgot-password"> <h3 class="forgot-password-text">Forgot your password?</h3>
-                <a href="../recovery/index.html" class="forgot-password-text" >Click here!</a>
-            </div>
-
-            <!--Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/-->
-            <div class="login-input-container">
-                <input type="submit" class="ghost-buttonLogIn" value="Log in" id="loginButton"/>
-                <!--<a href="#" class="ghost-buttonLogIn" id="loginButton">Log In</a>-->
-            </div>
-
-
-        </div>
-    </form>
 
 
    <!-- <div class="signInWithGoogle">
