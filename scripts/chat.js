@@ -81,7 +81,7 @@ function showMatches (matches) {
         var chatBox = document.createElement("DIV");
         chatBox.setAttribute("class", "chatBox");
         var chatBoxRow = document.createElement("DIV");
-        chatBoxRow.setAttribute("class", "chatBoxRow")
+        chatBoxRow.setAttribute("class", "chatBoxRow");
         var image = document.createElement("IMG");
         if (matches[i].profile_pic === null) {
             image.setAttribute("src", "../../pictures/no_pic.jpg");
@@ -103,7 +103,7 @@ function showMatches (matches) {
         username.innerHTML = matches[i].username;
         interestName.appendChild(username);
         var expandButton = document.createElement("BUTTON");
-        expandButton.setAttribute("class", "expandButton")
+        expandButton.setAttribute("class", "expandButton");
         var downArrow = document.createElement("I");
         downArrow.setAttribute("class", "down");
         interestInfo.appendChild(interestName);
@@ -117,10 +117,11 @@ function showMatches (matches) {
 }
 function addMatch(profile_pic, id, userName){
     var chatBoxWithRemove = document.createElement("DIV");
+    chatBoxWithRemove.setAttribute("class","chatBoxWithRemoveButton");
     var chatBox = document.createElement("DIV");
     chatBox.setAttribute("class", "chatBox");
     var chatBoxRow = document.createElement("DIV");
-    chatBoxRow.setAttribute("class", "chatBoxRow")
+    chatBoxRow.setAttribute("class", "chatBoxRow");
     var image = document.createElement("IMG");
     if (profile_pic === null) {
         image.setAttribute("src", "../../pictures/no_pic.jpg");
@@ -140,7 +141,7 @@ function addMatch(profile_pic, id, userName){
     username.innerHTML = userName;
     interestName.appendChild(username);
     var expandButton = document.createElement("BUTTON");
-    expandButton.setAttribute("class", "expandButton")
+    expandButton.setAttribute("class", "expandButton");
     var downArrow = document.createElement("I");
     downArrow.setAttribute("class", "down");
     interestInfo.appendChild(interestName);
@@ -149,7 +150,6 @@ function addMatch(profile_pic, id, userName){
     expandButton.appendChild(downArrow);
     chatBox.appendChild(chatBoxRow);
     chatBox.appendChild(expandButton);
-
     var removeButton = document.createElement("DIV");
     removeButton.setAttribute("class","deleteButton");
     var removeX = document.createElement("H3");
