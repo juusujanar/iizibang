@@ -42,6 +42,16 @@ exports.findmatch = function(req, res) {
     }
 };
 
+exports.removesuccessfulmatch = function(req, res) {
+    connection.query("DELETE FROM successful_matches WHERE (player1 = ? AND player2 = ?) OR (player1 = ? AND player2 = ?)", [req.session.userdata.id, req.query.matchid,req.query.matchid, req.session.userdata.id], function(error, results, fields) {
+        if (error) {
+            console.log(error);
+            res.send("Server error.");
+        }
+        res.send("Match deleted");
+    });
+};
+
 var INSERT_MATCH_DECISION_SQL = "INSERT INTO match_choice (player1, player2, player1_agreed) VALUES (?, ?, ?)";
 var MATCH_CHOICE_QUERY = "SELECT player1_agreed FROM match_choice WHERE player1 = ? AND player2 = ?";
 var INSERT_SUCCESSFUL_MATCH = "INSERT INTO successful_matches (player1, player2, timestamp) VALUES (?, ?, NOW() )";

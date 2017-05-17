@@ -70,6 +70,7 @@ router.get('/rejectmatch', matchmaking.rejectmatch);
 router.get('/successfulmatches', matchmaking.getsuccessfulmatches);
 router.get('/chathistory', matchmaking.getchathistory);
 router.post('/sendchatmessage', matchmaking.sendchatmessage);
+router.post('/removesuccessfulmatch', matchmaking.removesuccessfulmatch);
 
 app.use('/api', router);
 app.listen(5000);
