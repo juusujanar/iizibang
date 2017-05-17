@@ -156,7 +156,10 @@ function addMatch(profile_pic, id, userName){
     removeX.innerHTML="X";
     removeX.addEventListener('click',function (e) {
         var matchID = $(this).parent().parent().find(".interestInfo").attr("id");
-        $.ajax({
+        console.log($(this).parent().parent().parent());
+        console.log($(this).parent().parent());
+        console.log($(this).parent());
+        /*$.ajax({
             url: 'https://iizibang.jjdev.eu/api/removesuccessfulmatch?matchid=' + matchID,
             type: 'POST',
             contentType: "application/json; charset=utf-8",
@@ -168,7 +171,7 @@ function addMatch(profile_pic, id, userName){
                 alert('Error');
                 console.log(data);
             }
-        });
+        });*/
     });
     removeButton.appendChild(removeX);
     chatBoxWithRemove.appendChild(chatBox);
