@@ -56,6 +56,7 @@ app.use(function(req, res, next) {
 var router = express.Router();
 
 router.post('/register', upload.single('picture'), login.register);
+router.post('/changepicture', upload.single('picture'), login.changepicture);
 router.post('/login', login.login);
 router.post('/logout', login.logout);
 router.get('/loggedIn', login.loggedIn);
