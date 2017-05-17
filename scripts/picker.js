@@ -71,6 +71,7 @@ function sendDislike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
+            findNewMatch();
             /*$("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " ");
             $("#vanus").text(get_age(data.birthdate));
@@ -89,35 +90,7 @@ function sendDislike(){
             console.log(data);*/
         }
     });
-    $.ajax({
-        url: 'https://iizibang.jjdev.eu/api/findmatches',
-        type: 'GET',
-        contentType: "application/json; charset=utf-8",
-        success: function(data) {
-            if (data.firstname === undefined){
-                $("#profileUsername").text("No Matches Found...");
-                $("#name").text("Don't worry, ");
-                $("#vanus").text("you will find someone...");
-            }else{
-                $("#profileUsername").text(data.username);
-                $("#name").text(data.firstname + " ");
-                $("#vanus").text(get_age(data.birthdate));
-            }
-            if(data.profile_pic == null){
-                $("#profilePicture").attr("src","../../pictures/question-mark.gif");
-            }else{
-                $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
-            }
-            console.log(data);
-        },
-        error: function(data) {
-            $("#profileUsername").text("No Matches Found...");
-            $("#name").text("Don't worry, ");
-            $("#vanus").text("you will find someone...");
-            $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
-            console.log(data);
-        }
-    });
+
 }
 
 function sendLike(){
@@ -128,6 +101,7 @@ function sendLike(){
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
+            findNewMatch();
             /*$("#profileUsername").text(data.username);
             $("#name").text(data.firstname + " ");
             $("#vanus").text(get_age(data.birthdate));
@@ -147,6 +121,10 @@ function sendLike(){
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");*/
         }
     });
+
+}
+
+function findNewMatch(){
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/findmatches',
         type: 'GET',
@@ -182,36 +160,7 @@ function sendLike(){
 (function(){
     var poll = function(){
         if ($("#profileUsername").text() === "No Matches Found..."){
-            $.ajax({
-                url: 'https://iizibang.jjdev.eu/api/findmatches',
-                type: 'GET',
-                contentType: "application/json; charset=utf-8",
-                success: function(data) {
-                    if (data.firstname === undefined){
-                        $("#profileUsername").text("No Matches Found...");
-                        $("#name").text("Don't worry, ");
-                        $("#vanus").text("you will find someone...");
-                    }else{
-                        $("#profileUsername").text(data.username);
-                        $("#name").text(data.firstname + " ");
-                        $("#vanus").text(get_age(data.birthdate));
-                    }
-                    if(data.profile_pic == null){
-                        $("#profilePicture").attr("src","../../pictures/question-mark.gif");
-                    }else{
-                        $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
-                    }
-
-
-                    console.log(data);
-                },
-                error: function(data) {
-                    $("#profileUsername").text("No Matches Found...");
-                    $("#name").text("Don't worry, ");
-                    $("#vanus").text("you will find someone...");
-                    $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
-                }
-            });
+            findNewMatch();
         }
     };
 
