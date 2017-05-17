@@ -156,9 +156,7 @@ function addMatch(profile_pic, id, userName){
     removeX.innerHTML="X";
     removeX.addEventListener('click',function (e) {
         var matchID = $(this).parent().parent().find(".interestInfo").attr("id");
-        console.log($(this).parent().parent().parent());
-        console.log($(this).parent().parent());
-        console.log($(this).parent());
+        $(this).parent().parent().remove();
         /*$.ajax({
             url: 'https://iizibang.jjdev.eu/api/removesuccessfulmatch?matchid=' + matchID,
             type: 'POST',
