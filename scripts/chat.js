@@ -89,6 +89,8 @@ function addMatch(profile_pic, id, userName){
     image.setAttribute("class", "pictureOfInterest");
     image.setAttribute("alt", "pictureOfInterest");
     var interestInfo = document.createElement("DIV");
+    var lastMessageP = document.createElement("P");
+    lastMessageP.setAttribute("class","chatTextMiddle");
     interestInfo.setAttribute("class", "interestInfo");
     interestInfo.id = id;
     var interestName = document.createElement("DIV");
@@ -102,6 +104,7 @@ function addMatch(profile_pic, id, userName){
     var downArrow = document.createElement("I");
     downArrow.setAttribute("class", "down");
     interestInfo.appendChild(interestName);
+    interestInfo.appendChild(lastMessageP);
     chatBoxRow.appendChild(image);
     chatBoxRow.appendChild(interestInfo);
     expandButton.appendChild(downArrow);
