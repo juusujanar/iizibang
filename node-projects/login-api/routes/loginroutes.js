@@ -133,24 +133,7 @@ exports.totalUsers = function(req, res){
 };
 
 exports.getMe = function(req, res){
-    connection.query('SELECT username,firstname,lastname,profile_pic FROM users where id = ?',[req.session.userdata.id], function (error, results, fields) {
-        if (error) {
-            console.log("Error while getting login info from DB: ", error);
-            res.send({
-                "code": 400,
-                "Error": "Could not receive data from database."
-            });
-            return;
-        } else {
-            /*res.send({
-                "code": 200,
-                "username": results[0][0],
-                "name": results[0][1] + " " + results[0][2],
-                "profile_pic": results[0][3]
-            });*/
-            res.send(results[0]);
-        }
-    });
+    res.send(req.session.userdata);
 };
 
 exports.loggedIn = function(req, res) {
