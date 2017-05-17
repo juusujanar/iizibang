@@ -348,8 +348,7 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                     if (lastMessage.text !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")) {
                                         // Last message siis
                                         $(searchID).find("p.chatTextMiddle").text(lastMessage.text);
-                                    }
-                                    if ($(searchID).find("p.chatTextMiddle").text() === ""){
+                                    }else{
                                         $(searchID).find("p.chatTextMiddle").text("Say Hello!");
                                     }
 
