@@ -19,7 +19,32 @@ $(document).ready(function() {
             }
             console.log(data);
         }
+    });
+
+    $.ajax({
+        url: 'https://iizibang.jjdev.eu/api/getMe',
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $("#myUsername").text(data.username);
+            $("#myName").text(data.name);
+            if(data.profile_pic == null){
+                $("#profilePicture").attr("src","../../pictures/question-mark.gif");
+            }else{
+                $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
+            }
+            console.log(data);
+
+        },
+        error: function (data) {
+            $("#myUsername").text("Could not connect");
+            $("#myName").text("To the database");
+            $("#profilePicture").attr("src","../../pictures/iiZiBangLogo.png");
+
+            console.log(data);
+        }
     })
+
 
 });
 
