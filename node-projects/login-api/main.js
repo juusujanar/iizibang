@@ -61,6 +61,7 @@ router.post('/logout', login.logout);
 router.get('/loggedIn', login.loggedIn);
 
 router.get('/totalUsers', login.totalUsers);
+router.get('/getMe', login.getMe);
 
 router.get('/findmatches', matchmaking.findmatch);
 router.get('/acceptmatch', matchmaking.acceptmatch);
