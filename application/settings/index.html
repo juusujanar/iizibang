@@ -17,7 +17,7 @@
 
 
     <!-- Parallex effect studied from W3Schools-->
-    <div class="firstBackground">
+    <div class="firstBackgroundSettings">
 
         <div class="columnizeEverything">
             <!--&lt;!&ndash;Refrence on how to make ghost buttons: http://sixrevisions.com/css/ghost-buttons/&ndash;&gt;-->
@@ -29,7 +29,7 @@
             <!--</div>-->
 
             <!-- upper bar -->
-            <div class="upperBar">
+            <div class="upperBarSettings">
                 <div class="chatOption"><a href="../chat/index.html" class="noUnderline"><h3 class="upperBarElement">CHAT</h3></a></div>
                 <div class="matchMakerOption"><a href="../picker/index.html" class="noUnderline"><h3 class="upperBarElement">MATCHMAKER</h3></a></div>
                 <div class="settingsOption"><a href="../settings/index.html" class="noUnderline"><h3 class="upperBarElement">SETTINGS</h3></a></div>
@@ -37,10 +37,15 @@
 
             <!-- place for all the data needed -->
             <div class="profile">
-                <div class="viewProfile"><button class="padded">View my profile</button></div>
-                <div class="viewProfile"><button class="padded">Change my profile</button></div>
-                <div class="viewProfile"><button class="padded">Change sexual orientation</button></div>
-                <div class="viewProfile"><button class="padded">Change age range</button></div>
+                <div class="myProfile">
+                    <h3 id="myUsername" class="myUsername"> My Username</h3>
+                    <h3 id="myName" class="myName">Firstname Lastname</h3>
+                    <div class="picLogoWithMaxWidth"><img id="profilePicture" src="../../pictures/iiZiBangLogo.png" alt="profilePic" class="userProfilePic" ></div>
+                    <h3 id="changePicture" class="changePicture" onclick="changePicture()">Change profile picture</h3>
+
+
+                </div>
+
                 <div class="viewProfile"><button class="padded" id="logout">Log out</button></div>
             </div>
 

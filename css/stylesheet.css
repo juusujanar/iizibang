@@ -27,7 +27,7 @@ body, html {
 
 }
 
-.firstBackgroundMatchmaker{
+.firstBackgroundMatchmaker,.firstBackgroundSettings{
     background-color: whitesmoke;
     position: relative;
     background-position: center;
@@ -386,7 +386,7 @@ h3 {
     border: 3px rgba(0, 0, 0, 1) solid;
     width: 100%;
 }
-.upperBarMatchmaker, .upperBarChat {
+.upperBarMatchmaker, .upperBarChat ,.upperBarSettings{
     opacity:0.65;
     display: flex;
     flex-direction: row;
@@ -535,6 +535,11 @@ h3 {
     height: auto;
 }
 
+.picLogoWithMaxWidth{
+    max-width: 480px;
+    height: auto;
+}
+
 .userProfilePic {
     max-width: 100%;
     max-height: 100%;
@@ -557,6 +562,7 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items:center;
 }
 
 .viewProfile {
@@ -564,8 +570,24 @@ h3 {
     justify-content: center;
     padding: 10px;
 }
+.myProfile {
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    padding: 10px;
+    margin-top:12px;
+}
+.myUsername,.myName,.changePicture{
+    margin: 10px auto 10px auto;
+    opacity:0.65;
+}
+.changePicture{
+    border: 3px rgba(0, 0, 0, 1) solid;
+    padding: 5px;
+}
 
 .padded {
+    opacity:0.65;
     padding-left: 20px;
     padding-right: 20px;
     letter-spacing: 5px;
