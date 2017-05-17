@@ -297,6 +297,7 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                         var noResultsFound = document.createElement("H3");
                         noResultsFound.innerHTML = "No matches ... yet!";
                         noResultsFound.id = "noResults";
+                        noResultsFound.setAttribute("class","noResultsFound");
                         document.getElementById('chatBoxes').appendChild(noResultsFound);
                     }
                 }else{
