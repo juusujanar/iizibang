@@ -21,6 +21,11 @@ $(document).ready(function() {
         }
     });
 
+    loadElements();
+
+
+});
+function loadElements(){
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/getMe',
         type: 'GET',
@@ -44,10 +49,7 @@ $(document).ready(function() {
             console.log(data);
         }
     })
-
-
-});
-
+}
 
 $("#logout").click(function() {
     $.ajax({
@@ -78,7 +80,7 @@ $("#change-picture-form").submit(function(e) {
             processData: false,
             success: function(data) {
                 console.log(data);
-                location.reload();
+                loadElements();
 
             },
             error: function (data) {
