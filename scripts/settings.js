@@ -69,7 +69,7 @@ $("#change-picture-form").submit(function(e) {
         console.log(data);
 
         $.ajax({
-            url: 'https://iizibang.jjdev.eu/api/register',
+            url: 'https://iizibang.jjdev.eu/api/changepicture',
             type: 'POST',
             data: data,
             cache: false,
