@@ -162,7 +162,7 @@ function addMatch(profile_pic, id, userName){
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 console.log(data);
-                $(this).parent().parent().remove();
+                $(this).parent().parent().parent().remove();
             },
             error: function (data) {
                 alert('Error');
