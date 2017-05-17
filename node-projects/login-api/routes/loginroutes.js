@@ -148,8 +148,7 @@ exports.getMe = function(req, res){
                 "name": results[0][1] + " " + results[0][2],
                 "profile_pic": results[0][3]
             });*/
-            req.session.match = results[0];
-            res.send(req.session.match);
+            res.send(results[0]);
         }
     });
 };
