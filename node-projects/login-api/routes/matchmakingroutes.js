@@ -15,6 +15,14 @@ var MATCHFIND_SQL = [
 ].join(" ");
 
 findMatchInDatabase = function(req) {
+    if (!req.session.userdata) {
+        res.send({
+            "code": 500,
+            "Error": "Not logged in."
+        });
+        return;
+    }
+    
     connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
         if (error) {
             console.log(error);
@@ -26,12 +34,21 @@ findMatchInDatabase = function(req) {
 };
 
 exports.findmatch = function(req, res) {
+    if (!req.session.userdata) {
+        res.send({
+            "code": 500,
+            "Error": "Not logged in."
+        });
+        return;
+    }
+    
     req.session.match = null; // remove to stop refresh changing match
     if (!req.session.match) {
         connection.query(MATCHFIND_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
             if (error) {
                 console.log(error);
                 res.send(null);
+                return;
             }
             req.session.match = results[0];
             res.send(req.session.match);
@@ -57,15 +74,32 @@ var MATCH_CHOICE_QUERY = "SELECT player1_agreed FROM match_choice WHERE player1 
 var INSERT_SUCCESSFUL_MATCH = "INSERT INTO successful_matches (player1, player2, timestamp) VALUES (?, ?, NOW() )";
 
 exports.acceptmatch = function(req, res) {
+    if (!req.session.userdata) {
+        res.send({
+            "code": 500,
+            "Error": "Not logged in."
+        });
+        return;
+    }
+    if (!req.session.match) {
+        res.send({
+            "code": 600,
+            "Error": "No active match."
+        });
+        return;
+    }
+    
     connection.query(INSERT_MATCH_DECISION_SQL, [req.session.userdata.id, req.session.match.id, true], function(error, results, fields) {
         if (error) {
             console.log(error);
             res.send(null);
+            return;
         }
         connection.query(MATCH_CHOICE_QUERY, [req.session.match.id, req.session.userdata.id], function(error, results, fields) {
             if (error) {
                 console.log(error);
                 res.send(null);
+                return;
             }
             console.log(results);
             if (results[0] !== null)
@@ -75,6 +109,7 @@ exports.acceptmatch = function(req, res) {
                     if (error) {
                         console.log(error);
                         res.send(null);
+                        return;
                     }
                     res.send("Successfully matched with " + req.session.match.username);
                 });
@@ -86,10 +121,26 @@ exports.acceptmatch = function(req, res) {
 };
 
 exports.rejectmatch = function(req, res) {
+    if (!req.session.userdata) {
+        res.send({
+            "code": 500,
+            "Error": "Not logged in."
+        });
+        return;
+    }
+    if (!req.session.match) {
+        res.send({
+            "code": 600,
+            "Error": "No active match."
+        });
+        return;
+    }
+    
     connection.query(INSERT_MATCH_DECISION_SQL, [req.session.userdata.id, req.session.match.id, false], function(error, results, fields) {
         if (error) {
             console.log(error);
             res.send(null);
+            return;
         }
         res.send("You don't like "  + req.session.match.username);
     });
@@ -103,10 +154,18 @@ var SUCCESSFUL_MATCHES_USERS_SQL = [
 ].join(" ");
 
 exports.getsuccessfulmatches = function(req, res) {
+    if (!req.session.userdata) {
+        res.send({
+            "code": 500,
+            "Error": "Not logged in."
+        });
+        return;
+    }
     connection.query(SUCCESSFUL_MATCHES_USERS_SQL, [req.session.userdata.id, req.session.userdata.id], function(error, results, fields) {
         if (error) {
             console.log(error);
             res.send(null);
+            return;
         }
         res.send(results);
     });
@@ -120,11 +179,19 @@ var CHAT_HISTORY_SQL = [
 ].join(" ");
 
 exports.getchathistory = function(req, res) {
+    if (!req.session.userdata) {
+        res.send({
+            "code": 500,
+            "Error": "Not logged in."
+        });
+        return;
+    }
     //console.log(req);
     connection.query(CHAT_HISTORY_SQL, [req.session.userdata.id, req.query.matchid, req.query.matchid, req.session.userdata.id], function(error, results, fields) {
         if (error) {
             console.log(error);
             res.send(null);
+            return;
         }
         console.log(results);
         res.send(results);
@@ -134,6 +201,14 @@ exports.getchathistory = function(req, res) {
 var INSERT_CHAT_MESSAGE_SQL = "INSERT INTO chat_msgs (sender, receiver, text, timestamp) VALUES (?, ?, ?, NOW())";
 
 exports.sendchatmessage = function(req, res) {
+    if (!req.session.userdata) {
+        res.send({
+            "code": 500,
+            "Error": "Not logged in."
+        });
+        return;
+    }
+    
     connection.query(INSERT_CHAT_MESSAGE_SQL, [req.session.userdata.id, req.query.matchid, req.query.textmessage], function(error, results, fields) {
         if (error) {
             console.log(error);

@@ -94,6 +94,14 @@ exports.login = function(req, res) {
             });
             return;
         } else {
+            if (!results[0]) {
+                res.send({
+                    "code": 400,
+                    "failed": "User login failed.",
+                });
+                return;
+            }
+            
             bcrypt.compare(req.body.password, results[0].password_hash, function(err, result) {
                 if (result) {
                     // saves login to session store
