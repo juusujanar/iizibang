@@ -142,12 +142,14 @@ exports.getMe = function(req, res){
             });
             return;
         } else {
-            res.send({
+            /*res.send({
                 "code": 200,
                 "username": results[0][0],
                 "name": results[0][1] + " " + results[0][2],
                 "profile_pic": results[0][3]
-            });
+            });*/
+            req.session.match = results[0];
+            res.send(req.session.match);
         }
     });
 };
