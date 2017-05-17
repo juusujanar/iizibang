@@ -64,6 +64,3 @@ $("#logout").click(function() {
     });
 });
 
-function changePicture() {
-    
-}

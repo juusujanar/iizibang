@@ -41,7 +41,13 @@
                     <h3 id="myUsername" class="myUsername"> My Username</h3>
                     <h3 id="myName" class="myName">Firstname Lastname</h3>
                     <div class="picLogoWithMaxWidth"><img id="profilePicture" src="../../pictures/iiZiBangLogo.png" alt="profilePic" class="userProfilePic" ></div>
-                    <h3 id="changePicture" class="changePicture" onclick="changePicture()">Change profile picture</h3>
+                    <h3 id="changePicture" class="changePicture">Change profile picture</h3>
+                    <form name="change-picture-form" id="change-picture-form" method="post" enctype="multipart/form-data" action="/api/TBD" >
+                        <input class="changePicture" type="file" id="picture" name="picture" />
+                        <input class="changePicture" type="submit" id="pictureChangeSubmit" name="pictureSubmit" value="Upload"/>
+                    </form>
+
+
 
 
                 </div>
