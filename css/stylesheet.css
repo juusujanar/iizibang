@@ -543,11 +543,11 @@ h3 {
 }
 
 .userProfilePic {
-    max-height: 100%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    max-width:480px;
+    max-height:480px;
 }
 
 .profilePic {
