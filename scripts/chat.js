@@ -155,7 +155,22 @@ function addMatch(profile_pic, id, userName){
     var removeX = document.createElement("H3");
     removeX.innerHTML="X";
     removeX.addEventListener('click',function (e) {
-        console.log("Clicked X");
+        var matchID = $(this).parent().parent().find(".interestInfo").attr("id");
+        console.log(matchID + " #1");
+        console.log($(this).parent().find(".interestInfo").attr("id") + " #2");
+        /*$.ajax({
+            url: 'https://iizibang.jjdev.eu/api/removesuccessfulmatch?matchid=' + matchID,
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+                //$(this).parent().parent().remove();
+            },
+            error: function (data) {
+                alert('Error');
+                console.log(data);
+            }
+        });*/
     });
     removeButton.appendChild(removeX);
     chatBoxWithRemove.appendChild(chatBox);
