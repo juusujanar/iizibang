@@ -319,13 +319,16 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                 chatMessages = data;
                                 console.log(data);
                                 var searchID = "#" + matchID;
-                                var lastMessage = chatMessages[chatMessages.length - 1];
-                                if ($(searchID).find(".chatTextMiddle").length === 0) {
-                                    if ($(searchID).find("p.chatTextMiddle").length !== 0){
-                                        $(searchID).find("p.chatTextMiddle").remove();
-                                    }
-                                    //Kindlalt mesasgeBox siis
-                                    //if ($(searchID).find(".messageBox").children().last().text() !== lastMessage) {
+                                if (chatMessages.length == 0){
+                                    $(searchID).find("p.chatTextMiddle").text("Say Hello!");
+                                }else{
+                                    var lastMessage = chatMessages[chatMessages.length - 1];
+                                    if ($(searchID).find(".chatTextMiddle").length === 0) {
+                                        if ($(searchID).find("p.chatTextMiddle").length !== 0){
+                                            $(searchID).find("p.chatTextMiddle").remove();
+                                        }
+                                        //Kindlalt mesasgeBox siis
+                                        //if ($(searchID).find(".messageBox").children().last().text() !== lastMessage) {
 
                                         for (var k = $(searchID).find(".messageBox").children().length; k < chatMessages.length; k++) {
                                             var message = document.createElement("P");
@@ -344,15 +347,15 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                              wtf.scrollTop(height);*/
                                         }
 
-                                } else {
-                                    if (lastMessage.text !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")) {
-                                        // Last message siis
-                                        $(searchID).find("p.chatTextMiddle").text(lastMessage.text);
-                                    }else{
-                                        $(searchID).find("p.chatTextMiddle").text("Say Hello!");
-                                    }
+                                    } else {
+                                        if (lastMessage.text !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")) {
+                                            // Last message siis
+                                            $(searchID).find("p.chatTextMiddle").text(lastMessage.text);
+                                        }
 
+                                    }
                                 }
+
                             },
                             error: function (data) {
                                 console.log(data);
