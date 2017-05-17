@@ -27,28 +27,7 @@ connection.connect(function(err) {
     }
 });
 
-exports.changepicture = function(req,res){
-    if (req.fileValidationError) {
-        return res.end(req.fileValidationError);
-    }
-    connection.query('UPDATE users SET profile_pic = ? WHERE id = ?;',
-        [req.file.filename, req.session.userdata.id],
-        function(error, results, fields) {
-            if (error) {
-                console.log("Error when uploading to the database: ", error);
-                res.send({
-                    "code": 400,
-                    "failed": "Error when uploading a photo to the database!"
-                });
-                return;
-            } else {
-                res.send({
-                    "code": 200,
-                    "success": "Picture successfully uploaded",
-                });
-            }
-        });
-};
+
 
 exports.register = function(req, res) {
 
@@ -171,6 +150,28 @@ exports.loggedIn = function(req, res) {
             "loggedIn": false
         });
     }
+};
+exports.changepicture = function(req,res){
+    if (req.fileValidationError) {
+        return res.end(req.fileValidationError);
+    }
+    connection.query('UPDATE users SET profile_pic = ? WHERE id = ?;',
+        [req.file.filename, req.session.userdata.id],
+        function(error, results, fields) {
+            if (error) {
+                console.log("Error when uploading to the database: ", error);
+                res.send({
+                    "code": 400,
+                    "failed": "Error when uploading a photo to the database!"
+                });
+                return;
+            } else {
+                res.send({
+                    "code": 200,
+                    "success": "Picture successfully uploaded",
+                });
+            }
+        });
 };
 
 exports.logout = function(req, res) {
