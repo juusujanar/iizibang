@@ -145,8 +145,8 @@ exports.getMe = function(req, res){
             res.send({
                 "code": 200,
                 "username": results[0][0],
-                "name": results[1][0] + " " + results[2][0],
-                "profile_pic": results[3][0]
+                "name": results[0][1] + " " + results[0][2],
+                "profile_pic": results[0][3]
             });
         }
     });
