@@ -181,7 +181,7 @@ function sendLike(){
 
 (function(){
     var poll = function(){
-        if ($("#profileUsername").text()=== "No Matches Found..."){
+        if ($("#profileUsername").text() === "No Matches Found..."){
             $.ajax({
                 url: 'https://iizibang.jjdev.eu/api/findmatches',
                 type: 'GET',
