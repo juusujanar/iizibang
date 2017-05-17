@@ -27,7 +27,7 @@ $(document).ready(function() {
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             $("#myUsername").text(data.username);
-            $("#myName").text(data.name);
+            $("#myName").text(data.firstname + " " + data.lastname);
             if(data.profile_pic == null){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
