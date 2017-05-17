@@ -156,20 +156,20 @@ function addMatch(profile_pic, id, userName){
     removeX.innerHTML="X";
     removeX.addEventListener('click',function (e) {
         var matchID = $(this).parent().parent().find(".interestInfo").attr("id");
-        $(this).parent().parent().remove();
-        /*$.ajax({
+        $.ajax({
             url: 'https://iizibang.jjdev.eu/api/removesuccessfulmatch?matchid=' + matchID,
             type: 'POST',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
+                $(this).parent().parent().remove();
                 console.log(data);
-                $(this).parent().parent().parent().remove();
             },
             error: function (data) {
                 alert('Error');
                 console.log(data);
             }
-        });*/
+        });
+
     });
     removeButton.appendChild(removeX);
     chatBoxWithRemove.appendChild(chatBox);
