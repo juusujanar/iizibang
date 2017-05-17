@@ -65,6 +65,7 @@ $("#logout").click(function() {
 });
 
 $("#change-picture-form").submit(function(e) {
+    e.preventDefault();
         var data = new FormData(jQuery('#change-picture-form')[0]);
         console.log(data);
 
