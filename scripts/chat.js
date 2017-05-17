@@ -161,7 +161,7 @@ function addMatch(profile_pic, id, userName){
             type: 'POST',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                $(this).parent().parent().remove();
+
                 console.log(data);
             },
             error: function (data) {
@@ -169,6 +169,7 @@ function addMatch(profile_pic, id, userName){
                 console.log(data);
             }
         });
+        $(this).parent().parent().remove();
 
     });
     removeButton.appendChild(removeX);
