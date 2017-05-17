@@ -166,6 +166,7 @@ exports.changepicture = function(req,res){
                 });
                 return;
             } else {
+                req.session.userdata.profile = req.file.filename;
                 res.send({
                     "code": 200,
                     "success": "Picture successfully uploaded",
