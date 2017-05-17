@@ -538,6 +538,7 @@ h3 {
 
 .picLogoWithMaxWidth{
     max-width: 480px;
+    max-height:480px;
     height: auto;
 }
 
