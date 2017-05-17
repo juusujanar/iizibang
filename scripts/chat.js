@@ -22,49 +22,6 @@ $(document).ready(function () {
             console.log(data);
         }
     });
-    $.ajax({
-        url: 'https://iizibang.jjdev.eu/api/successfulmatches',
-        type: 'GET',
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            matches = data;
-            console.log(data);
-            //showMatches(matches);
-            for (var i = 0; i < matches.length; i++) {
-                (function (index) {
-                    var matchID = matches[index].id;
-                    $.ajax({
-                        url: 'https://iizibang.jjdev.eu/api/chathistory?matchid='+matchID,
-                        type: 'GET',
-                        contentType: "application/json; charset=utf-8",
-                        success: function (data) {
-                            chatMessages = data;
-                            console.log(data);
-                            var searchID = "#"+matchID;
-                            var lastMessage = chatMessages[chatMessages.length-1];
-                            var chatText = document.createElement("P");
-                            chatText.setAttribute("class", "chatTextMiddle");
-                            if (data.length <= 0) {
-                                chatText.innerHTML = "Say Hello!";
-                            } else {
-                                chatText.innerHTML = lastMessage.text;
-                            }
-                            $(searchID).append(chatText)
-
-
-                        },
-                        error: function (data) {
-                            console.log(data);
-                        }
-                    });
-                })(i)
-
-            }
-        },
-        error: function (data) {
-            console.log(data);
-        }
-    });
 
     $("input.fillArea").keypress(function( event ) {
         console.log(event);
@@ -333,6 +290,18 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                         if ($("#"+matches[j].id).length === 0){
                             addMatch(matches[j].profile_pic,matches[j].id,matches[j].username)
                         }
+                    }
+                }
+                if (matches.length === 0){
+                    if ($("#noResults").length == 0) {
+                        var noResultsFound = document.createElement("H3");
+                        noResultsFound.innerHTML = "No matches ... yet!";
+                        noResultsFound.id = "noResults";
+                        document.getElementById('chatBoxes').appendChild(noResultsFound);
+                    }
+                }else{
+                    if ($("#noResults").length != 0){
+                        $("#noResults").remove();
                     }
                 }
                 for (var i = 0; i < matches.length; i++) {
