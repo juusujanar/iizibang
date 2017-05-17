@@ -347,10 +347,10 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                                 } else {
                                     if (lastMessage.text !== $(searchID).find("p.chatTextMiddle").text() && !(lastMessage === "" || lastMessage == "")) {
                                         // Last message siis
-                                        if ($(searchID).find("p.chatTextMiddle").text() === ""){
-                                            $(searchID).find("p.chatTextMiddle").text("Say Hello!");
-                                        }
                                         $(searchID).find("p.chatTextMiddle").text(lastMessage.text);
+                                    }
+                                    if ($(searchID).find("p.chatTextMiddle").text() === ""){
+                                        $(searchID).find("p.chatTextMiddle").text("Say Hello!");
                                     }
 
                                 }
