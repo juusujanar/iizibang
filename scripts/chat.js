@@ -116,6 +116,7 @@ function showMatches (matches) {
     }
 }
 function addMatch(profile_pic, id, userName){
+    var chatBoxWithRemove = document.createElement("DIV");
     var chatBox = document.createElement("DIV");
     chatBox.setAttribute("class", "chatBox");
     var chatBoxRow = document.createElement("DIV");
@@ -148,7 +149,18 @@ function addMatch(profile_pic, id, userName){
     expandButton.appendChild(downArrow);
     chatBox.appendChild(chatBoxRow);
     chatBox.appendChild(expandButton);
-    document.getElementById('chatBoxes').appendChild(chatBox);
+
+    var removeButton = document.createElement("DIV");
+    removeButton.setAttribute("class","deleteButton");
+    var removeX = document.createElement("H3");
+    removeX.innerHTML="X";
+    removeX.addEventListener('click',function (e) {
+        console.log("Clicked X");
+    });
+    removeButton.appendChild(removeX);
+    chatBoxWithRemove.appendChild(chatBox);
+    chatBoxWithRemove.appendChild(removeButton);
+    document.getElementById('chatBoxes').appendChild(chatBoxWithRemove);
 
 }
 

@@ -653,7 +653,15 @@ h3 {
     padding: 20px;
     margin: 10px auto;
 }
-
+.chatBoxWithRemoveButton{
+    display: flex;
+    flex-direction: row;
+}
+.deleteButton{
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
 .chatBox {
     max-width: 500px;
     height:121px;
