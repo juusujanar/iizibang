@@ -10,7 +10,6 @@ $( document ).ready(function() {
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            console.log(data);
             if(data.loggedIn === false){
                 sendToLogin();
             }
@@ -19,7 +18,6 @@ $( document ).ready(function() {
             if(data.loggedIn === false){
                 sendToLogin();
             }
-            console.log(data);
         }
     });
     $.ajax({
@@ -41,14 +39,12 @@ $( document ).ready(function() {
             }else{
                 $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
-            console.log(data);
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");
             $("#name").text("Don't worry, ");
             $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
-            console.log(data);
         }
     });
 
@@ -64,7 +60,6 @@ $( document ).ready(function() {
 
 
 function sendDislike(){
-    console.log("Dislike button clicked");
     $("#profilePicture").attr("src","../../pictures/loading.gif");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/rejectmatch',
@@ -79,22 +74,21 @@ function sendDislike(){
                 $("#profilePicture").attr("src","../../pictures/question-mark.gif");
             }else{
                 $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
-            }
-            console.log(data);*/
+            }*/
         },
         error: function(data) {
             /*$("#profileUsername").text("No Matches Found...");
             $("#name").text("Don't worry, ");
             $("#vanus").text("you will find someone...");
             $("#profilePicture").attr("src","../../pictures/iiziBangLogo.png");
-            console.log(data);*/
+            */
         }
     });
 
 }
 
 function sendLike(){
-    console.log("Like button clicked");
+
     $("#profilePicture").attr("src","../../pictures/loading.gif");
     $.ajax({
         url: 'https://iizibang.jjdev.eu/api/acceptmatch',
@@ -112,7 +106,7 @@ function sendLike(){
             }
 
 
-            console.log(data);*/
+            */
         },
         error: function(data) {
             /*$("#profileUsername").text("No Matches Found...");
@@ -144,9 +138,6 @@ function findNewMatch(){
             }else{
                 $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
-
-
-            console.log(data);
         },
         error: function(data) {
             $("#profileUsername").text("No Matches Found...");

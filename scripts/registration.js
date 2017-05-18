@@ -143,7 +143,6 @@ $('.registration').submit(function(e) {
         validateLastName() && validateBirthDate() && validateGender() && validateInterest()) {
 
         var data = new FormData(jQuery('.registration')[0]);
-        console.log(data);
 
         $.ajax({
             url: 'https://iizibang.jjdev.eu/api/register',
@@ -158,12 +157,10 @@ $('.registration').submit(function(e) {
                 } else {
                     alert('Error occurred: ' + data);
                 }
-                console.log(data);
 
             },
             error: function (data) {
                 alert('Error communicating with the API');
-                console.log(data);
             }
         });
     }

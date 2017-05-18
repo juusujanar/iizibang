@@ -8,7 +8,6 @@ $(document).ready(function() {
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            console.log(data);
             if (data.loggedIn === false) {
                 sendToLogin();
             }
@@ -17,7 +16,6 @@ $(document).ready(function() {
             if (data.loggedIn === false) {
                 sendToLogin();
             }
-            console.log(data);
         }
     });
 
@@ -38,15 +36,12 @@ function loadElements(){
             }else{
                 $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
-            console.log(data);
 
         },
         error: function (data) {
             $("#myUsername").text("Could not connect");
             $("#myName").text("To the database");
             $("#profilePicture").attr("src","../../pictures/iiZiBangLogo.png");
-
-            console.log(data);
         }
     })
 }
@@ -56,11 +51,9 @@ $("#logout").click(function() {
         url : "https://iizibang.jjdev.eu/api/logout",
         method : "POST",
         success : function(data) {
-            console.log("clicked");
             window.location.replace("https://iizibang.jjdev.eu/");
         },
         error : function(data) {
-            console.log(data);
             alert("Error");
         }
     });
@@ -69,7 +62,7 @@ $("#logout").click(function() {
 $("#change-picture-form").submit(function(e) {
     e.preventDefault();
         var data = new FormData(jQuery('#change-picture-form')[0]);
-        console.log(data);
+
 
         $.ajax({
             url: 'https://iizibang.jjdev.eu/api/changepicture',
@@ -79,13 +72,11 @@ $("#change-picture-form").submit(function(e) {
             contentType: false,
             processData: false,
             success: function(data) {
-                console.log(data);
                 loadElements();
 
             },
             error: function (data) {
                 alert('Error communicating with the API');
-                console.log(data);
             }
         });
 

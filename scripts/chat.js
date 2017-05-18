@@ -10,7 +10,6 @@ $(document).ready(function () {
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            console.log(data);
             if (data.loggedIn === false) {
                 sendToLogin();
             }
@@ -19,15 +18,11 @@ $(document).ready(function () {
             if (data.loggedIn === false) {
                 sendToLogin();
             }
-            console.log(data);
         }
     });
 
     $("input.fillArea").keypress(function( event ) {
-        console.log(event);
         if ( event.which == 13 ) {
-            console.log("Got it!");
-            console.log($(this).parent());
             $(this).parent().find("input.submitButton").click();
         }
     });
@@ -43,8 +38,6 @@ function showMatches (matches) {
         if (matches[i].profile_pic === null) {
             image.setAttribute("src", "../../pictures/no_pic.jpg");
         }else{
-            console.log(matches[i].profile_pic);
-            console.log(matches.profile_pic);
             image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches[i].profile_pic);
         }
 
@@ -121,12 +114,9 @@ function addMatch(profile_pic, id, userName){
             type: 'POST',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-
-                console.log(data);
             },
             error: function (data) {
                 alert('Error');
-                console.log(data);
             }
         });
         $(this).parent().parent().remove();
@@ -179,22 +169,18 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                 var matchID = $(this).parent().parent().find(".interestInfo").attr("id");
                 if (message !== "") {
                     $(this).parent().find("input.fillArea").val("");
-                    //console.log(message);
                     var chatText = document.createElement("P");
                     chatText.setAttribute("class", "chatTextRight");
                     chatText.innerHTML = message;
-                    console.log(chatText.innerHTML);
                     $(this).parent().parent().find("div.messageBox").append(chatText);
                     $.ajax({
                         url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + matchID + "&textmessage=" + message,
                         type: 'POST',
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
-                            console.log(data);
                         },
                         error: function (data) {
                             alert('Error');
-                            console.log(data);
                         }
                     });
                     var wtf = $(this).parent().parent().find("div.messageBox");
@@ -222,7 +208,6 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 chatMessages = data;
-                console.log(data);
                 var searchID = "#"+matchID;
                 for (var k = 0; k < chatMessages.length; k++) {
                     var message = document.createElement("P");
@@ -237,11 +222,9 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                 }
                 var wtf = $(_this).parent().find("div.messageBox");
                 var height = wtf[0].scrollHeight;
-                console.log(wtf);
                 wtf.scrollTop(height);
             },
             error: function (data) {
-                console.log(data);
             }
         });
 
@@ -255,28 +238,23 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
     var matchID = $(this).parent().parent().parent().find(".interestInfo").attr("id");
     if (message !== "") {
         $(this).parent().find("input.fillArea").val("");
-        //console.log(message);
         var chatText = document.createElement("P");
         chatText.setAttribute("class", "chatTextRight");
         chatText.innerHTML = message;
-        console.log(chatText.innerHTML);
         $(this).parent().parent().find("div.messageBox").append(chatText);
         $.ajax({
             url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid='+matchID+"&textmessage="+message,
             type: 'POST',
             contentType: "application/json; charset=utf-8",
             success: function(data) {
-                console.log(data);
             },
             error: function (data) {
                 alert('Error');
-                console.log(data);
             }
         });
         var wtf = $(this).parent().parent().find("div.messageBox");
         var height = wtf[0].scrollHeight;
         wtf.scrollTop(height);
-        //    console.log($(this).parent().parent().find('div.interestLastMessage')[0].scrollHeight);
     }
 });
 (function(){
@@ -287,7 +265,6 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 matches = data;
-                console.log("Data polled");
                 if (matches.length > $(".chatBoxes").children().length){
                     for (var j = 0; j < matches.length; j++) {
                         if ($("#"+matches[j].id).length === 0){
@@ -317,7 +294,6 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                             contentType: "application/json; charset=utf-8",
                             success: function (data) {
                                 chatMessages = data;
-                                console.log(data);
                                 var searchID = "#" + matchID;
                                 if (chatMessages.length == 0){
                                     $(searchID).find("p.chatTextMiddle").text("Say Hello!");
@@ -343,7 +319,7 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
 
                                             /*var wtf = $(searchID).find(".messageBox");
                                              var height = wtf[0].scrollHeight;
-                                             console.log(wtf);
+
                                              wtf.scrollTop(height);*/
                                         }
 
@@ -358,7 +334,7 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
 
                             },
                             error: function (data) {
-                                console.log(data);
+
                             }
                         });
                     })(i)
@@ -366,7 +342,6 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
                 }
             },
             error: function (data) {
-                console.log(data);
             }
         });
 
