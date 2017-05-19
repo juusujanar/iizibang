@@ -189,3 +189,20 @@ exports.logout = function(req, res) {
         "code": 200
     });
 };
+
+exports.deleteaccount = function (req,res) {
+    if (!req.session.userdata) {
+        res.send({
+            "code": 500,
+            "Error": "Not logged in."
+        });
+        return;
+    }
+    
+    connection.query('DELETE FROM users WHERE id = ?', [req.session.userdata.id]);
+    connection.query('DELETE FROM successful_matches WHERE player1 = ? OR player2 = ?', [req.session.userdata.id, req.session.userdata.id]);
+    req.session.destroy();
+    res.send({
+        "code": 200
+    });
+}

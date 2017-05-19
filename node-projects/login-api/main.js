@@ -61,6 +61,8 @@ router.post('/login', login.login);
 router.post('/logout', login.logout);
 router.get('/loggedIn', login.loggedIn);
 
+router.get('/deleteaccount', login.deleteaccount);
+
 router.get('/totalUsers', login.totalUsers);
 router.get('/getMe', login.getMe);
 
