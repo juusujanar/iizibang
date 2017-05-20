@@ -270,7 +270,7 @@ $('div.chatBoxes').on('keypress', 'input.fillArea', function (e) {
             chatText.innerHTML = message;
             $(this).parent().parent().find("div.messageBox").append(chatText);
             $.ajax({
-                url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + parseInt($(this).parent().parent().parent().find(".interestInfo").attr("id")) + "&textmessage=" + message,
+                url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + parseInt($(e.currentTarget).parent().parent().parent().find(".interestInfo").attr("id")) + "&textmessage=" + message,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
