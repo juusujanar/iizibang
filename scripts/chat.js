@@ -163,10 +163,10 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInput.setAttribute("type", "text");
         userInput.setAttribute("class", "fillArea");
         userInput.setAttribute("name", "userInputField");
+        var matchID2 = $(this).parent().find(".interestInfo").attr("id");
         userInput.addEventListener('keypress',function(e){
             if (e.keyCode === 13){
                 var message = $(this).val();
-                var matchID = $(this).parent().parent().parent().find(".interestInfo").attr("id");
                 if (message !== "") {
                     $(this).parent().find("input.fillArea").val("");
                     var chatText = document.createElement("P");
@@ -174,7 +174,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     chatText.innerHTML = message;
                     $(this).parent().parent().find("div.messageBox").append(chatText);
                     $.ajax({
-                        url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + matchID + "&textmessage=" + message,
+                        url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + matchID2 + "&textmessage=" + message,
                         type: 'POST',
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
