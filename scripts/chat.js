@@ -166,7 +166,8 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInput.id = $(this).parent().find(".interestInfo").attr("id");
         userInput.addEventListener('keypress',function(e){
             if (e.keyCode === 13){
-                var message = $(this).val();
+                $(this).parent().find(".submitButton").click();
+                /*var message = $(this).val();
                 var matchID = $(this).attr("id");
                 if (message !== "") {
                     $(this).parent().find("input.fillArea").val("");
@@ -186,8 +187,8 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     });
                     var wtf = $(this).parent().parent().find("div.messageBox");
                     var height = wtf[0].scrollHeight;
-                    wtf.scrollTop(height);
-                }
+                    wtf.scrollTop(height);*/
+                
             }
         });
         userInput.setAttribute("size", "1");
