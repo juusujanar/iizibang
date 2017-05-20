@@ -59,27 +59,27 @@ exports.register = function(req, res) {
                     });
                     return;
                 }
-            });
+                
+                var imageFile = (typeof req.file === 'undefined') ? 'NULL' : req.file.filename;
 
-            var imageFile = (typeof req.file === 'undefined') ? 'NULL' : req.file.filename;
+                connection.query('INSERT INTO users (username, profile_pic, firstname, lastname, birthdate, email, password_hash, gender, interest) VALUES (?,?,?,?,?,?,?,?,?)',
+                    [req.body.username, imageFile, req.body.firstname, req.body.lastname, req.body.birthdate, req.body.email, hash, req.body.gender, req.body.interest],
+                    function(error, results, fields) {
 
-            connection.query('INSERT INTO users (username, profile_pic, firstname, lastname, birthdate, email, password_hash, gender, interest) VALUES (?,?,?,?,?,?,?,?,?)',
-                [req.body.username, imageFile, req.body.firstname, req.body.lastname, req.body.birthdate, req.body.email, hash, req.body.gender, req.body.interest],
-                function(error, results, fields) {
-
-                    if (error) {
-                        console.log("Error when registering user in database: ", error);
-                        res.send({
-                            "code": 400,
-                            "failed": "Error when registering user in database!"
-                        });
-                        return;
-                    } else {
-                        res.send({
-                            "code": 200,
-                            "success": "User successfully registered.",
-                        });
-                    }
+                        if (error) {
+                            console.log("Error when registering user in database: ", error);
+                            res.send({
+                                "code": 400,
+                                "failed": "Error when registering user in database!"
+                            });
+                            return;
+                        } else {
+                            res.send({
+                                "code": 200,
+                                "success": "User successfully registered.",
+                            });
+                        }
+                });
             });
         });
     });
