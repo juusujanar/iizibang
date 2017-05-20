@@ -61,7 +61,7 @@ exports.register = function(req, res) {
                 }
             });
 
-            var imageFile = (typeof req.file.filename === 'undefined') ? 'NULL' : req.file.filename;
+            var imageFile = (typeof req.file === 'undefined') ? 'NULL' : req.file.filename;
 
             connection.query('INSERT INTO users (username, profile_pic, firstname, lastname, birthdate, email, password_hash, gender, interest) VALUES (?,?,?,?,?,?,?,?,?)',
                 [req.body.username, imageFile, req.body.firstname, req.body.lastname, req.body.birthdate, req.body.email, hash, req.body.gender, req.body.interest],
