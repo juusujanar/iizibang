@@ -167,8 +167,6 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
             if (e.keyCode === 13){
                 var message = $(this).val();
                 var matchID = $(this).parent().parent().parent().find(".interestInfo").attr("id");
-                console.log("Div value is "+ matchID);
-                console.log("Div value is " +$(this).parent().parent().parent().parent().find(".interestInfo").attr("id"));
                 if (message !== "") {
                     $(this).parent().find("input.fillArea").val("");
                     var chatText = document.createElement("P");
