@@ -61,8 +61,10 @@ exports.register = function(req, res) {
                 }
             });
 
+            var imageFile = (typeof req.file.filename === 'undefined') ? 'NULL' : req.file.filename;
+
             connection.query('INSERT INTO users (username, profile_pic, firstname, lastname, birthdate, email, password_hash, gender, interest) VALUES (?,?,?,?,?,?,?,?,?)',
-                [req.body.username, req.file.filename, req.body.firstname, req.body.lastname, req.body.birthdate, req.body.email, hash, req.body.gender, req.body.interest],
+                [req.body.username, imageFile, req.body.firstname, req.body.lastname, req.body.birthdate, req.body.email, hash, req.body.gender, req.body.interest],
                 function(error, results, fields) {
 
                     if (error) {
@@ -101,7 +103,7 @@ exports.login = function(req, res) {
                 });
                 return;
             }
-            
+
             bcrypt.compare(req.body.password, results[0].password_hash, function(err, result) {
                 if (result) {
                     // saves login to session store
@@ -198,7 +200,7 @@ exports.deleteaccount = function (req,res) {
         });
         return;
     }
-    
+
     connection.query('DELETE FROM users WHERE id = ?', [req.session.userdata.id]);
     connection.query('DELETE FROM successful_matches WHERE player1 = ? OR player2 = ?', [req.session.userdata.id, req.session.userdata.id]);
     req.session.destroy();
