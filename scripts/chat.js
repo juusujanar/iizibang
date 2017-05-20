@@ -163,11 +163,11 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInput.setAttribute("type", "text");
         userInput.setAttribute("class", "fillArea");
         userInput.setAttribute("name", "userInputField");
-        userInput.id = $(this).parent().find(".interestInfo").attr("id");
-        userInput.addEventListener('keypress',function(e){
+        
+     /*   userInput.addEventListener('keypress',function(e){
             if (e.keyCode === 13){
                 $(this).parent().find(".submitButton").click();
-                /*var message = $(this).val();
+                /!*var message = $(this).val();
                 var matchID = $(this).attr("id");
                 if (message !== "") {
                     $(this).parent().find("input.fillArea").val("");
@@ -187,10 +187,10 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
                     });
                     var wtf = $(this).parent().parent().find("div.messageBox");
                     var height = wtf[0].scrollHeight;
-                    wtf.scrollTop(height);*/
-                
+                    wtf.scrollTop(height);*!/
+
             }
-        });
+        });*/
         userInput.setAttribute("size", "1");
         userInputDiv.appendChild(userInput);
         var userSubmit = document.createElement("INPUT");
@@ -259,6 +259,34 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
         wtf.scrollTop(height);
     }
 });
+
+$('div.chatBoxes').on('keypress', 'input.fillArea', function (e) {
+    var message = $(this).val();
+    var matchID = $(this).parent().parent().parent().find(".interestInfo").attr("id");
+    if (e.keyCode === 13) {
+        if (message !== "") {
+            $(this).parent().find("input.fillArea").val("");
+            var chatText = document.createElement("P");
+            chatText.setAttribute("class", "chatTextRight");
+            chatText.innerHTML = message;
+            $(this).parent().parent().find("div.messageBox").append(chatText);
+            $.ajax({
+                url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + matchID + "&textmessage=" + message,
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+            var wtf = $(this).parent().parent().find("div.messageBox");
+            var height = wtf[0].scrollHeight;
+            wtf.scrollTop(height);
+        }
+    }
+});
+
 (function(){
     var poll = function(){
         $.ajax({
