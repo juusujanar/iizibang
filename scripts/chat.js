@@ -163,7 +163,7 @@ $('div.chatBoxes').on('click', 'button.expandButton', function (e) {
         userInput.setAttribute("type", "text");
         userInput.setAttribute("class", "fillArea");
         userInput.setAttribute("name", "userInputField");
-        
+
      /*   userInput.addEventListener('keypress',function(e){
             if (e.keyCode === 13){
                 $(this).parent().find(".submitButton").click();
@@ -262,7 +262,6 @@ $('div.chatBoxes').on('click', 'input.submitButton', function (e) {
 
 $('div.chatBoxes').on('keypress', 'input.fillArea', function (e) {
     var message = $(this).val();
-    var matchID = $(this).parent().parent().parent().find(".interestInfo").attr("id");
     if (e.keyCode === 13) {
         if (message !== "") {
             $(this).parent().find("input.fillArea").val("");
@@ -271,7 +270,7 @@ $('div.chatBoxes').on('keypress', 'input.fillArea', function (e) {
             chatText.innerHTML = message;
             $(this).parent().parent().find("div.messageBox").append(chatText);
             $.ajax({
-                url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + matchID + "&textmessage=" + message,
+                url: 'https://iizibang.jjdev.eu/api/sendchatmessage?matchid=' + parseInt($(this).parent().parent().parent().find(".interestInfo").attr("id")) + "&textmessage=" + message,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
