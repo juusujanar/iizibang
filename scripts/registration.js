@@ -1,8 +1,11 @@
-webshim.setOptions('waitReady', false);
-webshim.setOptions('forms-ext', {types: 'date'});
-webshim.polyfill('forms forms-ext');
+$(document).ready(function () {
+    $("#birthdate").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
 
+    }
 
+);
 // Check if password and email values are equal.
 
 $('#password, #passwordConfirm').on('change keyup', function () {
