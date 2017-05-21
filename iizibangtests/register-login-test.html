@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://iizibang.jjdev.eu/" />
+<title>register-login-test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">register-login-test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sign Up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>temptestaccount1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Test1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=passwordConfirm</td>
+	<td>Test1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>a@a.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=emailConfirm</td>
+	<td>a@a.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstname</td>
+	<td>a</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastname</td>
+	<td>b</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=birthdate</td>
+	<td>1990-01-01</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=gender</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=interest</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=registerButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Log In</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=email</td>
+	<td>temptestaccount1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password</td>
+	<td>Test1234</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loginButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.likeButton &gt; img.disLikeButtonReSize</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=img.disLikeButtonReSize</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=h3.upperBarElement</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=div.matchMakerOption &gt; a.noUnderline &gt; h3.upperBarElement</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=div.settingsOption &gt; a.noUnderline &gt; h3.upperBarElement</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=h3.upperBarElement</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=noResults</td>
+	<td>No matches ... yet!</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=div.matchMakerOption &gt; a.noUnderline &gt; h3.upperBarElement</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=div.settingsOption &gt; a.noUnderline &gt; h3.upperBarElement</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=myUsername</td>
+	<td>temptestaccount1234</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/api/deleteaccount</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
