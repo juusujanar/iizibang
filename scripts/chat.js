@@ -36,7 +36,7 @@ function showMatches (matches) {
         chatBoxRow.setAttribute("class", "chatBoxRow");
         var image = document.createElement("IMG");
         if (matches[i].profile_pic === null) {
-            image.setAttribute("src", "../../pictures/no_pic.jpg");
+            image.setAttribute("src", "../../pictures/no_pic.png");
         }else{
             image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+matches[i].profile_pic);
         }
@@ -74,7 +74,7 @@ function addMatch(profile_pic, id, userName){
     chatBoxRow.setAttribute("class", "chatBoxRow");
     var image = document.createElement("IMG");
     if (profile_pic === null) {
-        image.setAttribute("src", "../../pictures/no_pic.jpg");
+        image.setAttribute("src", "../../pictures/no_pic.png");
     }else{
         image.setAttribute("src", "https://iizibang.jjdev.eu/uploads/profilepics/"+profile_pic);
     }
