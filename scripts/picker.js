@@ -34,8 +34,8 @@ $( document ).ready(function() {
                 $("#name").text(data.firstname + " ");
                 $("#vanus").text(get_age(data.birthdate));
             }
-            if(data.profile_pic == null){
-                $("#profilePicture").attr("src","../../pictures/question-mark.gif");
+            if(data.profile_pic == null || data.profile_pic == "NULL" ){
+                $("#profilePicture").attr("src","../../pictures/question-mark.png");
             }else{
                 $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
@@ -133,8 +133,8 @@ function findNewMatch(){
                 $("#name").text(data.firstname + " ");
                 $("#vanus").text(get_age(data.birthdate));
             }
-            if(data.profile_pic == null){
-                $("#profilePicture").attr("src","../../pictures/question-mark.gif");
+            if(data.profile_pic == null || data.profile_pic == "NULL"){
+                $("#profilePicture").attr("src","../../pictures/question-mark.png");
             }else{
                 $("#profilePicture").attr("src","https://iizibang.jjdev.eu/uploads/profilepics/"+data.profile_pic);
             }
